@@ -28,9 +28,9 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+    <div className="bg-linear-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
       {/* Hero Section */}
-      <section className="relative py-12 md:py-16 bg-gradient-to-br from-purple-600 via-blue-600 to-purple-700 overflow-hidden">
+      <section className="relative py-12 md:py-16 bg-linear-to-br from-purple-600 via-blue-600 to-purple-700 overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
             backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
@@ -116,7 +116,7 @@ export default function ContactPage() {
               </div>
 
               {/* Business Hours */}
-              <div className="modern-card bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 p-6 border border-purple-200 dark:border-purple-700">
+              <div className="modern-card bg-linear-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 p-6 border border-purple-200 dark:border-purple-700">
                 <div className="flex items-start gap-4">
                   <div className="shrink-0 w-12 h-12 bg-purple-600 rounded-xl flex items-center justify-center">
                     <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -290,7 +290,7 @@ export default function ContactPage() {
       </section>
 
       {/* Quick Contact Options */}
-      <section className="py-12 md:py-16 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-800 dark:to-gray-900">
+      <section className="py-12 md:py-16 bg-linear-to-br from-purple-50 to-blue-50 dark:from-gray-800 dark:to-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-6">
             <h2 className="text-2xl md:text-3xl font-black text-gray-900 dark:text-white mb-3">
@@ -345,7 +345,7 @@ export default function ContactPage() {
 
             <Link
               href="/business-solutions"
-              className="modern-card bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900/30 dark:to-blue-900/30 p-6 text-center border-2 border-purple-300 dark:border-purple-700 hover:border-purple-500 dark:hover:border-purple-500 transition-all group"
+              className="modern-card bg-linear-to-br from-purple-100 to-blue-100 dark:from-purple-900/30 dark:to-blue-900/30 p-6 text-center border-2 border-purple-300 dark:border-purple-700 hover:border-purple-500 dark:hover:border-purple-500 transition-all group"
             >
               <div className="w-14 h-14 bg-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
                 <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">

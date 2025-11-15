@@ -133,9 +133,9 @@ export default function BusinessSolutions() {
   };
 
   return (
-    <div className="bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+    <div className="bg-linear-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
       {/* Hero Section */}
-      <section className="relative py-12 md:py-16 bg-gradient-to-br from-purple-600 via-purple-700 to-blue-600 overflow-hidden">
+      <section className="relative py-12 md:py-16 bg-linear-to-br from-purple-600 via-purple-700 to-blue-600 overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
@@ -239,7 +239,7 @@ export default function BusinessSolutions() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-12 md:py-16 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-800 dark:to-gray-900">
+      <section className="py-12 md:py-16 bg-linear-to-br from-purple-50 to-blue-50 dark:from-gray-800 dark:to-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-6">
             <h2 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-3">
@@ -295,7 +295,7 @@ export default function BusinessSolutions() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 md:py-16 bg-gradient-to-r from-purple-600 to-blue-600">
+      <section className="py-12 md:py-16 bg-linear-to-r from-purple-600 to-blue-600">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
             Ready to Transform Your Business?

@@ -5,7 +5,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer id="contact" className="relative bg-gradient-to-b from-gray-900 to-black dark:from-black dark:to-gray-950 text-gray-300 pt-20 pb-10 overflow-hidden">
+    <footer id="contact" className="relative bg-linear-to-b from-gray-900 to-black dark:from-black dark:to-gray-950 text-gray-300 pt-20 pb-10 overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -25,7 +25,7 @@ export default function Footer() {
             {/* Left: Logo and Description */}
             <div>
               <div className="flex items-center gap-4 mb-6">
-                <div className="p-3 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl shadow-lg">
+                <div className="p-3 bg-linear-to-br from-blue-600 to-purple-600 rounded-2xl shadow-lg">
                   <Image 
                     src="/images/ygeLogo.png" 
                     alt="YGE Logo" 
@@ -59,11 +59,11 @@ export default function Footer() {
             </div>
 
             {/* Right: Contact CTA */}
-            <div className="bg-gradient-to-br from-blue-900/40 to-purple-900/40 backdrop-blur-sm border border-blue-800/50 rounded-2xl p-8">
+            <div className="bg-linear-to-br from-blue-900/40 to-purple-900/40 backdrop-blur-sm border border-blue-800/50 rounded-2xl p-8">
               <h4 className="text-2xl font-black text-white mb-4">Ready to Get Started?</h4>
               <p className="text-gray-300 mb-6">Contact us today for all your stationery and business service needs.</p>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                <Link href="/contact" className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+                <Link href="/contact" className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-linear-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                   </svg>

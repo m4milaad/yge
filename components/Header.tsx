@@ -44,7 +44,7 @@ export default function Header() {
                 />
               </div>
               <div className="hidden sm:block">
-                <span className="text-2xl font-black tracking-tight bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-400 dark:to-blue-600 bg-clip-text text-transparent">
+                <span className="text-2xl font-black tracking-tight bg-linear-to-r from-blue-600 to-blue-800 dark:from-blue-400 dark:to-blue-600 bg-clip-text text-transparent">
                   Yuva Global
                 </span>
                 <span className="block text-sm font-semibold tracking-wider text-gray-600 dark:text-gray-400">
@@ -185,9 +185,9 @@ export default function Header() {
 
       {mobileMenuOpen && (
         <div className="md:hidden fixed inset-0 bg-gray-900/90 backdrop-blur-sm z-40 animate-fade-in">
-          <div className="fixed top-0 right-0 h-full w-full max-w-sm bg-gradient-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-2xl overflow-y-auto animate-slide-in">
+          <div className="fixed top-0 right-0 h-full w-full max-w-sm bg-linear-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-2xl overflow-y-auto animate-slide-in">
             {/* Header */}
-            <div className="sticky top-0 bg-gradient-to-r from-blue-600 to-purple-600 p-6 shadow-lg">
+            <div className="sticky top-0 bg-linear-to-r from-blue-600 to-purple-600 p-6 shadow-lg">
               <div className="flex justify-between items-center">
                 <div>
                   <h2 className="text-2xl font-black text-white">Menu</h2>

@@ -23,7 +23,7 @@ export default function Home() {
     <>
       <NewsTicker />
 
-      <section className="relative bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden">
+      <section className="relative bg-linear-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
@@ -63,7 +63,7 @@ export default function Home() {
               
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black mb-4 leading-tight">
                 <span className="text-gray-900 dark:text-white">Yuva Global</span>
-                <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 bg-clip-text text-transparent">
+                <span className="block bg-linear-to-r from-blue-600 via-purple-600 to-blue-600 bg-clip-text text-transparent">
                   Enterprises
                 </span>
               </h1>
@@ -77,7 +77,7 @@ export default function Home() {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Link href="/business-solutions" className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+                <Link href="/business-solutions" className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-linear-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                   </svg>
@@ -115,7 +115,7 @@ export default function Home() {
             {/* Right Visual */}
             <div className="relative hidden lg:block">
               <div className="relative">
-                <div className="relative z-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl p-8 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
+                <div className="relative z-10 bg-linear-to-br from-blue-500 to-purple-600 rounded-3xl p-8 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
                   <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 transform -rotate-3">
                     <div className="grid grid-cols-2 gap-4">
                       <div className="bg-blue-100 dark:bg-blue-900/30 rounded-xl p-6 flex items-center justify-center hover:scale-110 transition-transform">
@@ -176,14 +176,14 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {/* Business & Facility Card - NOW FIRST */}
-            <div className="group modern-card bg-gradient-to-br from-stone-50 via-white to-stone-50 dark:from-gray-800 dark:via-gray-800 dark:to-stone-900/20 p-6 md:p-8 flex flex-col items-center text-center border-2 border-stone-200 dark:border-stone-700 shadow-xl hover:shadow-2xl relative overflow-hidden">
+            <div className="group modern-card bg-linear-to-br from-stone-50 via-white to-stone-50 dark:from-gray-800 dark:via-gray-800 dark:to-stone-900/20 p-6 md:p-8 flex flex-col items-center text-center border-2 border-stone-200 dark:border-stone-700 shadow-xl hover:shadow-2xl relative overflow-hidden">
               {/* Decorative Corner */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-stone-300/15 to-slate-300/15 rounded-bl-full"></div>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-linear-to-br from-stone-300/15 to-slate-300/15 rounded-bl-full"></div>
               
               {/* Icon */}
               <div className="relative mb-6">
                 <div className="absolute inset-0 bg-stone-600 rounded-2xl blur-xl opacity-20 group-hover:opacity-35 transition-opacity"></div>
-                <div className="relative p-6 bg-gradient-to-br from-stone-600 to-stone-700 rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-300">
+                <div className="relative p-6 bg-linear-to-br from-stone-600 to-stone-700 rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-300">
                   <svg className="h-14 w-14 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                   </svg>
@@ -221,7 +221,7 @@ export default function Home() {
               </div>
 
               {/* Button */}
-              <Link href="/business-solutions" className="relative z-10 mt-auto btn-primary group/btn bg-gradient-to-r from-stone-700 to-stone-800 hover:from-stone-800 hover:to-stone-900 cursor-pointer">
+              <Link href="/business-solutions" className="relative z-10 mt-auto btn-primary group/btn bg-linear-to-r from-stone-700 to-stone-800 hover:from-stone-800 hover:to-stone-900 cursor-pointer">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                 </svg>
@@ -233,14 +233,14 @@ export default function Home() {
             </div>
 
             {/* Personal & Creative Card - NOW SECOND */}
-            <div className="group modern-card bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-gray-800 dark:via-gray-800 dark:to-slate-900/20 p-6 md:p-8 flex flex-col items-center text-center border-2 border-slate-200 dark:border-slate-700 shadow-xl hover:shadow-2xl relative overflow-hidden">
+            <div className="group modern-card bg-linear-to-br from-slate-50 via-white to-slate-50 dark:from-gray-800 dark:via-gray-800 dark:to-slate-900/20 p-6 md:p-8 flex flex-col items-center text-center border-2 border-slate-200 dark:border-slate-700 shadow-xl hover:shadow-2xl relative overflow-hidden">
               {/* Decorative Corner */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-slate-300/15 to-stone-300/15 rounded-bl-full"></div>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-linear-to-br from-slate-300/15 to-stone-300/15 rounded-bl-full"></div>
               
               {/* Icon */}
               <div className="relative mb-6">
                 <div className="absolute inset-0 bg-slate-600 rounded-2xl blur-xl opacity-20 group-hover:opacity-35 transition-opacity"></div>
-                <div className="relative p-6 bg-gradient-to-br from-slate-600 to-slate-700 rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-300">
+                <div className="relative p-6 bg-linear-to-br from-slate-600 to-slate-700 rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-300">
                   <svg className="h-14 w-14 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
@@ -292,7 +292,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="featured" className="py-12 md:py-16 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
+      <section id="featured" className="py-12 md:py-16 bg-linear-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <div className="text-center mb-12">
@@ -525,12 +525,12 @@ export default function Home() {
               <div className="tab-content">
                 <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {/* Service Card 1 */}
-                  <Link href="/services/facility-management" className="group modern-card bg-gradient-to-br from-blue-50 to-white dark:from-gray-800 dark:to-gray-800 p-8 border-2 border-blue-200 dark:border-blue-800 hover:border-blue-400 dark:hover:border-blue-600 flex flex-col relative overflow-hidden">
+                  <Link href="/services/facility-management" className="group modern-card bg-linear-to-br from-blue-50 to-white dark:from-gray-800 dark:to-gray-800 p-8 border-2 border-blue-200 dark:border-blue-800 hover:border-blue-400 dark:hover:border-blue-600 flex flex-col relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-24 h-24 bg-blue-400/10 rounded-bl-full"></div>
                     
                     <div className="relative mb-6">
                       <div className="absolute inset-0 bg-blue-500 rounded-xl blur-lg opacity-20 group-hover:opacity-40 transition-opacity"></div>
-                      <div className="relative p-4 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <div className="relative p-4 bg-linear-to-br from-blue-500 to-blue-600 rounded-xl shadow-lg group-hover:scale-110 transition-transform duration-300">
                         <svg className="h-10 w-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                         </svg>
@@ -553,12 +553,12 @@ export default function Home() {
                   </Link>
 
                   {/* Service Card 2 */}
-                  <Link href="/services/mechanized-cleaning" className="group modern-card bg-gradient-to-br from-purple-50 to-white dark:from-gray-800 dark:to-gray-800 p-8 border-2 border-purple-200 dark:border-purple-800 hover:border-purple-400 dark:hover:border-purple-600 flex flex-col relative overflow-hidden">
+                  <Link href="/services/mechanized-cleaning" className="group modern-card bg-linear-to-br from-purple-50 to-white dark:from-gray-800 dark:to-gray-800 p-8 border-2 border-purple-200 dark:border-purple-800 hover:border-purple-400 dark:hover:border-purple-600 flex flex-col relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-24 h-24 bg-purple-400/10 rounded-bl-full"></div>
                     
                     <div className="relative mb-6">
                       <div className="absolute inset-0 bg-purple-500 rounded-xl blur-lg opacity-20 group-hover:opacity-40 transition-opacity"></div>
-                      <div className="relative p-4 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <div className="relative p-4 bg-linear-to-br from-purple-500 to-purple-600 rounded-xl shadow-lg group-hover:scale-110 transition-transform duration-300">
                         <svg className="h-10 w-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7.014A8.003 8.003 0 0122 12c0 3-1 7-6.343 6.657z" />
                         </svg>
@@ -581,12 +581,12 @@ export default function Home() {
                   </Link>
 
                   {/* Service Card 3 */}
-                  <Link href="/services/security-services" className="group modern-card bg-gradient-to-br from-green-50 to-white dark:from-gray-800 dark:to-gray-800 p-8 border-2 border-green-200 dark:border-green-800 hover:border-green-400 dark:hover:border-green-600 flex flex-col relative overflow-hidden">
+                  <Link href="/services/security-services" className="group modern-card bg-linear-to-br from-green-50 to-white dark:from-gray-800 dark:to-gray-800 p-8 border-2 border-green-200 dark:border-green-800 hover:border-green-400 dark:hover:border-green-600 flex flex-col relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-24 h-24 bg-green-400/10 rounded-bl-full"></div>
                     
                     <div className="relative mb-6">
                       <div className="absolute inset-0 bg-green-500 rounded-xl blur-lg opacity-20 group-hover:opacity-40 transition-opacity"></div>
-                      <div className="relative p-4 bg-gradient-to-br from-green-500 to-green-600 rounded-xl shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <div className="relative p-4 bg-linear-to-br from-green-500 to-green-600 rounded-xl shadow-lg group-hover:scale-110 transition-transform duration-300">
                         <svg className="h-10 w-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                         </svg>
@@ -614,7 +614,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="about" className="relative py-12 md:py-16 bg-gradient-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 transition-colors duration-300 overflow-hidden">
+      <section id="about" className="relative py-12 md:py-16 bg-linear-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 transition-colors duration-300 overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
@@ -661,7 +661,7 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Image Side */}
             <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-500 rounded-3xl blur-2xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
+              <div className="absolute inset-0 bg-linear-to-br from-blue-500 to-purple-500 rounded-3xl blur-2xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
               <div className="relative modern-card overflow-hidden border-2 border-gray-200 dark:border-gray-700">
                 <Image 
                   src="/images/ourCompanyVales.png" 
@@ -675,7 +675,7 @@ export default function Home() {
               {/* Floating Stats */}
               <div className="absolute -bottom-6 -right-6 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-6 border-2 border-blue-200 dark:border-blue-800">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center">
+                  <div className="w-12 h-12 bg-linear-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center">
                     <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
@@ -702,7 +702,7 @@ export default function Home() {
 
               {/* Core Values */}
               <div className="grid grid-cols-3 gap-4">
-                <div className="modern-card bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 p-6 text-center border border-blue-200 dark:border-blue-800">
+                <div className="modern-card bg-linear-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 p-6 text-center border border-blue-200 dark:border-blue-800">
                   <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center mx-auto mb-3">
                     <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
@@ -712,7 +712,7 @@ export default function Home() {
                   <p className="text-xs text-gray-600 dark:text-gray-400">Reliable & Honest</p>
                 </div>
 
-                <div className="modern-card bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 p-6 text-center border border-purple-200 dark:border-purple-800">
+                <div className="modern-card bg-linear-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 p-6 text-center border border-purple-200 dark:border-purple-800">
                   <div className="w-12 h-12 bg-purple-600 rounded-xl flex items-center justify-center mx-auto mb-3">
                     <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -723,7 +723,7 @@ export default function Home() {
                   <p className="text-xs text-gray-600 dark:text-gray-400">Open & Clear</p>
                 </div>
 
-                <div className="modern-card bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 p-6 text-center border border-green-200 dark:border-green-800">
+                <div className="modern-card bg-linear-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 p-6 text-center border border-green-200 dark:border-green-800">
                   <div className="w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center mx-auto mb-3">
                     <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -763,7 +763,7 @@ export default function Home() {
 
           <div className="grid sm:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {/* ISO Certification */}
-            <div className="group modern-card bg-gradient-to-br from-blue-50 to-white dark:from-gray-800 dark:to-gray-800 p-8 text-center border-2 border-blue-200 dark:border-blue-800 hover:border-blue-400 dark:hover:border-blue-600 relative overflow-hidden">
+            <div className="group modern-card bg-linear-to-br from-blue-50 to-white dark:from-gray-800 dark:to-gray-800 p-8 text-center border-2 border-blue-200 dark:border-blue-800 hover:border-blue-400 dark:hover:border-blue-600 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-20 h-20 bg-blue-400/10 rounded-bl-full"></div>
               
               <div className="relative mb-6">
@@ -795,7 +795,7 @@ export default function Home() {
             </div>
 
             {/* MSME Certification */}
-            <div className="group modern-card bg-gradient-to-br from-green-50 to-white dark:from-gray-800 dark:to-gray-800 p-8 text-center border-2 border-green-200 dark:border-green-800 hover:border-green-400 dark:hover:border-green-600 relative overflow-hidden">
+            <div className="group modern-card bg-linear-to-br from-green-50 to-white dark:from-gray-800 dark:to-gray-800 p-8 text-center border-2 border-green-200 dark:border-green-800 hover:border-green-400 dark:hover:border-green-600 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-20 h-20 bg-green-400/10 rounded-bl-full"></div>
               
               <div className="relative mb-6">
@@ -827,7 +827,7 @@ export default function Home() {
             </div>
 
             {/* MII Certification */}
-            <div className="group modern-card bg-gradient-to-br from-purple-50 to-white dark:from-gray-800 dark:to-gray-800 p-8 text-center border-2 border-purple-200 dark:border-purple-800 hover:border-purple-400 dark:hover:border-purple-600 relative overflow-hidden">
+            <div className="group modern-card bg-linear-to-br from-purple-50 to-white dark:from-gray-800 dark:to-gray-800 p-8 text-center border-2 border-purple-200 dark:border-purple-800 hover:border-purple-400 dark:hover:border-purple-600 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-20 h-20 bg-purple-400/10 rounded-bl-full"></div>
               
               <div className="relative mb-6">
@@ -861,7 +861,7 @@ export default function Home() {
 
           {/* Trust Badge */}
           <div className="mt-12 text-center">
-            <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-full border border-blue-200 dark:border-blue-800">
+            <div className="inline-flex items-center gap-3 px-6 py-3 bg-linear-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-full border border-blue-200 dark:border-blue-800">
               <svg className="w-6 h-6 text-blue-600 dark:text-blue-400" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
