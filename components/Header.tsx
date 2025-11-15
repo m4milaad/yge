@@ -31,25 +31,23 @@ export default function Header() {
         : 'bg-white dark:bg-gray-900 shadow-md'
     }`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-24">
           <div className="shrink-0">
             <Link href="/" className="group flex items-center space-x-3 transition-all duration-300">
               <div className="relative">
-                <div className="relative p-2 rounded-xl bg-gradient-to-br from-blue-600 to-blue-700 dark:from-blue-500 dark:to-blue-600 shadow-lg group-hover:shadow-xl transition-all duration-300">
-                  <Image 
-                    src="/images/ygeLogo.png" 
-                    alt="YGE Logo" 
-                    width={40} 
-                    height={40} 
-                    className="h-8 w-8 group-hover:scale-110 transition-transform duration-300" 
-                  />
-                </div>
+                <Image 
+                  src="/images/ygeLogo.png" 
+                  alt="YGE Logo" 
+                  width={64} 
+                  height={64} 
+                  className="h-16 w-16 group-hover:scale-105 transition-transform duration-300" 
+                />
               </div>
               <div className="hidden sm:block">
-                <span className="text-xl font-black tracking-tight bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-400 dark:to-blue-600 bg-clip-text text-transparent">
+                <span className="text-2xl font-black tracking-tight bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-400 dark:to-blue-600 bg-clip-text text-transparent">
                   Yuva Global
                 </span>
-                <span className="block text-xs font-semibold tracking-wider text-gray-600 dark:text-gray-400">
+                <span className="block text-sm font-semibold tracking-wider text-gray-600 dark:text-gray-400">
                   ENTERPRISES
                 </span>
               </div>

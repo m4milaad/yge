@@ -115,7 +115,7 @@ export default function ServicePageLayout({
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
-                  href="/#contact"
+                  href="/contact"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-blue-600 font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -133,6 +133,99 @@ export default function ServicePageLayout({
                   Back to Home
                 </Link>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Other Services Section */}
+      <section className="py-12 md:py-16 bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-4">
+                Explore Our Other Services
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                Discover more ways we can help your business thrive
+              </p>
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+              <Link href="/services/facility-management" className="modern-card bg-white dark:bg-gray-800 p-6 border border-gray-200 dark:border-gray-700 hover:border-purple-500 dark:hover:border-purple-500 transition-all group">
+                <div className="text-4xl mb-3">🏢</div>
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400">
+                  Facility Management
+                </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  Comprehensive facility solutions
+                </p>
+              </Link>
+
+              <Link href="/services/mechanized-cleaning" className="modern-card bg-white dark:bg-gray-800 p-6 border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 transition-all group">
+                <div className="text-4xl mb-3">✨</div>
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                  Mechanized Cleaning
+                </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  Professional cleaning services
+                </p>
+              </Link>
+
+              <Link href="/services/security-services" className="modern-card bg-white dark:bg-gray-800 p-6 border border-gray-200 dark:border-gray-700 hover:border-red-500 dark:hover:border-red-500 transition-all group">
+                <div className="text-4xl mb-3">🔒</div>
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-red-600 dark:group-hover:text-red-400">
+                  Security Services
+                </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  Reliable security personnel
+                </p>
+              </Link>
+
+              <Link href="/services/manpower-outsourcing" className="modern-card bg-white dark:bg-gray-800 p-6 border border-gray-200 dark:border-gray-700 hover:border-green-500 dark:hover:border-green-500 transition-all group">
+                <div className="text-4xl mb-3">👥</div>
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-green-600 dark:group-hover:text-green-400">
+                  Manpower Outsourcing
+                </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  Skilled & unskilled workforce
+                </p>
+              </Link>
+
+              <Link href="/services/event-management" className="modern-card bg-white dark:bg-gray-800 p-6 border border-gray-200 dark:border-gray-700 hover:border-pink-500 dark:hover:border-pink-500 transition-all group">
+                <div className="text-4xl mb-3">🎉</div>
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-pink-600 dark:group-hover:text-pink-400">
+                  Event Management
+                </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  Complete event planning
+                </p>
+              </Link>
+
+              <Link href="/services/corporate-gifting" className="modern-card bg-white dark:bg-gray-800 p-6 border border-gray-200 dark:border-gray-700 hover:border-amber-500 dark:hover:border-amber-500 transition-all group">
+                <div className="text-4xl mb-3">🎁</div>
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-amber-600 dark:group-hover:text-amber-400">
+                  Corporate Gifting
+                </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  Curated corporate gifts
+                </p>
+              </Link>
+            </div>
+
+            <div className="text-center">
+              <Link
+                href="/business-solutions"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+                View All Business Services
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
             </div>
           </div>
         </div>
