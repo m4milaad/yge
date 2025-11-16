@@ -4,19 +4,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useCart } from '@/context/CartContext';
 import { useState } from 'react';
+import { stationeryProducts } from '@/data/products';
 
 export default function StationeryPage() {
   const { addToCart } = useCart();
   const [addedItems, setAddedItems] = useState<number[]>([]);
-
-  const products = [
-    { id: 1, name: 'Premium Notebooks', price: 199, image: '/images/notebooks.png', description: 'High-quality paper, durable covers' },
-    { id: 2, name: 'Artist Color Pencils (24)', price: 499, image: '/images/colorPencils.png', description: 'Vibrant colors, smooth application' },
-    { id: 3, name: 'Desk Organizer', price: 249, image: '/images/deskOrganisers.png', description: 'Keep your workspace tidy' },
-    { id: 4, name: 'Premium Pens Set', price: 299, image: '/images/notebooks.png', description: 'Smooth writing experience' },
-    { id: 5, name: 'Art Supplies Kit', price: 899, image: '/images/colorPencils.png', description: 'Complete art supplies for beginners' },
-    { id: 6, name: 'Sticky Notes Pack', price: 149, image: '/images/deskOrganisers.png', description: 'Colorful sticky notes for reminders' },
-  ];
+  const products = stationeryProducts;
 
   const handleAddToCart = (product: typeof products[0]) => {
     addToCart(product);

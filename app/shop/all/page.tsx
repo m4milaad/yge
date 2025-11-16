@@ -4,25 +4,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 import { useCart } from '@/context/CartContext';
+import { products } from '@/data/products';
 
 export default function AllProductsPage() {
   const [filter, setFilter] = useState('all');
   const { addToCart } = useCart();
-
-  const allProducts = [
-    { id: 1, name: 'Premium Notebooks', price: 199, image: '/images/notebooks.png', category: 'stationery', description: 'High-quality paper, durable covers' },
-    { id: 2, name: 'Artist Color Pencils (24)', price: 499, image: '/images/colorPencils.png', category: 'stationery', description: 'Vibrant colors, smooth application' },
-    { id: 3, name: 'Desk Organizer', price: 249, image: '/images/deskOrganisers.png', category: 'office', description: 'Keep your workspace tidy' },
-    { id: 4, name: 'School Backpack', price: 799, image: '/images/bags.png', category: 'school', description: 'Durable and stylish' },
-    { id: 5, name: 'Office Supplies Bundle', price: 1299, image: '/images/deskOrganisers.png', category: 'office', description: 'Complete office essentials' },
-    { id: 6, name: 'Student Notebook Set', price: 299, image: '/images/notebooks.png', category: 'school', description: 'Perfect for students' },
-    { id: 7, name: 'Premium Pens Set', price: 299, image: '/images/notebooks.png', category: 'stationery', description: 'Smooth writing experience' },
-    { id: 8, name: 'Geometry Box', price: 199, image: '/images/deskOrganisers.png', category: 'school', description: 'Complete geometry tools' },
-    { id: 9, name: 'Whiteboard Markers', price: 199, image: '/images/colorPencils.png', category: 'office', description: 'Vibrant and long-lasting' },
-    { id: 10, name: 'Art & Craft Set', price: 899, image: '/images/colorPencils.png', category: 'school', description: 'Complete art supplies' },
-    { id: 11, name: 'File Folders Pack', price: 349, image: '/images/notebooks.png', category: 'office', description: 'Organize your documents' },
-    { id: 12, name: 'Colored Pencils (36)', price: 599, image: '/images/colorPencils.png', category: 'stationery', description: 'Wide color range' },
-  ];
+  const allProducts = products;
 
   const filteredProducts = filter === 'all' ? allProducts : allProducts.filter(p => p.category === filter);
 

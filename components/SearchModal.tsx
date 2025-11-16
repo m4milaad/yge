@@ -72,7 +72,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
         {/* Search Header */}
         <div className="p-6 border-b border-gray-200 dark:border-gray-700">
           <div className="flex items-center gap-4">
-            <div className="shrink-0 w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center">
+            <div className="shrink-0 w-12 h-12 bg-linear-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center">
               <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
@@ -114,7 +114,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                       key={index}
                       href={result.link}
                       onClick={onClose}
-                      className="group flex items-center gap-4 p-4 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 dark:hover:from-blue-900/20 dark:hover:to-purple-900/20 rounded-xl transition-all duration-300 border border-transparent hover:border-blue-200 dark:hover:border-blue-800"
+                      className="group flex items-center gap-4 p-4 hover:bg-linear-to-r hover:from-blue-50 hover:to-purple-50 dark:hover:from-blue-900/20 dark:hover:to-purple-900/20 rounded-xl transition-all duration-300 border border-transparent hover:border-blue-200 dark:hover:border-blue-800"
                     >
                       <div className="shrink-0 w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300">
                         {result.icon}
@@ -181,7 +181,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                   <Link
                     href="/shop/all"
                     onClick={onClose}
-                    className="group flex items-center gap-3 p-4 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 hover:from-blue-100 hover:to-blue-200 dark:hover:from-blue-900/30 dark:hover:to-blue-800/30 rounded-xl transition-all duration-300 hover:scale-105"
+                    className="group flex items-center gap-3 p-4 bg-linear-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 hover:from-blue-100 hover:to-blue-200 dark:hover:from-blue-900/30 dark:hover:to-blue-800/30 rounded-xl transition-all duration-300 hover:scale-105"
                   >
                     <div className="w-10 h-10 bg-white dark:bg-gray-800 rounded-lg flex items-center justify-center text-xl">
                       🛍️
@@ -191,7 +191,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                   <Link
                     href="/services/facility-management"
                     onClick={onClose}
-                    className="group flex items-center gap-3 p-4 bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 hover:from-purple-100 hover:to-purple-200 dark:hover:from-purple-900/30 dark:hover:to-purple-800/30 rounded-xl transition-all duration-300 hover:scale-105"
+                    className="group flex items-center gap-3 p-4 bg-linear-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 hover:from-purple-100 hover:to-purple-200 dark:hover:from-purple-900/30 dark:hover:to-purple-800/30 rounded-xl transition-all duration-300 hover:scale-105"
                   >
                     <div className="w-10 h-10 bg-white dark:bg-gray-800 rounded-lg flex items-center justify-center text-xl">
                       🏢

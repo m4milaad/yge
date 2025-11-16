@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import NewsTicker from '@/components/NewsTicker';
 import { useCart } from '@/context/CartContext';
+import { featuredServices, featuredProducts } from '@/data';
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState('business');

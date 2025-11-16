@@ -59,15 +59,31 @@ export default function NewsTicker() {
 
   // NewsAPI.org (Free tier: 100 requests/day)
   const fetchFromNewsAPI = async (): Promise<NewsItem[]> => {
-    const API_KEY = process.env.NEXT_PUBLIC_NEWS_API_KEY || 'demo'; // Users can add their own key
+    const API_KEY = process.env.NEXT_PUBLIC_NEWS_API_KEY;
+    
+    if (!API_KEY || API_KEY === 'demo' || API_KEY === 'your_newsapi_key_here') {
+      console.log('NewsAPI key not configured, skipping...');
+      throw new Error('NewsAPI key not configured');
+    }
+    
+    // Fetch global business news or India-specific if available
     const response = await fetch(
-      `https://newsapi.org/v2/top-headlines?country=in&category=business&pageSize=5&apiKey=${API_KEY}`,
+      `https://newsapi.org/v2/top-headlines?category=business&pageSize=5&apiKey=${API_KEY}&language=en`,
       { next: { revalidate: 3600 } } // Cache for 1 hour
     );
     
-    if (!response.ok) throw new Error('NewsAPI failed');
+    if (!response.ok) {
+      console.log('NewsAPI request failed:', response.status);
+      throw new Error('NewsAPI failed');
+    }
     
     const data = await response.json();
+    
+    if (data.status === 'error') {
+      console.log('NewsAPI error:', data.message);
+      throw new Error(data.message);
+    }
+    
     return data.articles?.map((article: any) => ({
       title: `📰 ${article.title}`,
       source: article.source.name,
@@ -77,15 +93,31 @@ export default function NewsTicker() {
 
   // GNews API (Free tier: 100 requests/day)
   const fetchFromGNews = async (): Promise<NewsItem[]> => {
-    const API_KEY = process.env.NEXT_PUBLIC_GNEWS_API_KEY || 'demo';
+    const API_KEY = process.env.NEXT_PUBLIC_GNEWS_API_KEY;
+    
+    if (!API_KEY || API_KEY === 'demo' || API_KEY === 'your_gnews_key_here') {
+      console.log('GNews API key not configured, skipping...');
+      throw new Error('GNews API key not configured');
+    }
+    
+    // Fetch global business news
     const response = await fetch(
-      `https://gnews.io/api/v4/top-headlines?country=in&category=business&lang=en&max=5&apikey=${API_KEY}`,
+      `https://gnews.io/api/v4/top-headlines?category=business&lang=en&max=5&apikey=${API_KEY}`,
       { next: { revalidate: 3600 } }
     );
     
-    if (!response.ok) throw new Error('GNews failed');
+    if (!response.ok) {
+      console.log('GNews request failed:', response.status);
+      throw new Error('GNews failed');
+    }
     
     const data = await response.json();
+    
+    if (data.errors) {
+      console.log('GNews error:', data.errors);
+      throw new Error('GNews API error');
+    }
+    
     return data.articles?.map((article: any) => ({
       title: `📰 ${article.title}`,
       source: article.source.name,
@@ -95,15 +127,31 @@ export default function NewsTicker() {
 
   // MediaStack API (Free tier: 500 requests/month)
   const fetchFromMediaStack = async (): Promise<NewsItem[]> => {
-    const API_KEY = process.env.NEXT_PUBLIC_MEDIASTACK_API_KEY || 'demo';
+    const API_KEY = process.env.NEXT_PUBLIC_MEDIASTACK_API_KEY;
+    
+    if (!API_KEY || API_KEY === 'demo' || API_KEY === 'your_mediastack_key_here') {
+      console.log('MediaStack API key not configured, skipping...');
+      throw new Error('MediaStack API key not configured');
+    }
+    
+    // Fetch global business news (MediaStack free tier doesn't support country filter well)
     const response = await fetch(
-      `http://api.mediastack.com/v1/news?access_key=${API_KEY}&countries=in&categories=business&limit=5`,
+      `http://api.mediastack.com/v1/news?access_key=${API_KEY}&categories=business&languages=en&limit=5`,
       { next: { revalidate: 3600 } }
     );
     
-    if (!response.ok) throw new Error('MediaStack failed');
+    if (!response.ok) {
+      console.log('MediaStack request failed:', response.status);
+      throw new Error('MediaStack failed');
+    }
     
     const data = await response.json();
+    
+    if (data.error) {
+      console.log('MediaStack error:', data.error.message);
+      throw new Error(data.error.message);
+    }
+    
     return data.data?.map((article: any) => ({
       title: `📰 ${article.title}`,
       source: article.source,

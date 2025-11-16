@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { useCart } from '@/context/CartContext';
 import CartPanel from './CartPanel';
 import SearchModal from './SearchModal';
+import { companyInfo, navigationLinks } from '@/data/company';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

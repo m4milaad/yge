@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { companyInfo, navigationLinks } from '@/data/company';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
