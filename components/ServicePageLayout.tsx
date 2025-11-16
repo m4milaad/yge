@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ReactNode } from 'react';
+import { services, getColorClasses } from '@/data';
 
 interface ServicePageLayoutProps {
   title: string;
@@ -152,65 +153,24 @@ export default function ServicePageLayout({
             </div>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-              <Link href="/services/facility-management" className="modern-card bg-white dark:bg-gray-800 p-6 border border-gray-200 dark:border-gray-700 hover:border-purple-500 dark:hover:border-purple-500 transition-all group">
-                <div className="text-4xl mb-3">🏢</div>
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400">
-                  Facility Management
-                </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Comprehensive facility solutions
-                </p>
-              </Link>
-
-              <Link href="/services/mechanized-cleaning" className="modern-card bg-white dark:bg-gray-800 p-6 border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 transition-all group">
-                <div className="text-4xl mb-3">✨</div>
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400">
-                  Mechanized Cleaning
-                </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Professional cleaning services
-                </p>
-              </Link>
-
-              <Link href="/services/security-services" className="modern-card bg-white dark:bg-gray-800 p-6 border border-gray-200 dark:border-gray-700 hover:border-red-500 dark:hover:border-red-500 transition-all group">
-                <div className="text-4xl mb-3">🔒</div>
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-red-600 dark:group-hover:text-red-400">
-                  Security Services
-                </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Reliable security personnel
-                </p>
-              </Link>
-
-              <Link href="/services/manpower-outsourcing" className="modern-card bg-white dark:bg-gray-800 p-6 border border-gray-200 dark:border-gray-700 hover:border-green-500 dark:hover:border-green-500 transition-all group">
-                <div className="text-4xl mb-3">👥</div>
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-green-600 dark:group-hover:text-green-400">
-                  Manpower Outsourcing
-                </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Skilled & unskilled workforce
-                </p>
-              </Link>
-
-              <Link href="/services/event-management" className="modern-card bg-white dark:bg-gray-800 p-6 border border-gray-200 dark:border-gray-700 hover:border-pink-500 dark:hover:border-pink-500 transition-all group">
-                <div className="text-4xl mb-3">🎉</div>
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-pink-600 dark:group-hover:text-pink-400">
-                  Event Management
-                </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Complete event planning
-                </p>
-              </Link>
-
-              <Link href="/services/corporate-gifting" className="modern-card bg-white dark:bg-gray-800 p-6 border border-gray-200 dark:border-gray-700 hover:border-amber-500 dark:hover:border-amber-500 transition-all group">
-                <div className="text-4xl mb-3">🎁</div>
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-amber-600 dark:group-hover:text-amber-400">
-                  Corporate Gifting
-                </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Curated corporate gifts
-                </p>
-              </Link>
+              {services.filter(s => s.title !== title).slice(0, 6).map((service) => {
+                const colors = getColorClasses(service.color);
+                return (
+                  <Link 
+                    key={service.id}
+                    href={service.link} 
+                    className={`modern-card bg-white dark:bg-gray-800 p-6 border-2 ${colors.border} ${colors.hover} transition-all group`}
+                  >
+                    <div className="text-4xl mb-3">{service.icon}</div>
+                    <h3 className={`text-lg font-bold text-gray-900 dark:text-white mb-2 ${colors.text}`}>
+                      {service.title}
+                    </h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                      {service.description.split('.')[0]}
+                    </p>
+                  </Link>
+                );
+              })}
             </div>
 
             <div className="text-center">

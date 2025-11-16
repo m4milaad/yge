@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import NewsTicker from '@/components/NewsTicker';
 import { useCart } from '@/context/CartContext';
-import { featuredServices, featuredProducts } from '@/data';
+import { featuredServices, featuredProducts, getColorClasses } from '@/data';
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState('business');
@@ -348,176 +348,59 @@ export default function Home() {
             {activeTab === 'retail' && (
               <div className="tab-content">
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {/* Product Card 1 */}
-                  <div className="group modern-card bg-white dark:bg-gray-800 flex flex-col border border-gray-200 dark:border-gray-700 overflow-hidden">
-                    <div className="relative overflow-hidden">
-                      <Image 
-                        src="/images/notebooks.png" 
-                        alt="Premium Notebooks" 
-                        width={400} 
-                        height={300} 
-                        className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500" 
-                      />
-                      <div className="absolute top-3 right-3">
-                        <span className="inline-block px-3 py-1 bg-blue-600 text-white text-xs font-bold rounded-full shadow-lg">
-                          Popular
-                        </span>
+                  {featuredProducts.map((product) => (
+                    <div key={product.id} className="group modern-card bg-white dark:bg-gray-800 flex flex-col border border-gray-200 dark:border-gray-700 overflow-hidden">
+                      <div className="relative overflow-hidden">
+                        <Image 
+                          src={product.image} 
+                          alt={product.name} 
+                          width={400} 
+                          height={300} 
+                          className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500" 
+                        />
+                        {product.badge && (
+                          <div className="absolute top-3 right-3">
+                            <span className={`inline-block px-3 py-1 text-white text-xs font-bold rounded-full shadow-lg ${
+                              product.badge === 'Popular' ? 'bg-blue-600' :
+                              product.badge === 'New' ? 'bg-purple-600' :
+                              product.badge === 'Trending' ? 'bg-orange-600' :
+                              product.badge === 'Best Seller' ? 'bg-green-600' : 'bg-gray-600'
+                            }`}>
+                              {product.badge}
+                            </span>
+                          </div>
+                        )}
                       </div>
-                    </div>
-                    <div className="p-6 flex flex-col grow">
-                      <h4 className="text-xl font-bold mb-2 text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                        Premium Notebooks
-                      </h4>
-                      <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 grow leading-relaxed">
-                        High-quality paper, durable covers. Perfect for notes and journaling.
-                      </p>
-                      <div className="flex items-center justify-between mb-4">
-                        <span className="text-2xl font-black text-blue-600 dark:text-blue-400">₹199</span>
-                        <div className="flex items-center gap-1 text-yellow-500">
-                          <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
-                            <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                          </svg>
-                          <span className="text-xs font-semibold text-gray-600 dark:text-gray-400">4.8</span>
+                      <div className="p-6 flex flex-col grow">
+                        <h4 className="text-xl font-bold mb-2 text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                          {product.name}
+                        </h4>
+                        <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 grow leading-relaxed">
+                          {product.description}
+                        </p>
+                        <div className="flex items-center justify-between mb-4">
+                          <span className="text-2xl font-black text-blue-600 dark:text-blue-400">₹{product.price}</span>
+                          {product.rating && (
+                            <div className="flex items-center gap-1 text-yellow-500">
+                              <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                              </svg>
+                              <span className="text-xs font-semibold text-gray-600 dark:text-gray-400">{product.rating}</span>
+                            </div>
+                          )}
                         </div>
-                      </div>
-                      <button 
-                        onClick={() => handleAddToCart({ id: 1, name: 'Premium Notebooks', price: 199, image: '/images/notebooks.png' })}
-                        className="w-full btn-primary"
-                      >
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                        </svg>
-                        Add to Cart
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Product Card 2 */}
-                  <div className="group modern-card bg-white dark:bg-gray-800 flex flex-col border border-gray-200 dark:border-gray-700 overflow-hidden">
-                    <div className="relative overflow-hidden">
-                      <Image 
-                        src="/images/colorPencils.png" 
-                        alt="Artist Color Pencils" 
-                        width={400} 
-                        height={300} 
-                        className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500" 
-                      />
-                      <div className="absolute top-3 right-3">
-                        <span className="inline-block px-3 py-1 bg-purple-600 text-white text-xs font-bold rounded-full shadow-lg">
-                          New
-                        </span>
-                      </div>
-                    </div>
-                    <div className="p-6 flex flex-col grow">
-                      <h4 className="text-xl font-bold mb-2 text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                        Artist Color Pencils
-                      </h4>
-                      <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 grow leading-relaxed">
-                        Vibrant colors, smooth application. Ideal for artists of all levels.
-                      </p>
-                      <div className="flex items-center justify-between mb-4">
-                        <span className="text-2xl font-black text-blue-600 dark:text-blue-400">₹499</span>
-                        <div className="flex items-center gap-1 text-yellow-500">
-                          <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
-                            <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                        <button 
+                          onClick={() => handleAddToCart({ id: product.id, name: product.name, price: product.price, image: product.image })}
+                          className="w-full btn-primary"
+                        >
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                           </svg>
-                          <span className="text-xs font-semibold text-gray-600 dark:text-gray-400">4.9</span>
-                        </div>
-                      </div>
-                      <button 
-                        onClick={() => handleAddToCart({ id: 2, name: 'Artist Color Pencils', price: 499, image: '/images/colorPencils.png' })}
-                        className="w-full btn-primary"
-                      >
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                        </svg>
-                        Add to Cart
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Product Card 3 */}
-                  <div className="group modern-card bg-white dark:bg-gray-800 flex flex-col border border-gray-200 dark:border-gray-700 overflow-hidden">
-                    <div className="relative overflow-hidden">
-                      <Image 
-                        src="/images/deskOrganisers.png" 
-                        alt="Desk Organizers" 
-                        width={400} 
-                        height={300} 
-                        className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500" 
-                      />
-                    </div>
-                    <div className="p-6 flex flex-col grow">
-                      <h4 className="text-xl font-bold mb-2 text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                        Desk Organizers
-                      </h4>
-                      <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 grow leading-relaxed">
-                        Keep your workspace tidy and efficient. Various styles available.
-                      </p>
-                      <div className="flex items-center justify-between mb-4">
-                        <span className="text-2xl font-black text-blue-600 dark:text-blue-400">₹249</span>
-                        <div className="flex items-center gap-1 text-yellow-500">
-                          <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
-                            <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                          </svg>
-                          <span className="text-xs font-semibold text-gray-600 dark:text-gray-400">4.7</span>
-                        </div>
-                      </div>
-                      <button 
-                        onClick={() => handleAddToCart({ id: 3, name: 'Desk Organizers', price: 249, image: '/images/deskOrganisers.png' })}
-                        className="w-full btn-primary"
-                      >
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                        </svg>
-                        Add to Cart
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Product Card 4 */}
-                  <div className="group modern-card bg-white dark:bg-gray-800 flex flex-col border border-gray-200 dark:border-gray-700 overflow-hidden">
-                    <div className="relative overflow-hidden">
-                      <Image 
-                        src="/images/bags.png" 
-                        alt="School Backpacks" 
-                        width={400} 
-                        height={300} 
-                        className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500" 
-                      />
-                      <div className="absolute top-3 right-3">
-                        <span className="inline-block px-3 py-1 bg-green-600 text-white text-xs font-bold rounded-full shadow-lg">
-                          Sale
-                        </span>
+                          Add to Cart
+                        </button>
                       </div>
                     </div>
-                    <div className="p-6 flex flex-col grow">
-                      <h4 className="text-xl font-bold mb-2 text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                        School Backpacks
-                      </h4>
-                      <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 grow leading-relaxed">
-                        Durable and stylish backpacks for students of all ages.
-                      </p>
-                      <div className="flex items-center justify-between mb-4">
-                        <span className="text-2xl font-black text-blue-600 dark:text-blue-400">₹799</span>
-                        <div className="flex items-center gap-1 text-yellow-500">
-                          <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
-                            <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                          </svg>
-                          <span className="text-xs font-semibold text-gray-600 dark:text-gray-400">5.0</span>
-                        </div>
-                      </div>
-                      <button 
-                        onClick={() => handleAddToCart({ id: 4, name: 'School Backpacks', price: 799, image: '/images/bags.png' })}
-                        className="w-full btn-primary"
-                      >
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                        </svg>
-                        Add to Cart
-                      </button>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             )}
@@ -525,89 +408,35 @@ export default function Home() {
             {activeTab === 'business' && (
               <div className="tab-content">
                 <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {/* Service Card 1 */}
-                  <Link href="/services/it-support" className="group modern-card bg-linear-to-br from-blue-50 to-white dark:from-gray-800 dark:to-gray-800 p-8 border-2 border-blue-200 dark:border-blue-800 hover:border-blue-400 dark:hover:border-blue-600 flex flex-col relative overflow-hidden">
-                    <div className="absolute top-0 right-0 w-24 h-24 bg-blue-400/10 rounded-bl-full"></div>
-                    
-                    <div className="relative mb-6">
-                      <div className="absolute inset-0 bg-blue-500 rounded-xl blur-lg opacity-20 group-hover:opacity-40 transition-opacity pointer-events-none"></div>
-                      <div className="relative p-4 bg-linear-to-br from-blue-500 to-blue-600 rounded-xl shadow-lg group-hover:scale-110 transition-transform duration-300">
-                        <svg className="h-10 w-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
-                      </div>
-                    </div>
+                  {featuredServices.map((service) => {
+                    const colors = getColorClasses(service.color);
+                    return (
+                      <Link key={service.id} href={service.link} className={`group modern-card bg-linear-to-br from-${service.color}-50 to-white dark:from-gray-800 dark:to-gray-800 p-8 border-2 ${colors.border} ${colors.hover} flex flex-col relative overflow-hidden`}>
+                        <div className={`absolute top-0 right-0 w-24 h-24 bg-${service.color}-400/10 rounded-bl-full`}></div>
+                        
+                        <div className="relative mb-6">
+                          <div className={`absolute inset-0 bg-${service.color}-500 rounded-xl blur-lg opacity-20 group-hover:opacity-40 transition-opacity pointer-events-none`}></div>
+                          <div className={`relative p-4 bg-linear-to-br from-${service.color}-500 to-${service.color}-600 rounded-xl shadow-lg group-hover:scale-110 transition-transform duration-300 text-5xl flex items-center justify-center`}>
+                            {service.icon}
+                          </div>
+                        </div>
 
-                    <h4 className="text-2xl font-black mb-3 text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                      IT Support & Tech Services
-                    </h4>
-                    <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed grow">
-                      Professional IT support, network management, and technical assistance for seamless business operations.
-                    </p>
-                    
-                    <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold group-hover:gap-3 transition-all">
-                      <span>Learn More</span>
-                      <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </div>
-                  </Link>
-
-                  {/* Service Card 2 */}
-                  <Link href="/services/general-order-supplies" className="group modern-card bg-linear-to-br from-purple-50 to-white dark:from-gray-800 dark:to-gray-800 p-8 border-2 border-purple-200 dark:border-purple-800 hover:border-purple-400 dark:hover:border-purple-600 flex flex-col relative overflow-hidden">
-                    <div className="absolute top-0 right-0 w-24 h-24 bg-purple-400/10 rounded-bl-full"></div>
-                    
-                    <div className="relative mb-6">
-                      <div className="absolute inset-0 bg-purple-500 rounded-xl blur-lg opacity-20 group-hover:opacity-40 transition-opacity pointer-events-none"></div>
-                      <div className="relative p-4 bg-linear-to-br from-purple-500 to-purple-600 rounded-xl shadow-lg group-hover:scale-110 transition-transform duration-300">
-                        <svg className="h-10 w-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                        </svg>
-                      </div>
-                    </div>
-
-                    <h4 className="text-2xl font-black mb-3 text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
-                      General Order Supplies
-                    </h4>
-                    <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed grow">
-                      Bulk supply solutions for office, cleaning, safety equipment, and custom orders at competitive prices.
-                    </p>
-                    
-                    <div className="flex items-center gap-2 text-purple-600 dark:text-purple-400 font-semibold group-hover:gap-3 transition-all">
-                      <span>Learn More</span>
-                      <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </div>
-                  </Link>
-
-                  {/* Service Card 3 */}
-                  <Link href="/services/hr-recruitment" className="group modern-card bg-linear-to-br from-green-50 to-white dark:from-gray-800 dark:to-gray-800 p-8 border-2 border-green-200 dark:border-green-800 hover:border-green-400 dark:hover:border-green-600 flex flex-col relative overflow-hidden">
-                    <div className="absolute top-0 right-0 w-24 h-24 bg-green-400/10 rounded-bl-full"></div>
-                    
-                    <div className="relative mb-6">
-                      <div className="absolute inset-0 bg-green-500 rounded-xl blur-lg opacity-20 group-hover:opacity-40 transition-opacity pointer-events-none"></div>
-                      <div className="relative p-4 bg-linear-to-br from-green-500 to-green-600 rounded-xl shadow-lg group-hover:scale-110 transition-transform duration-300">
-                        <svg className="h-10 w-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                        </svg>
-                      </div>
-                    </div>
-
-                    <h4 className="text-2xl font-black mb-3 text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
-                      HR & Recruitment
-                    </h4>
-                    <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed grow">
-                      End-to-end recruitment, talent acquisition, employee onboarding, and comprehensive HR management solutions.
-                    </p>
-                    
-                    <div className="flex items-center gap-2 text-green-600 dark:text-green-400 font-semibold group-hover:gap-3 transition-all">
-                      <span>Learn More</span>
-                      <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </div>
-                  </Link>
+                        <h4 className={`text-2xl font-black mb-3 text-gray-900 dark:text-white ${colors.text} transition-colors`}>
+                          {service.title}
+                        </h4>
+                        <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed grow">
+                          {service.description}
+                        </p>
+                        
+                        <div className={`flex items-center gap-2 ${colors.text} font-semibold group-hover:gap-3 transition-all`}>
+                          <span>Learn More</span>
+                          <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </div>
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
             )}

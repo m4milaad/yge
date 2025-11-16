@@ -2,16 +2,22 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { useState } from 'react';
+import { useCart } from '@/context/CartContext';
+import { getProductsByCategory } from '@/data/products';
 
 export default function OfficeEssentialsPage() {
-  const products = [
-    { id: 1, name: 'Desk Organizer Set', price: 599, image: '/images/deskOrganisers.png', description: 'Complete desk organization solution' },
-    { id: 2, name: 'Premium File Folders', price: 349, image: '/images/notebooks.png', description: 'Durable folders for document storage' },
-    { id: 3, name: 'Office Supplies Bundle', price: 1299, image: '/images/deskOrganisers.png', description: 'Everything you need for your office' },
-    { id: 4, name: 'Whiteboard Markers', price: 199, image: '/images/colorPencils.png', description: 'Vibrant colors, easy to erase' },
-    { id: 5, name: 'Paper Clips & Pins Set', price: 149, image: '/images/deskOrganisers.png', description: 'Essential office accessories' },
-    { id: 6, name: 'Staplers & Punches', price: 449, image: '/images/deskOrganisers.png', description: 'Heavy-duty office tools' },
-  ];
+  const { addToCart } = useCart();
+  const [addedItems, setAddedItems] = useState<number[]>([]);
+  const products = getProductsByCategory('office');
+
+  const handleAddToCart = (product: typeof products[0]) => {
+    addToCart(product);
+    setAddedItems(prev => [...prev, product.id]);
+    setTimeout(() => {
+      setAddedItems(prev => prev.filter(id => id !== product.id));
+    }, 2000);
+  };
 
   return (
     <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
@@ -30,8 +36,11 @@ export default function OfficeEssentialsPage() {
               <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100">{product.name}</h3>
               <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 flex-grow">{product.description}</p>
               <p className="text-blue-600 dark:text-blue-400 font-bold text-lg mb-4">₹{product.price}</p>
-              <button className="mt-auto inline-block text-base font-medium py-2.5 px-6 rounded-lg transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-75 bg-green-600 hover:bg-green-700 text-white focus:ring-green-400 hover:shadow-lg hover:transform hover:scale-105 hover:-translate-y-0.5 active:scale-95 active:shadow-md">
-                Add to Cart
+              <button
+                onClick={() => handleAddToCart(product)}
+                className="mt-auto inline-block text-base font-medium py-2.5 px-6 rounded-lg transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-75 bg-green-600 hover:bg-green-700 text-white focus:ring-green-400 hover:shadow-lg hover:transform hover:scale-105 hover:-translate-y-0.5 active:scale-95 active:shadow-md"
+              >
+                {addedItems.includes(product.id) ? 'Added!' : 'Add to Cart'}
               </button>
             </div>
           </div>
