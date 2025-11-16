@@ -20,14 +20,14 @@ export default function StationeryPage() {
 
   const handleAddToCart = (product: typeof products[0]) => {
     addToCart(product);
-    setAddedItems([...addedItems, product.id]);
+    setAddedItems(prev => [...prev, product.id]);
     setTimeout(() => {
-      setAddedItems(addedItems.filter(id => id !== product.id));
+      setAddedItems(prev => prev.filter(id => id !== product.id));
     }, 2000);
   };
 
   return (
-    <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+    <main className="grow container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
       <div className="mb-12">
         <h1 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-gray-100 mb-4">Stationery Products</h1>
         <p className="text-lg text-gray-600 dark:text-gray-400">
@@ -39,9 +39,9 @@ export default function StationeryPage() {
         {products.map((product) => (
           <div key={product.id} className="modern-card bg-white dark:bg-gray-800 flex flex-col shadow-lg dark:shadow-xl dark:shadow-gray-900/50">
             <Image src={product.image} alt={product.name} width={400} height={300} className="w-full h-52 object-cover" />
-            <div className="p-6 flex flex-col flex-grow">
+            <div className="p-6 flex flex-col grow">
               <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100">{product.name}</h3>
-              <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 flex-grow">{product.description}</p>
+              <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 grow">{product.description}</p>
               <p className="text-blue-600 dark:text-blue-400 font-bold text-lg mb-4">₹{product.price}</p>
               <button
                 onClick={() => handleAddToCart(product)}

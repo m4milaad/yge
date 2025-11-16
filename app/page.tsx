@@ -525,23 +525,23 @@ export default function Home() {
               <div className="tab-content">
                 <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {/* Service Card 1 */}
-                  <Link href="/services/facility-management" className="group modern-card bg-linear-to-br from-blue-50 to-white dark:from-gray-800 dark:to-gray-800 p-8 border-2 border-blue-200 dark:border-blue-800 hover:border-blue-400 dark:hover:border-blue-600 flex flex-col relative overflow-hidden">
+                  <Link href="/services/it-support" className="group modern-card bg-linear-to-br from-blue-50 to-white dark:from-gray-800 dark:to-gray-800 p-8 border-2 border-blue-200 dark:border-blue-800 hover:border-blue-400 dark:hover:border-blue-600 flex flex-col relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-24 h-24 bg-blue-400/10 rounded-bl-full"></div>
                     
                     <div className="relative mb-6">
-                      <div className="absolute inset-0 bg-blue-500 rounded-xl blur-lg opacity-20 group-hover:opacity-40 transition-opacity"></div>
+                      <div className="absolute inset-0 bg-blue-500 rounded-xl blur-lg opacity-20 group-hover:opacity-40 transition-opacity pointer-events-none"></div>
                       <div className="relative p-4 bg-linear-to-br from-blue-500 to-blue-600 rounded-xl shadow-lg group-hover:scale-110 transition-transform duration-300">
                         <svg className="h-10 w-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                         </svg>
                       </div>
                     </div>
 
                     <h4 className="text-2xl font-black mb-3 text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                      Facility Management
+                      IT Support & Tech Services
                     </h4>
                     <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed grow">
-                      End-to-end solutions including maintenance, operations, and management of buildings and infrastructure.
+                      Professional IT support, network management, and technical assistance for seamless business operations.
                     </p>
                     
                     <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold group-hover:gap-3 transition-all">
@@ -553,23 +553,23 @@ export default function Home() {
                   </Link>
 
                   {/* Service Card 2 */}
-                  <Link href="/services/mechanized-cleaning" className="group modern-card bg-linear-to-br from-purple-50 to-white dark:from-gray-800 dark:to-gray-800 p-8 border-2 border-purple-200 dark:border-purple-800 hover:border-purple-400 dark:hover:border-purple-600 flex flex-col relative overflow-hidden">
+                  <Link href="/services/general-order-supplies" className="group modern-card bg-linear-to-br from-purple-50 to-white dark:from-gray-800 dark:to-gray-800 p-8 border-2 border-purple-200 dark:border-purple-800 hover:border-purple-400 dark:hover:border-purple-600 flex flex-col relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-24 h-24 bg-purple-400/10 rounded-bl-full"></div>
                     
                     <div className="relative mb-6">
-                      <div className="absolute inset-0 bg-purple-500 rounded-xl blur-lg opacity-20 group-hover:opacity-40 transition-opacity"></div>
+                      <div className="absolute inset-0 bg-purple-500 rounded-xl blur-lg opacity-20 group-hover:opacity-40 transition-opacity pointer-events-none"></div>
                       <div className="relative p-4 bg-linear-to-br from-purple-500 to-purple-600 rounded-xl shadow-lg group-hover:scale-110 transition-transform duration-300">
                         <svg className="h-10 w-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7.014A8.003 8.003 0 0122 12c0 3-1 7-6.343 6.657z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                         </svg>
                       </div>
                     </div>
 
                     <h4 className="text-2xl font-black mb-3 text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
-                      Mechanized Cleaning
+                      General Order Supplies
                     </h4>
                     <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed grow">
-                      State-of-the-art equipment and trained personnel for spotless and hygienic spaces.
+                      Bulk supply solutions for office, cleaning, safety equipment, and custom orders at competitive prices.
                     </p>
                     
                     <div className="flex items-center gap-2 text-purple-600 dark:text-purple-400 font-semibold group-hover:gap-3 transition-all">
@@ -581,23 +581,23 @@ export default function Home() {
                   </Link>
 
                   {/* Service Card 3 */}
-                  <Link href="/services/security-services" className="group modern-card bg-linear-to-br from-green-50 to-white dark:from-gray-800 dark:to-gray-800 p-8 border-2 border-green-200 dark:border-green-800 hover:border-green-400 dark:hover:border-green-600 flex flex-col relative overflow-hidden">
+                  <Link href="/services/hr-recruitment" className="group modern-card bg-linear-to-br from-green-50 to-white dark:from-gray-800 dark:to-gray-800 p-8 border-2 border-green-200 dark:border-green-800 hover:border-green-400 dark:hover:border-green-600 flex flex-col relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-24 h-24 bg-green-400/10 rounded-bl-full"></div>
                     
                     <div className="relative mb-6">
-                      <div className="absolute inset-0 bg-green-500 rounded-xl blur-lg opacity-20 group-hover:opacity-40 transition-opacity"></div>
+                      <div className="absolute inset-0 bg-green-500 rounded-xl blur-lg opacity-20 group-hover:opacity-40 transition-opacity pointer-events-none"></div>
                       <div className="relative p-4 bg-linear-to-br from-green-500 to-green-600 rounded-xl shadow-lg group-hover:scale-110 transition-transform duration-300">
                         <svg className="h-10 w-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                         </svg>
                       </div>
                     </div>
 
                     <h4 className="text-2xl font-black mb-3 text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
-                      Security Services
+                      HR & Recruitment
                     </h4>
                     <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed grow">
-                      Highly trained security personnel to ensure a safe and secure environment for your people and assets.
+                      End-to-end recruitment, talent acquisition, employee onboarding, and comprehensive HR management solutions.
                     </p>
                     
                     <div className="flex items-center gap-2 text-green-600 dark:text-green-400 font-semibold group-hover:gap-3 transition-all">

@@ -15,8 +15,8 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
+    // In a real application, you would send this data to your backend
+    // For now, we'll just show a success message via the toast
     alert('Thank you for your inquiry! We will get back to you within 24 hours.');
   };
 

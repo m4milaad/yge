@@ -26,7 +26,7 @@ export default function SignupPage() {
   };
 
   return (
-    <main className="grow min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-12 px-4 sm:px-6 lg:px-8">
+    <main className="grow min-h-screen flex items-center justify-center bg-linear-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-12 px-4 sm:px-6 lg:px-8">
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
           backgroundImage: 'radial-gradient(circle at 2px 2px, rgb(59, 130, 246) 1px, transparent 0)',
@@ -38,7 +38,7 @@ export default function SignupPage() {
         <div className="modern-card bg-white dark:bg-gray-800 p-8 sm:p-10 shadow-2xl border border-gray-200 dark:border-gray-700">
           {/* Logo & Header */}
           <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-primary-600 to-accent-600 rounded-2xl mb-4 shadow-lg">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-linear-to-br from-primary-600 to-accent-600 rounded-2xl mb-4 shadow-lg">
               <Image src="/images/ygeLogo.png" alt="YGE Logo" width={48} height={48} className="w-12 h-12" />
             </div>
             <h1 className="text-3xl font-black text-gray-900 dark:text-white mb-2">Create Account</h1>

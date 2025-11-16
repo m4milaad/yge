@@ -1,6 +1,7 @@
 'use client';
 
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import Toast from '@/components/Toast';
 
 interface CartItem {
   id: number;
@@ -24,28 +25,43 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   // Load cart from localStorage on mount
   useEffect(() => {
-    const savedCart = localStorage.getItem('yge-cart');
-    if (savedCart) {
-      setCartItems(JSON.parse(savedCart));
+    try {
+      const savedCart = localStorage.getItem('yge-cart');
+      if (savedCart) {
+        setCartItems(JSON.parse(savedCart));
+      }
+    } catch (error) {
+      console.error('Error loading cart from localStorage:', error);
     }
+    setIsLoaded(true);
   }, []);
 
-  // Save cart to localStorage whenever it changes
+  // Save cart to localStorage whenever it changes (only after initial load)
   useEffect(() => {
-    localStorage.setItem('yge-cart', JSON.stringify(cartItems));
-  }, [cartItems]);
+    if (isLoaded) {
+      try {
+        localStorage.setItem('yge-cart', JSON.stringify(cartItems));
+      } catch (error) {
+        console.error('Error saving cart to localStorage:', error);
+      }
+    }
+  }, [cartItems, isLoaded]);
 
   const addToCart = (item: Omit<CartItem, 'quantity'>) => {
     setCartItems((prev) => {
       const existingItem = prev.find((i) => i.id === item.id);
       if (existingItem) {
+        setToastMessage(`${item.name} quantity updated!`);
         return prev.map((i) =>
           i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
         );
       }
+      setToastMessage(`${item.name} added to cart!`);
       return [...prev, { ...item, quantity: 1 }];
     });
   };
@@ -88,6 +104,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
       }}
     >
       {children}
+      {toastMessage && (
+        <Toast message={toastMessage} onClose={() => setToastMessage(null)} />
+      )}
     </CartContext.Provider>
   );
 }

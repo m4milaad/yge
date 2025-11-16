@@ -38,7 +38,7 @@ export default function AllProductsPage() {
   return (
     <main className="grow bg-gray-50 dark:bg-gray-900">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-600 to-purple-600 text-white py-16">
+      <section className="bg-linear-to-br from-blue-600 to-purple-600 text-white py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl font-black mb-4">Shop All Products</h1>

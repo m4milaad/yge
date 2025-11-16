@@ -15,11 +15,11 @@ export default function BusinessSolutions() {
     },
     {
       id: 2,
-      title: 'Mechanized Cleaning & Housekeeping',
-      icon: '✨',
-      description: 'Professional cleaning services with modern equipment and trained staff for spotless facilities.',
-      features: ['Deep Cleaning', 'Daily Housekeeping', 'Sanitization', 'Waste Management'],
-      link: '/services/mechanized-cleaning',
+      title: 'General Order Supplies',
+      icon: '📦',
+      description: 'Bulk supply solutions for all your business and operational needs with competitive pricing.',
+      features: ['Office Supplies', 'Cleaning Materials', 'Safety Equipment', 'Custom Orders'],
+      link: '/services/general-order-supplies',
       color: 'blue'
     },
     {
@@ -69,11 +69,11 @@ export default function BusinessSolutions() {
     },
     {
       id: 8,
-      title: 'Beat Patrol & Pest Control',
-      icon: '🛡️',
-      description: 'Regular patrol services and comprehensive pest control solutions.',
-      features: ['Security Patrols', 'Pest Inspection', 'Treatment Plans', 'Prevention'],
-      link: '/services/pest-control',
+      title: 'IT Support & Technical Services',
+      icon: '💻',
+      description: 'Professional IT support and technical assistance for seamless business operations.',
+      features: ['Help Desk Support', 'Network Management', 'System Maintenance', 'Tech Troubleshooting'],
+      link: '/services/it-support',
       color: 'teal'
     },
     {
@@ -87,20 +87,20 @@ export default function BusinessSolutions() {
     },
     {
       id: 10,
-      title: 'General Order Supplies',
-      icon: '📦',
-      description: 'Bulk supply solutions for all your business and operational needs.',
-      features: ['Office Supplies', 'Cleaning Materials', 'Safety Equipment', 'Custom Orders'],
-      link: '/services/general-order-supplies',
+      title: 'Mechanized Cleaning & Housekeeping',
+      icon: '✨',
+      description: 'Professional cleaning services with modern equipment and trained staff for spotless facilities.',
+      features: ['Deep Cleaning', 'Daily Housekeeping', 'Sanitization', 'Waste Management'],
+      link: '/services/mechanized-cleaning',
       color: 'cyan'
     },
     {
       id: 11,
-      title: 'Corporate Gifting',
-      icon: '🎁',
-      description: 'Curated corporate gift solutions to strengthen business relationships.',
-      features: ['Custom Branding', 'Bulk Orders', 'Premium Gifts', 'Timely Delivery'],
-      link: '/services/corporate-gifting',
+      title: 'HR & Recruitment Services',
+      icon: '👔',
+      description: 'End-to-end recruitment and HR management solutions for your organization.',
+      features: ['Talent Acquisition', 'Employee Onboarding', 'Payroll Processing', 'HR Consulting'],
+      link: '/services/hr-recruitment',
       color: 'amber'
     },
     {

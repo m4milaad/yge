@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function NotFound() {
   return (
-    <div className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 overflow-hidden">
+    <div className="relative min-h-screen flex items-center justify-center bg-linear-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -20,7 +20,7 @@ export default function NotFound() {
         {/* Animated 404 */}
         <div className="relative mb-12">
           <div className="relative inline-block">
-            <h1 className="text-[120px] sm:text-[180px] md:text-[240px] font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 leading-none animate-pulse">
+            <h1 className="text-[120px] sm:text-[180px] md:text-[240px] font-black text-transparent bg-clip-text bg-linear-to-r from-blue-600 via-purple-600 to-blue-600 leading-none animate-pulse">
               404
             </h1>
             <div className="absolute inset-0 flex items-center justify-center">
@@ -32,7 +32,7 @@ export default function NotFound() {
         {/* Icon with Glow */}
         <div className="mb-10 flex justify-center">
           <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur-2xl opacity-40 animate-pulse"></div>
+            <div className="absolute inset-0 bg-linear-to-r from-blue-500 to-purple-500 rounded-full blur-2xl opacity-40 animate-pulse"></div>
             <div className="relative modern-card bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700">
               <svg className="w-24 h-24 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -79,7 +79,7 @@ export default function NotFound() {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             <Link
               href="/shop/stationery"
-              className="group modern-card p-6 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 hover:from-blue-100 hover:to-blue-200 dark:hover:from-blue-900/30 dark:hover:to-blue-800/30 border border-blue-200 dark:border-blue-800"
+              className="group modern-card p-6 bg-linear-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 hover:from-blue-100 hover:to-blue-200 dark:hover:from-blue-900/30 dark:hover:to-blue-800/30 border border-blue-200 dark:border-blue-800"
             >
               <div className="flex flex-col items-center gap-3">
                 <div className="w-14 h-14 bg-white dark:bg-gray-800 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
@@ -93,7 +93,7 @@ export default function NotFound() {
 
             <Link
               href="/shop/office-essentials"
-              className="group modern-card p-6 bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 hover:from-purple-100 hover:to-purple-200 dark:hover:from-purple-900/30 dark:hover:to-purple-800/30 border border-purple-200 dark:border-purple-800"
+              className="group modern-card p-6 bg-linear-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 hover:from-purple-100 hover:to-purple-200 dark:hover:from-purple-900/30 dark:hover:to-purple-800/30 border border-purple-200 dark:border-purple-800"
             >
               <div className="flex flex-col items-center gap-3">
                 <div className="w-14 h-14 bg-white dark:bg-gray-800 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
@@ -107,7 +107,7 @@ export default function NotFound() {
 
             <Link
               href="/services/facility-management"
-              className="group modern-card p-6 bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 hover:from-green-100 hover:to-green-200 dark:hover:from-green-900/30 dark:hover:to-green-800/30 border border-green-200 dark:border-green-800"
+              className="group modern-card p-6 bg-linear-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 hover:from-green-100 hover:to-green-200 dark:hover:from-green-900/30 dark:hover:to-green-800/30 border border-green-200 dark:border-green-800"
             >
               <div className="flex flex-col items-center gap-3">
                 <div className="w-14 h-14 bg-white dark:bg-gray-800 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
@@ -121,7 +121,7 @@ export default function NotFound() {
 
             <Link
               href="/#contact"
-              className="group modern-card p-6 bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20 hover:from-orange-100 hover:to-orange-200 dark:hover:from-orange-900/30 dark:hover:to-orange-800/30 border border-orange-200 dark:border-orange-800"
+              className="group modern-card p-6 bg-linear-to-br from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20 hover:from-orange-100 hover:to-orange-200 dark:hover:from-orange-900/30 dark:hover:to-orange-800/30 border border-orange-200 dark:border-orange-800"
             >
               <div className="flex flex-col items-center gap-3">
                 <div className="w-14 h-14 bg-white dark:bg-gray-800 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
