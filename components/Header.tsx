@@ -34,22 +34,22 @@ export default function Header() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24">
           <div className="shrink-0">
-            <Link href="/" className="group flex items-center space-x-3 transition-all duration-300">
+            <Link href="/" className="group flex items-center space-x-2 sm:space-x-3 transition-all duration-300">
               <div className="relative">
                 <Image 
                   src="/images/ygeLogo.png" 
                   alt="YGE Logo" 
                   width={64} 
                   height={64} 
-                  className="h-16 w-16 group-hover:scale-105 transition-transform duration-300" 
+                  className="h-14 w-14 sm:h-16 sm:w-16 group-hover:scale-105 transition-transform duration-300" 
                 />
               </div>
-              <div className="hidden sm:block">
-                <span className="text-2xl font-black tracking-tight bg-linear-to-r from-blue-600 to-blue-800 dark:from-blue-400 dark:to-blue-600 bg-clip-text text-transparent">
+              <div className="block">
+                <span className="text-lg sm:text-2xl font-black tracking-tight bg-linear-to-r from-yellow-400 to-yellow-600 dark:from-yellow-500 dark:to-yellow-600 bg-clip-text text-transparent">
                   Yuva Global
                 </span>
-                <span className="block text-sm font-semibold tracking-wider text-gray-600 dark:text-gray-400">
-                  ENTERPRISES
+                <span className="block text-center text-sm sm:text-lg font-bold tracking-wider text-yellow-400 dark:text-yellow-500">
+                  Enterprises
                 </span>
               </div>
             </Link>

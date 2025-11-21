@@ -12,12 +12,44 @@ export default function ContactPage() {
     service: '',
     message: ''
   });
+  const [result, setResult] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // In a real application, you would send this data to your backend
-    // For now, we'll just show a success message via the toast
-    alert('Thank you for your inquiry! We will get back to you within 24 hours.');
+    setIsSubmitting(true);
+    setResult("");
+
+    const formDataToSend = new FormData(e.currentTarget);
+    formDataToSend.append("access_key", "b91cea72-beeb-455b-a34b-9cc43dc4250e");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formDataToSend
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setResult("Success! Thank you for your inquiry. We will get back to you within 24 hours.");
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          company: '',
+          service: '',
+          message: ''
+        });
+      } else {
+        setResult("Error: Something went wrong. Please try again or contact us directly.");
+      }
+    } catch (error) {
+      setResult("Error: Unable to send message. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -259,15 +291,22 @@ export default function ContactPage() {
                     ></textarea>
                   </div>
 
+                  {result && (
+                    <div className={`p-4 rounded-lg ${result.startsWith('Success') ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200' : 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200'}`}>
+                      <p className="font-semibold">{result}</p>
+                    </div>
+                  )}
+
                   <div className="flex flex-col sm:flex-row gap-4">
                     <button
                       type="submit"
-                      className="flex-1 btn-primary text-lg py-4"
+                      disabled={isSubmitting}
+                      className="flex-1 btn-primary text-lg py-4 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                       </svg>
-                      Send Message
+                      {isSubmitting ? 'Sending...' : 'Send Message'}
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>

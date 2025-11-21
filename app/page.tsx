@@ -38,34 +38,43 @@ export default function Home() {
         <div className="absolute bottom-20 left-20 w-96 h-96 bg-purple-400/20 rounded-full blur-3xl"></div>
         
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-[70%_30%] gap-8 items-start">
             {/* Left Content */}
             <div className="text-center lg:text-left">
               <div className="flex flex-wrap justify-center lg:justify-start gap-2 mb-6">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-100 dark:bg-blue-900/30 rounded-full">
+                <Link href="/#certifications" className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-100 dark:bg-blue-900/30 rounded-full hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-all duration-300 hover:scale-105 cursor-pointer">
                   <svg className="w-4 h-4 text-blue-600 dark:text-blue-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span className="text-xs font-bold text-blue-600 dark:text-blue-400">ISO 9001:2015</span>
-                </div>
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-green-100 dark:bg-green-900/30 rounded-full">
+                </Link>
+                <Link href="/#certifications" className="inline-flex items-center gap-2 px-3 py-1.5 bg-green-100 dark:bg-green-900/30 rounded-full hover:bg-green-200 dark:hover:bg-green-900/50 transition-all duration-300 hover:scale-105 cursor-pointer">
                   <svg className="w-4 h-4 text-green-600 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span className="text-xs font-bold text-green-600 dark:text-green-400">MSME Registered</span>
-                </div>
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-purple-100 dark:bg-purple-900/30 rounded-full">
+                </Link>
+                <Link href="/#certifications" className="inline-flex items-center gap-2 px-3 py-1.5 bg-purple-100 dark:bg-purple-900/30 rounded-full hover:bg-purple-200 dark:hover:bg-purple-900/50 transition-all duration-300 hover:scale-105 cursor-pointer">
                   <svg className="w-4 h-4 text-purple-600 dark:text-purple-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span className="text-xs font-bold text-purple-600 dark:text-purple-400">MII Certified</span>
-                </div>
+                </Link>
               </div>
-              
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black mb-4 leading-tight">
-                <span className="text-gray-900 dark:text-white">Yuva Global</span>
-                <span className="block bg-linear-to-r from-blue-600 via-purple-600 to-blue-600 bg-clip-text text-transparent">
-                  Enterprises
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black mb-6 leading-tight perspective-1000">
+                <span className="relative inline-block transform-style-3d" style={{
+                  color: '#f8fafc',
+                  textShadow: `
+                    1px 1px 0 rgba(234, 179, 8, 0.9),
+                    2px 2px 0 rgba(234, 179, 8, 0.8),
+                    3px 3px 0 rgba(234, 179, 8, 0.7),
+                    4px 4px 0 rgba(234, 179, 8, 0.6),
+                    5px 5px 0 rgba(234, 179, 8, 0.5),
+                    6px 6px 0 rgba(234, 179, 8, 0.4),
+                    7px 7px 10px rgba(0, 0, 0, 0.3)
+                  `
+                }}>
+                  Yuva Global Enterprises
                 </span>
               </h1>
               
@@ -92,7 +101,7 @@ export default function Home() {
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                   </svg>
-                  Shop Retail
+                  Start Shopping
                 </Link>
               </div>
               
@@ -113,38 +122,137 @@ export default function Home() {
               </div>
             </div>
             
-            {/* Right Visual */}
-            <div className="relative hidden lg:block">
+            {/* Right News Box */}
+            <div className="relative hidden lg:block sticky top-24">
               <div className="relative">
-                <div className="relative z-10 bg-linear-to-br from-blue-500 to-purple-600 rounded-3xl p-8 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
-                  <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 transform -rotate-3">
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="bg-blue-100 dark:bg-blue-900/30 rounded-xl p-6 flex items-center justify-center hover:scale-110 transition-transform">
-                        <svg className="w-16 h-16 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                        </svg>
-                      </div>
-                      <div className="bg-purple-100 dark:bg-purple-900/30 rounded-xl p-6 flex items-center justify-center hover:scale-110 transition-transform">
-                        <svg className="w-16 h-16 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                        </svg>
-                      </div>
-                      <div className="bg-green-100 dark:bg-green-900/30 rounded-xl p-6 flex items-center justify-center hover:scale-110 transition-transform">
-                        <svg className="w-16 h-16 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                        </svg>
-                      </div>
-                      <div className="bg-yellow-100 dark:bg-yellow-900/30 rounded-xl p-6 flex items-center justify-center hover:scale-110 transition-transform">
-                        <svg className="w-16 h-16 text-yellow-600 dark:text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
-                        </svg>
-                      </div>
+                {/* Refined Glowing Background - More Subtle */}
+                <div className="absolute inset-0 bg-blue-600/10 blur-3xl rounded-full"></div>
+
+                <div className="relative z-10 bg-white/70 dark:bg-gray-900/80 rounded-2xl shadow-xl border border-gray-200/50 dark:border-gray-700/50 overflow-hidden backdrop-blur-xl">
+                  
+                  {/* Professional Header */}
+                  <div className="px-6 py-4 border-b border-gray-200/50 dark:border-gray-700/50 flex items-center justify-between bg-white/50 dark:bg-gray-800/50">
+                    <div className="flex items-center gap-3">
+                      <span className="relative flex h-3 w-3">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                      </span>
+                      <h3 className="text-sm font-black text-gray-800 dark:text-white tracking-wide uppercase">
+                        Latest Updates
+                      </h3>
                     </div>
+                    <span className="text-xs font-medium text-gray-500 dark:text-gray-400">
+                      Real-time Feed
+                    </span>
                   </div>
-                </div>
-                
-                <div className="absolute -top-6 -right-6 bg-yellow-400 text-gray-900 font-black text-sm px-6 py-3 rounded-full shadow-xl transform rotate-12 z-20">
-                  ⭐ Top Rated
+
+                  {/* Vertical Scrolling News */}
+                  <div className="h-[400px] overflow-hidden relative">
+                    <div className="vertical-marquee py-2">
+                      {/* News Item List */}
+                      {[
+                        { 
+                          title: 'Special Offer', 
+                          desc: '20% off on all stationery items this week only.', 
+                          time: '2 mins ago',
+                          icon: (
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" /></svg>
+                          ),
+                          bg: 'bg-blue-50 dark:bg-blue-900/20',
+                          text: 'text-blue-600 dark:text-blue-400'
+                        },
+                        { 
+                          title: 'New Arrival', 
+                          desc: 'Premium notebooks and art supplies now in stock.', 
+                          time: '1 hour ago',
+                          icon: (
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>
+                          ),
+                          bg: 'bg-purple-50 dark:bg-purple-900/20',
+                          text: 'text-purple-600 dark:text-purple-400'
+                        },
+                        { 
+                          title: 'Certification', 
+                          desc: 'ISO 9001:2015 Certified - Maintaining global standards.', 
+                          time: '3 hours ago',
+                          icon: (
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                          ),
+                          bg: 'bg-green-50 dark:bg-green-900/20',
+                          text: 'text-green-600 dark:text-green-400'
+                        },
+                        { 
+                          title: 'B2B Services', 
+                          desc: 'Expanded Facility Management services now available.', 
+                          time: '5 hours ago',
+                          icon: (
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+                          ),
+                          bg: 'bg-orange-50 dark:bg-orange-900/20',
+                          text: 'text-orange-600 dark:text-orange-400'
+                        },
+                        // Duplicate for loop
+                        { 
+                          title: 'Special Offer', 
+                          desc: '20% off on all stationery items this week only.', 
+                          time: '2 mins ago',
+                          icon: (
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" /></svg>
+                          ),
+                          bg: 'bg-blue-50 dark:bg-blue-900/20',
+                          text: 'text-blue-600 dark:text-blue-400'
+                        },
+                        { 
+                          title: 'New Arrival', 
+                          desc: 'Premium notebooks and art supplies now in stock.', 
+                          time: '1 hour ago',
+                          icon: (
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>
+                          ),
+                          bg: 'bg-purple-50 dark:bg-purple-900/20',
+                          text: 'text-purple-600 dark:text-purple-400'
+                        },
+                        { 
+                          title: 'Certification', 
+                          desc: 'ISO 9001:2015 Certified - Maintaining global standards.', 
+                          time: '3 hours ago',
+                          icon: (
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                          ),
+                          bg: 'bg-green-50 dark:bg-green-900/20',
+                          text: 'text-green-600 dark:text-green-400'
+                        },
+                      ].map((item, index) => (
+                        <div key={index} className="px-4 py-2">
+                          <div className="group flex gap-4 p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-800 shadow-sm hover:shadow-md transition-all duration-300 cursor-default">
+                            {/* Icon Box */}
+                            <div className={`shrink-0 w-10 h-10 rounded-lg ${item.bg} ${item.text} flex items-center justify-center`}>
+                              {item.icon}
+                            </div>
+                            
+                            {/* Content */}
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center justify-between mb-1">
+                                <span className={`text-xs font-bold uppercase tracking-wider ${item.text}`}>
+                                  {item.title}
+                                </span>
+                                <span className="text-[10px] text-gray-400 font-medium">
+                                  {item.time}
+                                </span>
+                              </div>
+                              <p className="text-sm text-gray-700 dark:text-gray-300 leading-snug font-medium group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                                {item.desc}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Smooth Fade Overlays */}
+                    <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-white/90 via-white/50 to-transparent dark:from-gray-900/90 dark:via-gray-900/50 pointer-events-none z-10"></div>
+                    <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-white/90 via-white/50 to-transparent dark:from-gray-900/90 dark:via-gray-900/50 pointer-events-none z-10"></div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -181,7 +289,7 @@ export default function Home() {
               {/* Decorative Corner */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-linear-to-br from-stone-300/15 to-slate-300/15 rounded-bl-full"></div>
               
-              {/* Icon */}
+              {/* Icon */}  
               <div className="relative mb-6">
                 <div className="absolute inset-0 bg-stone-600 rounded-2xl blur-xl opacity-20 group-hover:opacity-35 transition-opacity"></div>
                 <div className="relative p-6 bg-linear-to-br from-stone-600 to-stone-700 rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-300">
@@ -283,7 +391,7 @@ export default function Home() {
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                 </svg>
-                Shop Our Retail Collection
+                Start Shopping
                 <svg className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
@@ -580,7 +688,7 @@ export default function Home() {
       </section>
 
       {/* Certifications Section */}
-      <section className="py-10 md:py-14 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+      <section id="certifications" className="py-10 md:py-14 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-4">

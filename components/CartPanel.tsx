@@ -62,15 +62,16 @@ export default function CartPanel({ isOpen, onClose }: CartPanelProps) {
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Your cart is empty</h3>
                 <p className="text-gray-600 dark:text-gray-400 mb-6">Add some products to get started!</p>
-                <button
+                <Link
+                  href="/shop/all"
                   onClick={onClose}
-                  className="btn-primary"
+                  className="btn-primary inline-flex"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                   </svg>
                   Start Shopping
-                </button>
+                </Link>
               </div>
             </div>
           ) : (
