@@ -7,14 +7,23 @@ import Image from 'next/image';
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showModal, setShowModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState('');
+  const [modalTitle, setModalTitle] = useState('');
+
+  const showCustomAlert = (title: string, message: string) => {
+    setModalTitle(title);
+    setModalMessage(message);
+    setShowModal(true);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim() || !password.trim()) {
-      alert('Please enter both email and password.');
+      showCustomAlert('Missing Information', 'Please enter both email and password.');
       return;
     }
-    alert('Invalid email or password');
+    showCustomAlert('Not Registered', 'This account is not registered with YGE. Please create an account or contact support.');
   };
 
   return (
@@ -88,7 +97,7 @@ export default function LoginPage() {
 
               <button
                 type="button"
-                onClick={() => alert('Contact admin to reset password')}
+                onClick={() => showCustomAlert('Password Reset', 'Please contact YGE admin to reset your password. Email: YuvaGEntp@gmail.com or call: +91 8899108592')}
                 className="text-sm font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
               >
                 Forgot password?
@@ -131,6 +140,38 @@ export default function LoginPage() {
           </Link>
         </div>
       </div>
+
+      {/* Custom Modal */}
+      {showModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+          <div className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-6 border border-gray-200 dark:border-gray-700 animate-in fade-in zoom-in duration-200">
+            {/* Icon */}
+            <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4 bg-red-100 dark:bg-red-900/30 rounded-full">
+              <svg className="w-8 h-8 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+              </svg>
+            </div>
+
+            {/* Title */}
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white text-center mb-3">
+              {modalTitle}
+            </h3>
+
+            {/* Message */}
+            <p className="text-gray-600 dark:text-gray-400 text-center mb-6">
+              {modalMessage}
+            </p>
+
+            {/* Close Button */}
+            <button
+              onClick={() => setShowModal(false)}
+              className="w-full btn-primary"
+            >
+              Got it
+            </button>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
