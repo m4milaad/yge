@@ -10,6 +10,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Yuva Global Enterprises - Stationery & Business Solutions",
   description: "Your Partner for Quality Stationery & Efficient Business Solutions",
+  verification: {
+    google: "GW9Ba-M9lvS4Ec5McXXwXuvWRsOL5zKjuwnqdg5vL-k",
+  },
 };
 
 export default function RootLayout({
