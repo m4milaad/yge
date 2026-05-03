@@ -34,14 +34,14 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
   }, [isOpen, onClose]);
 
   const allItems = [
-    { name: 'Premium Notebooks', category: 'Stationery', link: '/shop/stationery', icon: '📓' },
-    { name: 'Color Pencils', category: 'Stationery', link: '/shop/stationery', icon: '✏️' },
-    { name: 'Desk Organizer', category: 'Office Essentials', link: '/shop/office-essentials', icon: '🗂️' },
-    { name: 'School Backpack', category: 'School Supplies', link: '/shop/school-supplies', icon: '🎒' },
-    { name: 'Facility Management', category: 'Services', link: '/services/facility-management', icon: '🏢' },
-    { name: 'Security Services', category: 'Services', link: '/services/security-services', icon: '🔒' },
-    { name: 'Cleaning Services', category: 'Services', link: '/services/mechanized-cleaning', icon: '✨' },
-    { name: 'Event Management', category: 'Services', link: '/services/event-management', icon: '🎉' },
+    { name: 'Premium Notebooks', category: 'Stationery', link: '/shop/stationery', icon: 'N-BK' },
+    { name: 'Color Pencils', category: 'Stationery', link: '/shop/stationery', icon: 'P-CL' },
+    { name: 'Desk Organizer', category: 'Office Essentials', link: '/shop/office-essentials', icon: 'D-ORG' },
+    { name: 'School Backpack', category: 'School Supplies', link: '/shop/school-supplies', icon: 'B-PK' },
+    { name: 'Facility Management', category: 'Services', link: '/services/facility-management', icon: 'F-MGT' },
+    { name: 'Security Services', category: 'Services', link: '/services/security-services', icon: 'S-SEC' },
+    { name: 'Cleaning Services', category: 'Services', link: '/services/mechanized-cleaning', icon: 'C-CLN' },
+    { name: 'Event Management', category: 'Services', link: '/services/event-management', icon: 'E-MGT' },
   ];
 
   const searchResults = allItems.filter(
@@ -52,121 +52,113 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
   );
 
   const popularSearches = [
-    { label: 'Notebooks', query: 'notebooks' },
-    { label: 'Office Supplies', query: 'office' },
-    { label: 'Services', query: 'services' },
-    { label: 'School Items', query: 'school' },
+    { label: 'NOTEBOOKS', query: 'notebooks' },
+    { label: 'OFFICE SUPPLIES', query: 'office' },
+    { label: 'SERVICES', query: 'services' },
+    { label: 'SCHOOL ITEMS', query: 'school' },
   ];
 
   if (!isOpen) return null;
 
   return (
     <div 
-      className="fixed inset-0 bg-gray-900/80 dark:bg-black/90 backdrop-blur-sm z-50 flex items-start justify-center pt-20 px-4 animate-fade-in" 
+      className="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-start justify-center pt-20 px-4" 
       onClick={onClose}
     >
       <div
-        className="modern-card bg-white dark:bg-gray-800 w-full max-w-3xl shadow-2xl border border-gray-200 dark:border-gray-700 animate-slide-down"
+        className="w-full max-w-4xl bg-gray-100 border-4 border-black brutal-shadow flex flex-col grid-bg"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Search Header */}
-        <div className="p-6 border-b border-gray-200 dark:border-gray-700">
-          <div className="flex items-center gap-4">
-            <div className="shrink-0 w-12 h-12 bg-linear-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center">
-              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </div>
-            <input
-              ref={inputRef}
-              type="text"
-              placeholder="Search products, services, and more..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              onKeyDown={(e) => {
-                e.stopPropagation();
-              }}
-              className="grow text-lg bg-transparent border-none focus:outline-none text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
-            />
-            <button 
-              onClick={onClose} 
-              className="shrink-0 p-2 rounded-lg text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300"
-              aria-label="Close search"
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
+        <div className="bg-black text-white p-6 border-b-4 border-black flex items-center gap-4">
+          <div className="w-12 h-12 bg-neon text-black flex items-center justify-center border-2 border-black shrink-0">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
+              <path strokeLinecap="square" strokeLinejoin="miter" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
           </div>
+          <input
+            ref={inputRef}
+            type="text"
+            placeholder="ENTER QUERY DIRECTIVE..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="grow bg-transparent text-white font-mono font-bold text-xl md:text-2xl outline-none placeholder:text-gray-600 uppercase tracking-widest border-b-2 border-transparent focus:border-neon transition-colors pb-1"
+          />
+          <button 
+            onClick={onClose} 
+            className="w-12 h-12 bg-white text-black hover:bg-accent hover:text-white border-2 border-black flex items-center justify-center transition-colors shrink-0"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
+              <path strokeLinecap="square" strokeLinejoin="miter" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
 
-        {/* Search Results */}
-        <div className="max-h-[60vh] overflow-y-auto">
+        {/* Search Content */}
+        <div className="max-h-[60vh] overflow-y-auto custom-scrollbar bg-white">
           {searchQuery.length > 0 ? (
-            <div className="p-4">
+            <div className="p-6">
               {searchResults.length > 0 ? (
-                <div className="space-y-2">
-                  <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider px-3 mb-3">
-                    {searchResults.length} {searchResults.length === 1 ? 'Result' : 'Results'}
-                  </p>
+                <div className="space-y-4 font-mono">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="h-px bg-black grow"></div>
+                    <span className="font-bold text-xs uppercase tracking-widest text-black bg-neon px-2 border-2 border-black">
+                      {searchResults.length} MATCH{searchResults.length !== 1 && 'ES'} FOUND
+                    </span>
+                    <div className="h-px bg-black grow"></div>
+                  </div>
+                  
                   {searchResults.map((result, index) => (
                     <Link
                       key={index}
                       href={result.link}
                       onClick={onClose}
-                      className="group flex items-center gap-4 p-4 hover:bg-linear-to-r hover:from-blue-50 hover:to-purple-50 dark:hover:from-blue-900/20 dark:hover:to-purple-900/20 rounded-xl transition-all duration-300 border border-transparent hover:border-blue-200 dark:hover:border-blue-800"
+                      className="group flex flex-col md:flex-row md:items-center gap-4 p-4 border-4 border-black hover:bg-black hover:text-white transition-colors brutal-shadow hover:translate-y-1 hover:translate-x-1 hover:!shadow-none"
                     >
-                      <div className="shrink-0 w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300">
+                      <div className="w-16 h-16 bg-gray-100 text-black border-2 border-black flex items-center justify-center font-display font-black text-xl shrink-0 group-hover:bg-neon">
                         {result.icon}
                       </div>
                       <div className="grow">
-                        <div className="font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                        <div className="font-display font-black text-2xl uppercase leading-none mb-1">
                           {result.name}
                         </div>
-                        <div className="text-sm text-gray-500 dark:text-gray-400">
-                          {result.category}
+                        <div className="text-xs font-bold uppercase tracking-widest text-gray-500 group-hover:text-gray-400">
+                          [{result.category}]
                         </div>
                       </div>
-                      <svg className="w-5 h-5 text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
+                      <div className="hidden md:flex font-bold text-xs tracking-widest">
+                        ACCESS &rarr;
+                      </div>
                     </Link>
                   ))}
                 </div>
               ) : (
-                <div className="text-center py-12">
-                  <div className="w-20 h-20 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg className="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
+                <div className="p-16 flex flex-col items-center justify-center text-center diagonal-accent border-4 border-black bg-gray-50">
+                  <div className="w-20 h-20 bg-black text-white flex items-center justify-center border-4 border-black mb-6">
+                    <span className="font-display font-black text-5xl">?</span>
                   </div>
-                  <p className="text-gray-600 dark:text-gray-400 font-medium mb-2">
-                    No results found for &quot;{searchQuery}&quot;
-                  </p>
-                  <p className="text-sm text-gray-500 dark:text-gray-500">
-                    Try searching for something else
+                  <h3 className="font-display font-black text-3xl uppercase mb-2">Null Result</h3>
+                  <p className="font-mono text-sm font-bold text-gray-500">
+                    Directive &quot;{searchQuery}&quot; yielded no matches in the database.
                   </p>
                 </div>
               )}
             </div>
           ) : (
-            <div className="p-6">
+            <div className="p-8">
               {/* Popular Searches */}
-              <div className="mb-6">
-                <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">
-                  Popular Searches
-                </p>
-                <div className="flex flex-wrap gap-2">
+              <div className="mb-12">
+                <h3 className="font-display font-black text-2xl uppercase mb-6 border-b-4 border-black pb-2 inline-block">
+                  Common Queries
+                </h3>
+                <div className="flex flex-wrap gap-4 font-mono text-sm font-bold">
                   {popularSearches.map((item, index) => (
                     <button
                       key={index}
                       onClick={() => setSearchQuery(item.query)}
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-blue-100 dark:hover:bg-blue-900/30 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-lg font-medium transition-all duration-300 hover:scale-105"
+                      className="px-4 py-2 border-2 border-black hover:bg-black hover:text-white transition-colors uppercase tracking-widest"
                     >
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                      </svg>
-                      {item.label}
+                      &gt; {item.label}
                     </button>
                   ))}
                 </div>
@@ -174,29 +166,35 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
 
               {/* Quick Links */}
               <div>
-                <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">
-                  Quick Links
-                </p>
-                <div className="grid grid-cols-2 gap-3">
+                <h3 className="font-display font-black text-2xl uppercase mb-6 border-b-4 border-black pb-2 inline-block">
+                  Quick Access
+                </h3>
+                <div className="grid md:grid-cols-2 gap-6">
                   <Link
                     href="/shop/all"
                     onClick={onClose}
-                    className="group flex items-center gap-3 p-4 bg-linear-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 hover:from-blue-100 hover:to-blue-200 dark:hover:from-blue-900/30 dark:hover:to-blue-800/30 rounded-xl transition-all duration-300 hover:scale-105"
+                    className="border-4 border-black p-6 hover:bg-neon transition-colors group flex items-center gap-4"
                   >
-                    <div className="w-10 h-10 bg-white dark:bg-gray-800 rounded-lg flex items-center justify-center text-xl">
-                      🛍️
+                    <div className="w-12 h-12 bg-black text-white flex items-center justify-center font-display font-black text-2xl group-hover:bg-white group-hover:text-black transition-colors">
+                      S
                     </div>
-                    <span className="font-semibold text-gray-900 dark:text-white">Shop All</span>
+                    <div>
+                      <h4 className="font-display font-black text-xl uppercase leading-none">Full Catalog</h4>
+                      <p className="font-mono text-xs font-bold text-gray-600 uppercase tracking-widest mt-1">Browse All Supplies</p>
+                    </div>
                   </Link>
                   <Link
-                    href="/services/facility-management"
+                    href="/business-solutions"
                     onClick={onClose}
-                    className="group flex items-center gap-3 p-4 bg-linear-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 hover:from-purple-100 hover:to-purple-200 dark:hover:from-purple-900/30 dark:hover:to-purple-800/30 rounded-xl transition-all duration-300 hover:scale-105"
+                    className="border-4 border-black p-6 hover:bg-accent hover:text-white transition-colors group flex items-center gap-4"
                   >
-                    <div className="w-10 h-10 bg-white dark:bg-gray-800 rounded-lg flex items-center justify-center text-xl">
-                      🏢
+                    <div className="w-12 h-12 bg-black text-white flex items-center justify-center font-display font-black text-2xl group-hover:bg-white group-hover:text-black transition-colors">
+                      B
                     </div>
-                    <span className="font-semibold text-gray-900 dark:text-white">Services</span>
+                    <div>
+                      <h4 className="font-display font-black text-xl uppercase leading-none">B2B Services</h4>
+                      <p className="font-mono text-xs font-bold text-gray-500 group-hover:text-gray-300 uppercase tracking-widest mt-1">Enterprise Solutions</p>
+                    </div>
                   </Link>
                 </div>
               </div>
@@ -204,21 +202,12 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
           )}
         </div>
 
-        {/* Search Footer */}
-        <div className="p-4 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/50">
-          <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
-            <div className="flex items-center gap-4">
-              <span className="hidden sm:flex items-center gap-1">
-                <kbd className="px-2 py-1 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded font-mono">ESC</kbd>
-                to close
-              </span>
-              <span className="sm:hidden flex items-center gap-1">
-                Tap X or outside to close
-              </span>
-            </div>
-            <span className="hidden sm:inline">Press Enter to search</span>
-            <span className="sm:hidden">Type to search</span>
+        {/* Footer */}
+        <div className="bg-gray-100 border-t-4 border-black p-4 font-mono text-xs font-bold text-gray-500 flex justify-between items-center uppercase tracking-widest">
+          <div className="flex gap-4">
+            <span>[ESC] TO ABORT</span>
           </div>
+          <span>YGE_DB v2.0</span>
         </div>
       </div>
     </div>

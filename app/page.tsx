@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import NewsTicker from '@/components/NewsTicker';
 import { useCart } from '@/context/CartContext';
-import { featuredServices, featuredProducts, getColorClasses, testimonials } from '@/data';
+import { featuredServices, featuredProducts } from '@/data';
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState('business');
@@ -24,849 +24,330 @@ export default function Home() {
     <>
       <NewsTicker />
 
-      <section className="relative bg-linear-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'radial-gradient(circle at 2px 2px, rgb(59, 130, 246) 1px, transparent 0)',
-            backgroundSize: '40px 40px',
-          }}></div>
-        </div>
-        
-        {/* Floating Shapes */}
-        <div className="absolute top-20 right-20 w-72 h-72 bg-blue-400/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 left-20 w-96 h-96 bg-purple-400/20 rounded-full blur-3xl"></div>
-        
-        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
-          <div className="grid lg:grid-cols-[70%_30%] gap-8 items-start">
-            {/* Left Content */}
-            <div className="text-center lg:text-left">
-              <div className="flex flex-wrap justify-center lg:justify-start gap-2 mb-6">
-                <Link href="/#certifications" className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-100 dark:bg-blue-900/30 rounded-full hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-all duration-300 hover:scale-105 cursor-pointer">
-                  <svg className="w-4 h-4 text-blue-600 dark:text-blue-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-xs font-bold text-blue-600 dark:text-blue-400">ISO 9001:2015</span>
-                </Link>
-                <Link href="/#certifications" className="inline-flex items-center gap-2 px-3 py-1.5 bg-green-100 dark:bg-green-900/30 rounded-full hover:bg-green-200 dark:hover:bg-green-900/50 transition-all duration-300 hover:scale-105 cursor-pointer">
-                  <svg className="w-4 h-4 text-green-600 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-xs font-bold text-green-600 dark:text-green-400">MSME Registered</span>
-                </Link>
-                <Link href="/#certifications" className="inline-flex items-center gap-2 px-3 py-1.5 bg-purple-100 dark:bg-purple-900/30 rounded-full hover:bg-purple-200 dark:hover:bg-purple-900/50 transition-all duration-300 hover:scale-105 cursor-pointer">
-                  <svg className="w-4 h-4 text-purple-600 dark:text-purple-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-xs font-bold text-purple-600 dark:text-purple-400">MII Certified</span>
-                </Link>
+      {/* HERO SECTION */}
+      <section className="relative bg-white border-b-4 border-black overflow-hidden grid-bg grain-overlay">
+        <div className="grid lg:grid-cols-[1fr_400px] divide-x-4 divide-black items-stretch min-h-[80vh]">
+          {/* Left Content */}
+          <div className="flex flex-col justify-center p-8 md:p-16 relative z-10">
+            <div className="flex flex-wrap gap-4 mb-12 reveal-up delay-1">
+              <div className="px-4 py-1 bg-neon border-4 border-black text-black font-mono font-bold uppercase text-xs tracking-widest brutal-shadow">
+                ISO 9001:2015 Certified
               </div>
-              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black mb-6 leading-tight perspective-1000">
-                <span className="relative inline-block transform-style-3d" style={{
-                  color: '#f8fafc',
-                  textShadow: `
-                    1px 1px 0 rgba(234, 179, 8, 0.9),
-                    2px 2px 0 rgba(234, 179, 8, 0.8),
-                    3px 3px 0 rgba(234, 179, 8, 0.7),
-                    4px 4px 0 rgba(234, 179, 8, 0.6),
-                    5px 5px 0 rgba(234, 179, 8, 0.5),
-                    6px 6px 0 rgba(234, 179, 8, 0.4),
-                    7px 7px 10px rgba(0, 0, 0, 0.3)
-                  `
-                }}>
-                  Yuva Global Enterprises
-                </span>
-              </h1>
-              
-              <p className="text-xl sm:text-2xl font-bold mb-4 text-blue-600 dark:text-blue-400">
-                You Demand, We Deliver!
-              </p>
-              
-              <p className="text-base text-gray-600 dark:text-gray-300 mb-6 leading-relaxed max-w-xl mx-auto lg:mx-0">
-                Your trusted partner for quality stationery and efficient business solutions. From everyday essentials to comprehensive corporate services.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Link href="/business-solutions" className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-linear-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                  </svg>
-                  Explore Business Services
-                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </Link>
-                
-                <Link href="/shop/all" className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-bold rounded-xl border-2 border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                  </svg>
-                  Start Shopping
-                </Link>
-              </div>
-              
-              {/* Stats */}
-              <div className="grid grid-cols-3 gap-4 mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
-                <div className="text-center lg:text-left">
-                  <div className="text-3xl font-black text-slate-700 dark:text-slate-400">1000+</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400 font-medium">Happy Clients</div>
-                </div>
-                <div className="text-center lg:text-left">
-                  <div className="text-3xl font-black text-purple-600 dark:text-purple-400">500+</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400 font-medium">Products</div>
-                </div>
-                <div className="text-center lg:text-left">
-                  <div className="text-3xl font-black text-green-600 dark:text-green-400">24/7</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400 font-medium">Support</div>
-                </div>
+              <div className="px-4 py-1 bg-accent border-4 border-black text-white font-mono font-bold uppercase text-xs tracking-widest brutal-shadow">
+                MSME Registered
               </div>
             </div>
             
-            {/* Right News Box */}
-            <div className="relative hidden lg:block sticky top-24">
-              <div className="relative">
-                {/* Refined Glowing Background - More Subtle */}
-                <div className="absolute inset-0 bg-blue-600/10 blur-3xl rounded-full"></div>
-
-                <div className="relative z-10 bg-white/70 dark:bg-gray-900/80 rounded-2xl shadow-xl border border-gray-200/50 dark:border-gray-700/50 overflow-hidden backdrop-blur-xl">
-                  
-                  {/* Professional Header */}
-                  <div className="px-6 py-4 border-b border-gray-200/50 dark:border-gray-700/50 flex items-center justify-between bg-white/50 dark:bg-gray-800/50">
-                    <div className="flex items-center gap-3">
-                      <span className="relative flex h-3 w-3">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
-                      </span>
-                      <h3 className="text-sm font-black text-gray-800 dark:text-white tracking-wide uppercase">
-                        Latest Updates
-                      </h3>
-                    </div>
-                    <span className="text-xs font-medium text-gray-500 dark:text-gray-400">
-                      Real-time Feed
-                    </span>
-                  </div>
-
-                  {/* Vertical Scrolling News */}
-                  <div className="h-[400px] overflow-hidden relative">
-                    <div className="vertical-marquee py-2">
-                      {/* News Item List */}
-                      {[
-                        { 
-                          title: 'Special Offer', 
-                          desc: '20% off on all stationery items this week only.', 
-                          time: '2 mins ago',
-                          icon: (
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" /></svg>
-                          ),
-                          bg: 'bg-blue-50 dark:bg-blue-900/20',
-                          text: 'text-blue-600 dark:text-blue-400'
-                        },
-                        { 
-                          title: 'New Arrival', 
-                          desc: 'Premium notebooks and art supplies now in stock.', 
-                          time: '1 hour ago',
-                          icon: (
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>
-                          ),
-                          bg: 'bg-purple-50 dark:bg-purple-900/20',
-                          text: 'text-purple-600 dark:text-purple-400'
-                        },
-                        { 
-                          title: 'Certification', 
-                          desc: 'ISO 9001:2015 Certified - Maintaining global standards.', 
-                          time: '3 hours ago',
-                          icon: (
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                          ),
-                          bg: 'bg-green-50 dark:bg-green-900/20',
-                          text: 'text-green-600 dark:text-green-400'
-                        },
-                        { 
-                          title: 'B2B Services', 
-                          desc: 'Expanded Facility Management services now available.', 
-                          time: '5 hours ago',
-                          icon: (
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
-                          ),
-                          bg: 'bg-orange-50 dark:bg-orange-900/20',
-                          text: 'text-orange-600 dark:text-orange-400'
-                        },
-                        // Duplicate for loop
-                        { 
-                          title: 'Special Offer', 
-                          desc: '20% off on all stationery items this week only.', 
-                          time: '2 mins ago',
-                          icon: (
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" /></svg>
-                          ),
-                          bg: 'bg-blue-50 dark:bg-blue-900/20',
-                          text: 'text-blue-600 dark:text-blue-400'
-                        },
-                        { 
-                          title: 'New Arrival', 
-                          desc: 'Premium notebooks and art supplies now in stock.', 
-                          time: '1 hour ago',
-                          icon: (
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>
-                          ),
-                          bg: 'bg-purple-50 dark:bg-purple-900/20',
-                          text: 'text-purple-600 dark:text-purple-400'
-                        },
-                        { 
-                          title: 'Certification', 
-                          desc: 'ISO 9001:2015 Certified - Maintaining global standards.', 
-                          time: '3 hours ago',
-                          icon: (
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                          ),
-                          bg: 'bg-green-50 dark:bg-green-900/20',
-                          text: 'text-green-600 dark:text-green-400'
-                        },
-                      ].map((item, index) => (
-                        <div key={index} className="px-4 py-2">
-                          <div className="group flex gap-4 p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-800 shadow-sm hover:shadow-md transition-all duration-300 cursor-default">
-                            {/* Icon Box */}
-                            <div className={`shrink-0 w-10 h-10 rounded-lg ${item.bg} ${item.text} flex items-center justify-center`}>
-                              {item.icon}
-                            </div>
-                            
-                            {/* Content */}
-                            <div className="flex-1 min-w-0">
-                              <div className="flex items-center justify-between mb-1">
-                                <span className={`text-xs font-bold uppercase tracking-wider ${item.text}`}>
-                                  {item.title}
-                                </span>
-                                <span className="text-[10px] text-gray-400 font-medium">
-                                  {item.time}
-                                </span>
-                              </div>
-                              <p className="text-sm text-gray-700 dark:text-gray-300 leading-snug font-medium group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                                {item.desc}
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Smooth Fade Overlays */}
-                    <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-white/90 via-white/50 to-transparent dark:from-gray-900/90 dark:via-gray-900/50 pointer-events-none z-10"></div>
-                    <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-white/90 via-white/50 to-transparent dark:from-gray-900/90 dark:via-gray-900/50 pointer-events-none z-10"></div>
-                  </div>
+            <h1 className="font-display font-black text-5xl sm:text-6xl md:text-7xl lg:text-[7rem] leading-[0.9] tracking-tighter uppercase mb-6 reveal-up delay-2">
+              <span className="block text-black hover:text-accent transition-colors duration-300">Yuva Global</span>
+              <span className="block text-transparent" style={{ WebkitTextStroke: '2px black' }}>Enterprises</span>
+            </h1>
+            
+            <div className="w-full h-4 bg-black mb-6 reveal-strike delay-3"></div>
+            
+            <p className="font-mono text-lg sm:text-xl font-bold mb-6 text-black max-w-2xl bg-neon inline-block p-2 uppercase reveal-up delay-4">
+              [ You Demand, We Deliver! ]
+            </p>
+            
+            <p className="text-lg md:text-xl font-mono text-black leading-relaxed max-w-2xl mb-12 border-l-8 border-black pl-6 reveal-up delay-5">
+              Industrial-grade stationery, comprehensive facility management, and high-efficiency business solutions designed for operational excellence.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-6 reveal-up delay-6">
+              <Link href="/business-solutions" className="brutal-btn text-xl group">
+                Explore Business Services
+                <svg className="w-6 h-6 ml-4 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth="3" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+              
+              <Link href="/shop/all" className="brutal-btn text-xl bg-white hover:bg-black text-black hover:text-white !shadow-none hover:shadow-none">
+                Start Shopping
+              </Link>
+            </div>
+          </div>
+          
+          {/* Right Status / News */}
+          <div className="hidden lg:flex flex-col bg-black text-white p-8 relative grain-overlay">
+            <div className="absolute top-0 right-0 p-4 font-mono font-bold text-accent text-sm flex items-center gap-2 z-10">
+              <span className="w-2 h-2 bg-accent inline-block pulse-dot" />
+              SYS.OP: ONLINE
+            </div>
+            
+            <h3 className="font-display font-black text-4xl uppercase mb-8 text-neon mt-12 border-b-4 border-white/30 pb-4 relative z-10 reveal-up delay-3">
+              Latest Updates
+            </h3>
+            
+            <div className="flex flex-col gap-6 overflow-y-auto pr-4 custom-scrollbar relative z-10">
+              <div className="border-2 border-white/30 p-4 hover:border-neon transition-all duration-300 group cursor-pointer bg-white text-black hover:bg-neon hover:text-black reveal-scale delay-4 diagonal-accent">
+                <div className="flex justify-between items-center mb-2 border-b-2 border-black pb-2">
+                  <span className="font-mono font-bold text-xs uppercase tracking-widest">Directive: Offer</span>
+                  <span className="font-mono text-xs font-bold bg-black text-white px-2 py-1">T-2M</span>
                 </div>
+                <p className="font-display font-bold text-xl leading-tight uppercase">20% Off Protocol active on all stationery.</p>
               </div>
+
+              <div className="border-2 border-white/30 p-4 hover:border-accent transition-all duration-300 group cursor-pointer hover:bg-accent hover:text-white reveal-scale delay-5">
+                <div className="flex justify-between items-center mb-2 border-b-2 border-current pb-2">
+                  <span className="font-mono font-bold text-xs uppercase tracking-widest">Update: Inventory</span>
+                  <span className="font-mono text-xs font-bold bg-white text-black px-2 py-1">T-1H</span>
+                </div>
+                <p className="font-display font-bold text-xl leading-tight uppercase">Premium supplies docked &amp; available.</p>
+              </div>
+
+              <div className="border-2 border-white/30 p-4 hover:border-neon transition-all duration-300 group cursor-pointer hover:bg-white hover:text-black reveal-scale delay-6">
+                <div className="flex justify-between items-center mb-2 border-b-2 border-current pb-2">
+                  <span className="font-mono font-bold text-xs uppercase tracking-widest">Status: Verify</span>
+                  <span className="font-mono text-xs font-bold bg-white text-black px-2 py-1">T-3H</span>
+                </div>
+                <p className="font-display font-bold text-xl leading-tight uppercase">ISO 9001:2015 Standards Maintained.</p>
+              </div>
+            </div>
+            
+            <div className="mt-auto pt-8 border-t-4 border-white/20 font-mono text-sm font-bold flex justify-between relative z-10">
+              <span className="tracking-widest">DATA FLOW</span>
+              <span className="text-neon flex items-center gap-2"><span className="w-2 h-2 bg-neon inline-block pulse-dot" /> RECORDING</span>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="who-we-serve" className="py-12 md:py-16 bg-white dark:bg-gray-900 transition-colors duration-300 relative overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'radial-gradient(circle at 2px 2px, rgb(59, 130, 246) 1px, transparent 0)',
-            backgroundSize: '40px 40px',
-          }}></div>
-        </div>
-
-        {/* Floating Shapes */}
-        <div className="absolute top-10 right-10 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-10 left-10 w-80 h-80 bg-purple-400/10 rounded-full blur-3xl"></div>
-
-        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-3">
-              How Can We Help You Today?
-            </h2>
-            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
-              We cater to diverse needs, offering specialized solutions for both individual customers and corporate clients.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {/* Business & Facility Card - NOW FIRST */}
-            <div className="group modern-card bg-linear-to-br from-stone-50 via-white to-stone-50 dark:from-gray-800 dark:via-gray-800 dark:to-stone-900/20 p-6 md:p-8 flex flex-col items-center text-center border-2 border-stone-200 dark:border-stone-700 shadow-xl hover:shadow-2xl relative overflow-hidden">
-              {/* Decorative Corner */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-linear-to-br from-stone-300/15 to-slate-300/15 rounded-bl-full"></div>
-              
-              {/* Icon */}  
-              <div className="relative mb-6">
-                <div className="absolute inset-0 bg-stone-600 rounded-2xl blur-xl opacity-20 group-hover:opacity-35 transition-opacity"></div>
-                <div className="relative p-6 bg-linear-to-br from-stone-600 to-stone-700 rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  <svg className="h-14 w-14 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                  </svg>
-                </div>
+      {/* OPERATIONS DIRECTORY */}
+      <section className="bg-white border-b-4 border-black">
+        
+        <div className="grid md:grid-cols-2 divide-y-4 md:divide-y-0 md:divide-x-4 divide-black">
+          {/* B2B Card */}
+          <div className="p-8 md:p-16 hover:bg-gray-50 transition-colors duration-300 flex flex-col justify-between relative">
+            <div>
+              <div className="w-20 h-20 bg-black text-neon flex items-center justify-center mb-8 brutal-shadow">
+                <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth="3" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
               </div>
-
-              {/* Content */}
-              <h3 className="text-2xl md:text-3xl font-black mb-4 text-gray-900 dark:text-white">
-                For Your Business & Facility Needs
-              </h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed text-lg">
+              <h2 className="font-display font-black text-4xl md:text-5xl uppercase mb-6 leading-none">
+                For Your Business &amp; Facility Needs
+              </h2>
+              <p className="font-mono text-lg mb-8 leading-relaxed max-w-md border-l-4 border-black pl-4">
                 Streamline your operations with our bulk supply solutions, general order provisions, and comprehensive facility management services.
               </p>
-
-              {/* Features List */}
-              <div className="mb-8 space-y-2 text-left w-full max-w-sm">
-                <div className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
-                  <svg className="w-5 h-5 text-stone-700 dark:text-stone-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="font-medium">Facility Management</span>
-                </div>
-                <div className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
-                  <svg className="w-5 h-5 text-stone-700 dark:text-stone-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="font-medium">Bulk Supply Solutions</span>
-                </div>
-                <div className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
-                  <svg className="w-5 h-5 text-stone-700 dark:text-stone-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="font-medium">Corporate Services</span>
-                </div>
-              </div>
-
-              {/* Button */}
-              <Link href="/business-solutions" className="relative z-10 mt-auto btn-primary group/btn cursor-pointer">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                </svg>
-                Explore Business Solutions
-                <svg className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
+              <ul className="space-y-4 font-mono font-bold text-sm uppercase mb-12">
+                <li className="flex items-center gap-3">
+                  <div className="w-3 h-3 bg-neon border-2 border-black"></div>
+                  Facility Management
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-3 h-3 bg-neon border-2 border-black"></div>
+                  Bulk Supply Solutions
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-3 h-3 bg-neon border-2 border-black"></div>
+                  Corporate Services
+                </li>
+              </ul>
             </div>
+            <Link href="/business-solutions" className="brutal-btn self-start bg-black text-white hover:bg-neon hover:text-black">
+              Explore Business Solutions
+            </Link>
+          </div>
 
-            {/* Personal & Creative Card - NOW SECOND */}
-            <div className="group modern-card bg-linear-to-br from-slate-50 via-white to-slate-50 dark:from-gray-800 dark:via-gray-800 dark:to-slate-900/20 p-6 md:p-8 flex flex-col items-center text-center border-2 border-slate-200 dark:border-slate-700 shadow-xl hover:shadow-2xl relative overflow-hidden">
-              {/* Decorative Corner */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-linear-to-br from-slate-300/15 to-stone-300/15 rounded-bl-full"></div>
-              
-              {/* Icon */}
-              <div className="relative mb-6">
-                <div className="absolute inset-0 bg-slate-600 rounded-2xl blur-xl opacity-20 group-hover:opacity-35 transition-opacity"></div>
-                <div className="relative p-6 bg-linear-to-br from-slate-600 to-slate-700 rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  <svg className="h-14 w-14 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
-                </div>
+          {/* Retail Card */}
+          <div className="p-8 md:p-16 bg-black text-white flex flex-col justify-between relative grain-overlay">
+            <div className="relative z-10">
+              <div className="w-20 h-20 bg-neon text-black flex items-center justify-center mb-8 brutal-shadow">
+                <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth="3" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
               </div>
-
-              {/* Content */}
-              <h3 className="text-2xl md:text-3xl font-black mb-4 text-gray-900 dark:text-white">
-                For Your Personal & Creative Needs
-              </h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed text-lg">
+              <h2 className="font-display font-black text-4xl md:text-5xl uppercase mb-6 leading-none text-neon">
+                For Your Personal &amp; Creative Needs
+              </h2>
+              <p className="font-mono text-lg mb-8 leading-relaxed max-w-md border-l-4 border-accent pl-4">
                 Discover a wide array of quality stationery, school supplies, art materials, and everyday office items for your individual requirements.
               </p>
-
-              {/* Features List */}
-              <div className="mb-8 space-y-2 text-left w-full max-w-sm">
-                <div className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
-                  <svg className="w-5 h-5 text-slate-700 dark:text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="font-medium">Premium Stationery</span>
-                </div>
-                <div className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
-                  <svg className="w-5 h-5 text-slate-700 dark:text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="font-medium">Art & Craft Supplies</span>
-                </div>
-                <div className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
-                  <svg className="w-5 h-5 text-slate-700 dark:text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="font-medium">School Essentials</span>
-                </div>
-              </div>
-
-              {/* Button */}
-              <Link href="/shop/all" className="relative z-10 mt-auto btn-primary group/btn cursor-pointer">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                </svg>
-                Start Shopping
-                <svg className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
+              <ul className="space-y-4 font-mono font-bold text-sm uppercase mb-12">
+                <li className="flex items-center gap-3">
+                  <div className="w-3 h-3 bg-accent border-2 border-white"></div>
+                  Premium Stationery
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-3 h-3 bg-accent border-2 border-white"></div>
+                  Art &amp; Craft Supplies
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-3 h-3 bg-accent border-2 border-white"></div>
+                  School Essentials
+                </li>
+              </ul>
             </div>
+            <Link href="/shop/all" className="brutal-btn self-start border-white bg-white text-black hover:bg-accent hover:text-white hover:border-accent !shadow-[6px_6px_0px_0px_#fff] hover:!shadow-[8px_8px_0px_0px_#fff] relative z-10">
+              Start Shopping
+            </Link>
           </div>
         </div>
       </section>
 
-      <section id="featured" className="py-12 md:py-16 bg-linear-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Header */}
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white mb-4">
-              Discover Our Offerings
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Explore our curated selection of products and services designed to meet your needs
+      {/* DYNAMIC INVENTORY VIEWER */}
+      <section className="bg-gray-100 border-b-4 border-black pb-16">
+        <div className="border-b-4 border-black bg-white flex flex-col sm:flex-row justify-between items-stretch">
+          <h2 className="font-display font-black text-3xl md:text-5xl uppercase p-6 md:p-8 flex items-center bg-neon border-b-4 sm:border-b-0 sm:border-r-4 border-black">
+            Discover Our Offerings
+          </h2>
+          <div className="flex divide-x-4 divide-black">
+            <button
+              onClick={() => setActiveTab('business')}
+              className={`px-8 py-6 font-display font-bold text-2xl uppercase transition-colors outline-none relative ${
+                activeTab === 'business' ? 'bg-black text-white' : 'bg-white text-black hover:bg-gray-200'
+              }`}
+            >
+              B2B Services
+              {activeTab === 'business' && <span className="absolute bottom-0 left-0 w-full h-1 bg-neon" />}
+            </button>
+            <button
+              onClick={() => setActiveTab('retail')}
+              className={`px-8 py-6 font-display font-bold text-2xl uppercase transition-colors outline-none relative ${
+                activeTab === 'retail' ? 'bg-black text-white' : 'bg-white text-black hover:bg-gray-200'
+              }`}
+            >
+              Featured Retail
+              {activeTab === 'retail' && <span className="absolute bottom-0 left-0 w-full h-1 bg-accent" />}
+            </button>
+          </div>
+        </div>
+
+        <div className="p-8 md:p-16">
+          {activeTab === 'retail' && (
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {featuredProducts.map((product, idx) => (
+                <div key={product.id} className={`bg-white border-4 border-black flex flex-col group hover-lift relative reveal-up delay-${Math.min(idx + 1, 8)}`}>
+                  {product.badge && (
+                    <div className="absolute -top-4 -right-4 px-4 py-2 bg-accent text-white font-mono font-bold uppercase text-xs border-2 border-black z-10 shadow-[4px_4px_0_0_#000] rotate-3">
+                      {product.badge}
+                    </div>
+                  )}
+                  <div className="border-b-4 border-black overflow-hidden bg-gray-100 relative aspect-square p-4">
+                    <Image 
+                      src={product.image} 
+                      alt={product.name} 
+                      fill
+                      className="object-contain p-4 mix-blend-multiply group-hover:scale-110 transition-transform duration-500 grayscale group-hover:grayscale-0"
+                    />
+                  </div>
+                  <div className="p-6 flex flex-col grow">
+                    <h4 className="font-display font-black text-2xl uppercase mb-2 leading-none">
+                      {product.name}
+                    </h4>
+                    <p className="font-mono text-sm mb-6 grow line-clamp-2">
+                      {product.description}
+                    </p>
+                    <div className="flex items-end justify-between mb-6">
+                      <span className="font-display font-black text-4xl leading-none">₹{product.price}</span>
+                      {product.rating && (
+                        <div className="font-mono font-bold text-xs bg-black text-neon px-2 py-1">
+                          RTG: {product.rating}
+                        </div>
+                      )}
+                    </div>
+                    <button 
+                      onClick={() => handleAddToCart({ id: product.id, name: product.name, price: product.price, image: product.image })}
+                      className="brutal-btn w-full text-base py-3 bg-neon"
+                    >
+                      Add to Cart
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {activeTab === 'business' && (
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {featuredServices.map((service, idx) => (
+                <Link key={service.id} href={service.link} className={`bg-white border-4 border-black p-8 flex flex-col relative group hover:bg-black hover:text-white transition-colors duration-300 hover-lift reveal-up delay-${Math.min(idx + 1, 8)}`}>
+                  <div className="w-16 h-16 border-4 border-black bg-neon text-black flex items-center justify-center mb-6 group-hover:bg-accent group-hover:border-white group-hover:text-white transition-colors brutal-shadow">
+                    <div className="scale-150">
+                      {service.icon}
+                    </div>
+                  </div>
+                  <h4 className="font-display font-black text-3xl uppercase mb-4 leading-none group-hover:text-neon transition-colors">
+                    {service.title}
+                  </h4>
+                  <p className="font-mono text-sm leading-relaxed grow mb-8 opacity-80 border-l-2 border-black pl-4 group-hover:border-white">
+                    {service.description}
+                  </p>
+                  <div className="font-mono font-bold text-xs uppercase tracking-widest flex items-center gap-2 group-hover:text-accent">
+                    Learn More <span className="group-hover:translate-x-2 transition-transform">&rarr;</span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* ABOUT & TRUST SECTION */}
+      <section id="about" className="grid lg:grid-cols-2 border-b-4 border-black divide-y-4 lg:divide-y-0 lg:divide-x-4 divide-black bg-white">
+        <div className="p-8 md:p-16 flex flex-col justify-center">
+          <h2 className="font-display font-black text-5xl md:text-7xl uppercase mb-8 leading-[0.9]">
+            About <span className="text-accent">Yuva Global Enterprises</span>
+          </h2>
+          <div className="bg-gray-100 border-4 border-black p-8 mb-8 brutal-shadow diagonal-accent">
+            <p className="font-mono text-lg mb-4 font-bold italic">
+              &ldquo;We believe in trust, transparency, and teamwork.&rdquo;
+            </p>
+            <p className="font-mono text-sm leading-relaxed mb-4">
+              Yuva Global Enterprises, an ISO 9001:2015 Certified company, is a leading provider of comprehensive facility management and support services.
+            </p>
+            <p className="font-mono text-sm leading-relaxed">
+              Our expertise spans a wide range of industries, ensuring that our clients receive tailored solutions to meet their unique needs. We are dedicated to offering top-tier services that help businesses operate smoothly and efficiently.
             </p>
           </div>
-
-          {/* Modern Tab Selector */}
-          <div className="flex justify-center mb-12 px-4">
-            <div className="inline-flex flex-col sm:flex-row bg-gray-100 dark:bg-gray-800 p-2 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 w-full sm:w-auto max-w-md sm:max-w-none">
-              <button
-                onClick={() => setActiveTab('business')}
-                className={`relative px-6 sm:px-8 py-4 rounded-xl font-bold text-base sm:text-lg transition-all duration-300 ${
-                  activeTab === 'business'
-                    ? 'bg-white dark:bg-gray-700 text-stone-700 dark:text-stone-400 shadow-lg sm:scale-105'
-                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
-                }`}
-              >
-                <span className="flex items-center justify-center gap-2">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                  </svg>
-                  <span className="hidden sm:inline">Business Services</span>
-                  <span className="sm:hidden">B2B Services</span>
-                </span>
-              </button>
-              <button
-                onClick={() => setActiveTab('retail')}
-                className={`relative px-6 sm:px-8 py-4 rounded-xl font-bold text-base sm:text-lg transition-all duration-300 ${
-                  activeTab === 'retail'
-                    ? 'bg-white dark:bg-gray-700 text-slate-700 dark:text-slate-400 shadow-lg sm:scale-105'
-                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
-                }`}
-              >
-                <span className="flex items-center justify-center gap-2">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                  </svg>
-                  <span className="hidden sm:inline">Featured Retail</span>
-                  <span className="sm:hidden">Retail Products</span>
-                </span>
-              </button>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="border-4 border-black p-4 text-center hover:bg-neon transition-colors group">
+              <div className="font-display font-black text-5xl mb-2 text-neon group-hover:text-black transition-colors" style={{ WebkitTextStroke: '2px black' }}>1000+</div>
+              <div className="font-mono text-xs font-bold uppercase tracking-widest">Happy Clients</div>
+            </div>
+            <div className="border-4 border-black p-4 text-center hover:bg-accent hover:text-white transition-colors group">
+              <div className="font-display font-black text-5xl mb-2 text-accent group-hover:text-white transition-colors" style={{ WebkitTextStroke: '2px black', WebkitTextStrokeColor: 'currentColor' }}>15+</div>
+              <div className="font-mono text-xs font-bold uppercase tracking-widest">Years Experience</div>
             </div>
           </div>
-
-          {/* Tab Content */}
-          <div className="animate-fade-in">
-            {activeTab === 'retail' && (
-              <div className="tab-content">
-                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {featuredProducts.map((product) => (
-                    <div key={product.id} className="group modern-card bg-white dark:bg-gray-800 flex flex-col border border-gray-200 dark:border-gray-700 overflow-hidden">
-                      <div className="relative overflow-hidden">
-                        <Image 
-                          src={product.image} 
-                          alt={product.name} 
-                          width={400} 
-                          height={300} 
-                          className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500" 
-                        />
-                        {product.badge && (
-                          <div className="absolute top-3 right-3">
-                            <span className={`inline-block px-3 py-1 text-white text-xs font-bold rounded-full shadow-lg ${
-                              product.badge === 'Popular' ? 'bg-blue-600' :
-                              product.badge === 'New' ? 'bg-purple-600' :
-                              product.badge === 'Trending' ? 'bg-orange-600' :
-                              product.badge === 'Best Seller' ? 'bg-green-600' : 'bg-gray-600'
-                            }`}>
-                              {product.badge}
-                            </span>
-                          </div>
-                        )}
-                      </div>
-                      <div className="p-6 flex flex-col grow">
-                        <h4 className="text-xl font-bold mb-2 text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                          {product.name}
-                        </h4>
-                        <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 grow leading-relaxed">
-                          {product.description}
-                        </p>
-                        <div className="flex items-center justify-between mb-4">
-                          <span className="text-2xl font-black text-blue-600 dark:text-blue-400">₹{product.price}</span>
-                          {product.rating && (
-                            <div className="flex items-center gap-1 text-yellow-500">
-                              <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
-                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                              </svg>
-                              <span className="text-xs font-semibold text-gray-600 dark:text-gray-400">{product.rating}</span>
-                            </div>
-                          )}
-                        </div>
-                        <button 
-                          onClick={() => handleAddToCart({ id: product.id, name: product.name, price: product.price, image: product.image })}
-                          className="w-full btn-primary"
-                        >
-                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                          </svg>
-                          Add to Cart
-                        </button>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {activeTab === 'business' && (
-              <div className="tab-content">
-                <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {featuredServices.map((service) => {
-                    const colors = getColorClasses(service.color);
-                    return (
-                      <Link key={service.id} href={service.link} className={`group modern-card bg-linear-to-br from-${service.color}-50 to-white dark:from-gray-800 dark:to-gray-800 p-8 border-2 ${colors.border} ${colors.hover} flex flex-col relative overflow-hidden`}>
-                        <div className={`absolute top-0 right-0 w-24 h-24 bg-${service.color}-400/10 rounded-bl-full`}></div>
-                        
-                        <div className="relative mb-6">
-                          <div className={`absolute inset-0 bg-${service.color}-500 rounded-xl blur-lg opacity-20 group-hover:opacity-40 transition-opacity pointer-events-none`}></div>
-                          <div className={`relative p-4 bg-linear-to-br from-${service.color}-500 to-${service.color}-600 rounded-xl shadow-lg group-hover:scale-110 transition-transform duration-300 text-5xl flex items-center justify-center`}>
-                            {service.icon}
-                          </div>
-                        </div>
-
-                        <h4 className={`text-2xl font-black mb-3 text-gray-900 dark:text-white ${colors.text} transition-colors`}>
-                          {service.title}
-                        </h4>
-                        <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed grow">
-                          {service.description}
-                        </p>
-                        
-                        <div className={`flex items-center gap-2 ${colors.text} font-semibold group-hover:gap-3 transition-all`}>
-                          <span>Learn More</span>
-                          <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                          </svg>
-                        </div>
-                      </Link>
-                    );
-                  })}
-                </div>
-              </div>
-            )}
-          </div>
         </div>
-      </section>
 
-      <section id="about" className="relative py-12 md:py-16 bg-linear-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 transition-colors duration-300 overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'radial-gradient(circle at 2px 2px, rgb(59, 130, 246) 1px, transparent 0)',
-            backgroundSize: '40px 40px',
-          }}></div>
-        </div>
-        <div className="absolute top-20 right-10 w-72 h-72 bg-blue-400/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 left-10 w-80 h-80 bg-purple-400/10 rounded-full blur-3xl"></div>
-
-        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Header */}
-          <div className="text-center mb-10">
-            <div className="flex flex-wrap justify-center gap-2 mb-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-100 dark:bg-blue-900/30 rounded-full">
-                <svg className="w-4 h-4 text-blue-600 dark:text-blue-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span className="text-xs font-bold text-blue-600 dark:text-blue-400">ISO 9001:2015</span>
+        <div className="bg-black text-white p-8 md:p-16 flex flex-col justify-center relative overflow-hidden grain-overlay">
+          <h3 className="font-display font-black text-4xl uppercase mb-12 border-b-4 border-white/30 pb-4 relative z-10">
+            Core Operating Principles
+          </h3>
+          
+          <div className="space-y-8 relative z-10">
+            <div className="flex gap-6 items-start group cursor-default">
+              <div className="font-display font-black text-6xl text-transparent group-hover:text-neon transition-colors duration-300" style={{ WebkitTextStroke: '2px white' }}>
+                01
               </div>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-green-100 dark:bg-green-900/30 rounded-full">
-                <svg className="w-4 h-4 text-green-600 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span className="text-xs font-bold text-green-600 dark:text-green-400">MSME Registered</span>
-              </div>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-purple-100 dark:bg-purple-900/30 rounded-full">
-                <svg className="w-4 h-4 text-purple-600 dark:text-purple-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span className="text-xs font-bold text-purple-600 dark:text-purple-400">MII Certified</span>
+              <div>
+                <h4 className="font-display font-bold text-2xl uppercase mb-2 tracking-wide text-neon">Trust Metrics</h4>
+                <p className="font-mono text-sm text-gray-400 leading-relaxed">Engineering relationships through verifiable reliability and consistent output delivery.</p>
               </div>
             </div>
             
-            <h2 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white mb-4">
-              About Yuva Global Enterprises
-            </h2>
-            <p className="text-xl md:text-2xl text-blue-600 dark:text-blue-400 font-bold italic">
-              &quot;We believe in trust, transparency, and teamwork.&quot;
-            </p>
-          </div>
-
-          {/* Main Description */}
-          <div className="max-w-4xl mx-auto mb-12">
-            <div className="modern-card bg-white dark:bg-gray-800 p-8 md:p-10 border border-gray-200 dark:border-gray-700 text-center">
-              <p className="text-lg md:text-xl leading-relaxed text-gray-700 dark:text-gray-300 mb-6">
-                Yuva Global Enterprises, an <span className="inline-flex items-center gap-1 px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 font-bold rounded-lg">ISO 9001:2015 Certified</span> company, is a leading provider of comprehensive facility management and support services.
-              </p>
-              <p className="text-lg md:text-xl leading-relaxed text-gray-700 dark:text-gray-300">
-                Our expertise spans a wide range of industries, ensuring that our clients receive tailored solutions to meet their unique needs. We are dedicated to offering top-tier services that help businesses operate smoothly and efficiently.
-              </p>
-            </div>
-          </div>
-
-          {/* Core Values Grid */}
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-12">
-            <div className="group modern-card bg-linear-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 p-8 text-center border-2 border-blue-200 dark:border-blue-800 hover:border-blue-400 dark:hover:border-blue-600 transition-all hover:shadow-xl">
-              <div className="w-20 h-20 bg-linear-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform shadow-lg">
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
+            <div className="flex gap-6 items-start group cursor-default">
+              <div className="font-display font-black text-6xl text-transparent group-hover:text-accent transition-colors duration-300" style={{ WebkitTextStroke: '2px white' }}>
+                02
               </div>
-              <h4 className="text-2xl font-black text-gray-900 dark:text-white mb-3">Trust</h4>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">Building lasting relationships through reliability, honesty, and consistent delivery of our promises.</p>
-            </div>
-
-            <div className="group modern-card bg-linear-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 p-8 text-center border-2 border-purple-200 dark:border-purple-800 hover:border-purple-400 dark:hover:border-purple-600 transition-all hover:shadow-xl">
-              <div className="w-20 h-20 bg-linear-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform shadow-lg">
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                </svg>
-              </div>
-              <h4 className="text-2xl font-black text-gray-900 dark:text-white mb-3">Transparency</h4>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">Operating with complete openness and clarity in all our business dealings and communications.</p>
-            </div>
-
-            <div className="group modern-card bg-linear-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 p-8 text-center border-2 border-green-200 dark:border-green-800 hover:border-green-400 dark:hover:border-green-600 transition-all hover:shadow-xl">
-              <div className="w-20 h-20 bg-linear-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform shadow-lg">
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </div>
-              <h4 className="text-2xl font-black text-gray-900 dark:text-white mb-3">Teamwork</h4>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">Collaborating seamlessly to achieve excellence and deliver exceptional results together.</p>
-            </div>
-          </div>
-
-          {/* Stats & CTA */}
-          <div className="flex flex-col items-center gap-8">
-            <div className="grid grid-cols-3 gap-8 max-w-3xl w-full">
-              <div className="text-center">
-                <div className="text-4xl md:text-5xl font-black text-blue-600 dark:text-blue-400 mb-2">1000+</div>
-                <div className="text-sm md:text-base text-gray-600 dark:text-gray-400 font-semibold">Happy Clients</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl md:text-5xl font-black text-purple-600 dark:text-purple-400 mb-2">15+</div>
-                <div className="text-sm md:text-base text-gray-600 dark:text-gray-400 font-semibold">Years Experience</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl md:text-5xl font-black text-green-600 dark:text-green-400 mb-2">24/7</div>
-                <div className="text-sm md:text-base text-gray-600 dark:text-gray-400 font-semibold">Support Available</div>
+              <div>
+                <h4 className="font-display font-bold text-2xl uppercase mb-2 tracking-wide text-accent">Transparent Comms</h4>
+                <p className="font-mono text-sm text-gray-400 leading-relaxed">Unfiltered clarity in all transactions, proposals, and logistical operations.</p>
               </div>
             </div>
 
-            <Link href="/contact" className="btn-primary text-lg">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-              Get in Touch
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Certifications Section */}
-      <section id="certifications" className="py-10 md:py-14 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-4">
-              Our Certifications
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Recognized and certified by leading authorities for quality and excellence
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {/* ISO Certification */}
-            <div className="group modern-card bg-linear-to-br from-blue-50 to-white dark:from-gray-800 dark:to-gray-800 p-8 text-center border-2 border-blue-200 dark:border-blue-800 hover:border-blue-400 dark:hover:border-blue-600 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-20 h-20 bg-blue-400/10 rounded-bl-full"></div>
-              
-              <div className="relative mb-6">
-                <div className="absolute inset-0 bg-blue-500 rounded-2xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
-                <div className="relative bg-white dark:bg-gray-700 p-4 rounded-2xl shadow-lg group-hover:scale-105 transition-transform duration-300 h-48 flex items-center justify-center">
-                  <Image 
-                    src="/images/iso.png" 
-                    alt="ISO 9001:2015 Certification" 
-                    width={200} 
-                    height={200} 
-                    className="w-auto h-full max-h-40 object-contain"
-                  />
-                </div>
+            <div className="flex gap-6 items-start group cursor-default">
+              <div className="font-display font-black text-6xl text-transparent group-hover:text-white transition-colors duration-300" style={{ WebkitTextStroke: '2px white' }}>
+                03
               </div>
-              
-              <h3 className="text-xl font-black text-gray-900 dark:text-white mb-2">
-                ISO 9001:2015
-              </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                Quality Management System Certified
-              </p>
-              
-              <div className="mt-4 inline-flex items-center gap-1 text-blue-600 dark:text-blue-400 text-sm font-semibold">
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                Verified
+              <div>
+                <h4 className="font-display font-bold text-2xl uppercase mb-2 tracking-wide">Sync / Teamwork</h4>
+                <p className="font-mono text-sm text-gray-400 leading-relaxed">Synchronized execution protocols guaranteeing exceptional facility management.</p>
               </div>
             </div>
-
-            {/* MSME Certification */}
-            <div className="group modern-card bg-linear-to-br from-green-50 to-white dark:from-gray-800 dark:to-gray-800 p-8 text-center border-2 border-green-200 dark:border-green-800 hover:border-green-400 dark:hover:border-green-600 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-20 h-20 bg-green-400/10 rounded-bl-full"></div>
-              
-              <div className="relative mb-6">
-                <div className="absolute inset-0 bg-green-500 rounded-2xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
-                <div className="relative bg-white dark:bg-gray-700 p-4 rounded-2xl shadow-lg group-hover:scale-105 transition-transform duration-300 h-48 flex items-center justify-center">
-                  <Image 
-                    src="/images/msme.png" 
-                    alt="MSME Registered" 
-                    width={200} 
-                    height={200} 
-                    className="w-auto h-full max-h-40 object-contain"
-                  />
-                </div>
-              </div>
-              
-              <h3 className="text-xl font-black text-gray-900 dark:text-white mb-2">
-                MSME Registered
-              </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                Micro, Small & Medium Enterprises
-              </p>
-              
-              <div className="mt-4 inline-flex items-center gap-1 text-green-600 dark:text-green-400 text-sm font-semibold">
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                Verified
-              </div>
-            </div>
-
-            {/* MII Certification */}
-            <div className="group modern-card bg-linear-to-br from-purple-50 to-white dark:from-gray-800 dark:to-gray-800 p-8 text-center border-2 border-purple-200 dark:border-purple-800 hover:border-purple-400 dark:hover:border-purple-600 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-20 h-20 bg-purple-400/10 rounded-bl-full"></div>
-              
-              <div className="relative mb-6">
-                <div className="absolute inset-0 bg-purple-500 rounded-2xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
-                <div className="relative bg-white dark:bg-gray-700 p-4 rounded-2xl shadow-lg group-hover:scale-105 transition-transform duration-300 h-48 flex items-center justify-center">
-                  <Image 
-                    src="/images/mii.png" 
-                    alt="MII Certification" 
-                    width={200} 
-                    height={200} 
-                    className="w-auto h-full max-h-40 object-contain"
-                  />
-                </div>
-              </div>
-              
-              <h3 className="text-xl font-black text-gray-900 dark:text-white mb-2">
-                MII Certified
-              </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                Ministry of Industry Initiative
-              </p>
-              
-              <div className="mt-4 inline-flex items-center gap-1 text-purple-600 dark:text-purple-400 text-sm font-semibold">
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                Verified
-              </div>
-            </div>
-          </div>
-
-          {/* Trust Badge */}
-          <div className="mt-12 text-center">
-            <div className="inline-flex items-center gap-3 px-6 py-3 bg-linear-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-full border border-blue-200 dark:border-blue-800">
-              <svg className="w-6 h-6 text-blue-600 dark:text-blue-400" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-              </svg>
-              <span className="text-sm font-bold text-gray-900 dark:text-white">
-                Trusted & Certified by Leading Authorities
-              </span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section id="testimonials" className="py-12 md:py-16 bg-linear-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/30 rounded-full mb-4">
-              <svg className="w-4 h-4 text-blue-600 dark:text-blue-400" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z" />
-              </svg>
-              <span className="text-sm font-bold text-blue-600 dark:text-blue-400">CLIENT TESTIMONIALS</span>
-            </div>
-            <h2 className="text-3xl md:text-5xl font-black text-gray-900 dark:text-white mb-4">
-              What Our Clients Say
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Don't just take our word for it - hear from our satisfied clients about their experience with us
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
-            {testimonials.map((testimonial) => (
-              <div key={testimonial.id} className="group modern-card bg-white dark:bg-gray-800 p-6 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-all hover:shadow-xl relative">
-                {/* Quote Icon */}
-                <div className="absolute top-4 right-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                  <svg className="w-12 h-12 text-blue-600 dark:text-blue-400" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                  </svg>
-                </div>
-
-                {/* Rating Stars */}
-                <div className="flex gap-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                </div>
-
-                {/* Testimonial Text */}
-                <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed italic">
-                  "{testimonial.text}"
-                </p>
-
-                {/* Client Info */}
-                <div className="border-t border-gray-200 dark:border-gray-700 pt-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-linear-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
-                      {testimonial.name.charAt(0)}
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-gray-900 dark:text-white">{testimonial.name}</h4>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">{testimonial.role}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* CTA */}
-          <div className="text-center mt-12">
-            <p className="text-gray-600 dark:text-gray-400 mb-6">
-              Join hundreds of satisfied clients who trust us with their business needs
-            </p>
-            <Link href="/contact" className="btn-primary text-lg">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-              </svg>
-              Share Your Experience
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
           </div>
         </div>
       </section>

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { ReactNode } from 'react';
-import { services, getColorClasses } from '@/data';
+import { services } from '@/data';
 
 interface ServicePageLayoutProps {
   title: string;
@@ -20,174 +20,122 @@ export default function ServicePageLayout({
   children
 }: ServicePageLayoutProps) {
   return (
-    <main className="grow">
-      {/* Hero Section */}
-      <section className="relative bg-linear-to-br from-blue-600 via-blue-700 to-purple-600 text-white overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
-            backgroundSize: '40px 40px',
-          }}></div>
-        </div>
-        
-        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl mb-6 animate-scale-in">
-              {icon}
+    <main className="grow bg-gray-100 flex flex-col">
+      {/* HERO SECTION */}
+      <section className="bg-black text-white border-b-4 border-black relative grain-overlay">
+        <div className="grid lg:grid-cols-[1fr_300px] divide-x-4 divide-white items-stretch min-h-[40vh]">
+          
+          <div className="p-8 md:p-16 flex flex-col justify-center relative z-10">
+            <div className="flex flex-wrap gap-4 mb-8 reveal-up delay-1">
+              <div className="px-4 py-1 bg-neon text-black font-mono font-bold uppercase text-xs tracking-widest brutal-shadow !shadow-white">
+                B2B SERVICE PROTOCOL
+              </div>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 animate-slide-up">
+            
+            <h1 className="font-display font-black text-5xl md:text-7xl leading-[0.9] tracking-tighter uppercase mb-6 reveal-up delay-2 text-accent">
               {title}
             </h1>
-            <p className="text-xl md:text-2xl text-blue-100 leading-relaxed animate-fade-in">
+            
+            <p className="font-mono text-lg leading-relaxed max-w-2xl border-l-4 border-white pl-4 reveal-up delay-3 text-gray-300">
               {description}
             </p>
           </div>
+
+          <div className="hidden lg:flex items-center justify-center p-8 border-t-4 lg:border-t-0 border-white relative z-10 bg-white/5">
+            <div className="scale-150 transform">
+              {icon}
+            </div>
+          </div>
+
         </div>
-        
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-linear-to-t from-white dark:from-gray-900 to-transparent"></div>
       </section>
 
-      {/* Main Content */}
-      <section className="section-padding bg-white dark:bg-gray-900">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-5xl mx-auto">
-            {/* Features Grid */}
-            <div className="mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-                What We Offer
+      {/* MAIN CONTENT */}
+      <section className="p-8 md:p-16 border-b-4 border-black grid-bg">
+        <div className="grid lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
+          
+          {/* Features */}
+          <div className="reveal-up delay-2">
+            <h2 className="font-display font-black text-4xl uppercase mb-8 border-b-4 border-black pb-4 inline-block">
+              Operational Scope
+            </h2>
+            <div className="flex flex-col gap-4 font-mono font-bold text-sm uppercase">
+              {features.map((feature, index) => (
+                <div key={index} className="flex items-start gap-4 p-4 border-4 border-black bg-white hover:bg-neon transition-colors brutal-shadow">
+                  <div className="w-6 h-6 bg-black text-white flex items-center justify-center shrink-0 mt-0.5">
+                    {index + 1}
+                  </div>
+                  <span className="leading-relaxed">{feature}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Benefits */}
+          {benefits && benefits.length > 0 && (
+            <div className="reveal-up delay-3">
+              <h2 className="font-display font-black text-4xl uppercase mb-8 border-b-4 border-black pb-4 inline-block">
+                Strategic Advantages
               </h2>
-              <div className="grid md:grid-cols-2 gap-6">
-                {features.map((feature, index) => (
-                  <div
-                    key={index}
-                    className="modern-card bg-linear-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-800/50 p-6 border border-gray-200 dark:border-gray-700"
-                  >
-                    <div className="flex items-start gap-4">
-                      <div className="shrink-0 w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center">
-                        <svg className="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                      </div>
-                      <p className="text-gray-700 dark:text-gray-300 font-medium leading-relaxed">
-                        {feature}
-                      </p>
-                    </div>
+              <div className="grid grid-cols-2 gap-4 font-mono font-bold text-xs text-center uppercase tracking-widest">
+                {benefits.map((benefit, index) => (
+                  <div key={index} className="p-6 border-4 border-black bg-white flex items-center justify-center min-h-[120px] hover:bg-black hover:text-white transition-colors diagonal-accent">
+                    {benefit}
                   </div>
                 ))}
               </div>
             </div>
+          )}
 
-            {/* Benefits Section */}
-            {benefits && benefits.length > 0 && (
-              <div className="mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-                  Why Choose Us
-                </h2>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {benefits.map((benefit, index) => (
-                    <div
-                      key={index}
-                      className="modern-card bg-white dark:bg-gray-800 p-6 text-center border border-gray-200 dark:border-gray-700"
-                    >
-                      <div className="w-12 h-12 bg-linear-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center mx-auto mb-4">
-                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
-                      </div>
-                      <p className="text-gray-700 dark:text-gray-300 font-medium">
-                        {benefit}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
+        </div>
 
-            {/* Additional Content */}
+        {/* Optional custom children */}
+        {children && (
+          <div className="max-w-7xl mx-auto mt-12 bg-white border-4 border-black p-8 brutal-shadow">
             {children}
-
-            {/* CTA Section */}
-            <div className="modern-card bg-linear-to-br from-blue-600 to-purple-600 p-8 md:p-12 text-center text-white">
-              <h3 className="text-2xl md:text-3xl font-bold mb-4">
-                Ready to Get Started?
-              </h3>
-              <p className="text-lg text-blue-100 mb-8 max-w-2xl mx-auto">
-                Contact us today to discuss your requirements and get a customized solution for your business.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-blue-600 font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                  Contact Us
-                </Link>
-                <Link
-                  href="/"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-bold rounded-xl border-2 border-white/30 hover:bg-white/20 transition-all duration-300"
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                  </svg>
-                  Back to Home
-                </Link>
-              </div>
-            </div>
           </div>
+        )}
+      </section>
+
+      {/* CTA SECTION */}
+      <section className="bg-accent text-white p-8 md:p-16 text-center border-b-4 border-black grain-overlay relative">
+        <h2 className="font-display font-black text-5xl uppercase mb-6 relative z-10 text-black" style={{ WebkitTextStroke: '2px white' }}>
+          Engage Protocol
+        </h2>
+        <p className="font-mono text-xl mb-8 max-w-2xl mx-auto relative z-10 font-bold">
+          Contact our operations center to deploy {title.toLowerCase()} for your facility.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-6 justify-center relative z-10">
+          <Link href="/contact" className="brutal-btn bg-white text-black hover:bg-black hover:text-white !shadow-[6px_6px_0px_0px_#000]">
+            INITIALIZE CONTACT &rarr;
+          </Link>
+          <Link href="/business-solutions" className="brutal-btn bg-transparent border-white text-white hover:bg-white hover:text-black !shadow-[6px_6px_0px_0px_#fff]">
+            BACK TO DIRECTORY
+          </Link>
         </div>
       </section>
 
-      {/* Other Services Section */}
-      <section className="py-12 md:py-16 bg-linear-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-10">
-              <h2 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-4">
-                Explore Our Other Services
-              </h2>
-              <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                Discover more ways we can help your business thrive
-              </p>
-            </div>
-
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-              {services.filter(s => s.title !== title).slice(0, 6).map((service) => {
-                const colors = getColorClasses(service.color);
-                return (
-                  <Link 
-                    key={service.id}
-                    href={service.link} 
-                    className={`modern-card bg-white dark:bg-gray-800 p-6 border-2 ${colors.border} ${colors.hover} transition-all group`}
-                  >
-                    <div className="text-4xl mb-3">{service.icon}</div>
-                    <h3 className={`text-lg font-bold text-gray-900 dark:text-white mb-2 ${colors.text}`}>
-                      {service.title}
-                    </h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                      {service.description.split('.')[0]}
-                    </p>
-                  </Link>
-                );
-              })}
-            </div>
-
-            <div className="text-center">
-              <Link
-                href="/business-solutions"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-linear-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                </svg>
-                View All Business Services
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </div>
-          </div>
+      {/* OTHER SERVICES TICKER/GRID */}
+      <section className="p-8 md:p-16 bg-white">
+        <h2 className="font-display font-black text-3xl uppercase mb-8 border-l-8 border-neon pl-4">
+          Adjacent Services
+        </h2>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {services.filter(s => s.title !== title).slice(0, 4).map((service) => (
+            <Link key={service.id} href={service.link} className="border-4 border-black p-6 group hover:bg-black hover:text-white transition-colors hover-lift flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 bg-neon text-black flex items-center justify-center mb-6 border-2 border-black group-hover:bg-accent group-hover:text-white group-hover:border-white transition-colors">
+                  <div className="scale-75">{service.icon}</div>
+                </div>
+                <h3 className="font-display font-black text-xl uppercase mb-2 leading-tight">
+                  {service.title}
+                </h3>
+              </div>
+              <div className="font-mono font-bold text-xs uppercase tracking-widest mt-4 opacity-0 group-hover:opacity-100 transition-opacity text-neon">
+                VIEW &rarr;
+              </div>
+            </Link>
+          ))}
         </div>
       </section>
     </main>

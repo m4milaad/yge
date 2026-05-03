@@ -1,200 +1,179 @@
 'use client';
 
 import Link from 'next/link';
-import { services, getColorClasses } from '@/data';
+import { services } from '@/data';
 
 export default function BusinessSolutions() {
-
   return (
-    <div className="bg-linear-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
-      {/* Hero Section */}
-      <section className="relative py-12 md:py-16 bg-linear-to-br from-purple-600 via-purple-700 to-blue-600 overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
-            backgroundSize: '40px 40px',
-          }}></div>
-        </div>
-
-        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full mb-6">
-              <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-              </svg>
-              <span className="text-sm font-bold text-white">ISO 9001:2015 CERTIFIED</span>
+    <>
+      {/* HERO SECTION */}
+      <section className="relative bg-white border-b-4 border-black overflow-hidden grid-bg grain-overlay">
+        <div className="grid lg:grid-cols-[1fr_400px] divide-x-4 divide-black items-stretch min-h-[60vh]">
+          {/* Left Content */}
+          <div className="flex flex-col justify-center p-8 md:p-16 relative z-10">
+            <div className="flex flex-wrap gap-4 mb-8 reveal-up delay-1">
+              <div className="px-4 py-1 bg-black text-neon font-mono font-bold uppercase text-xs tracking-widest brutal-shadow">
+                B2B Services Division
+              </div>
             </div>
-
-            <h1 className="text-4xl md:text-6xl font-black text-white mb-6">
-              Complete Business Solutions
+            
+            <h1 className="font-display font-black text-5xl md:text-7xl leading-[0.9] tracking-tighter uppercase mb-6 reveal-up delay-2">
+              <span className="block text-black">Complete Business</span>
+              <span className="block text-transparent" style={{ WebkitTextStroke: '2px black' }}>Solutions</span>
             </h1>
-            <p className="text-xl md:text-2xl text-purple-100 mb-8 leading-relaxed">
-              Comprehensive B2B services to streamline your operations and enhance productivity
+            
+            <div className="w-full h-4 bg-accent mb-6 reveal-strike delay-3"></div>
+            
+            <p className="font-mono text-lg font-bold mb-6 text-black max-w-2xl bg-neon inline-block p-2 uppercase reveal-up delay-4">
+              [ Streamlining Operations & Enhancing Productivity ]
             </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact" className="btn-primary bg-white text-purple-600 hover:bg-gray-100">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                </svg>
+            
+            <p className="text-lg md:text-xl font-mono text-black leading-relaxed max-w-2xl mb-12 border-l-8 border-black pl-6 reveal-up delay-5">
+              Comprehensive B2B services engineered to optimize your facility management and infrastructural operations.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-6 reveal-up delay-6">
+              <Link href="/contact" className="brutal-btn text-xl group bg-black text-white hover:bg-neon hover:text-black">
                 Request a Quote
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                <svg className="w-6 h-6 ml-4 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth="3" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>
-              <Link href="/contact" className="btn-secondary bg-transparent border-2 border-white text-white hover:bg-white/10">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-                Contact Us
-              </Link>
+            </div>
+          </div>
+
+          {/* Right Panel */}
+          <div className="hidden lg:flex flex-col bg-black text-white p-8 relative grain-overlay justify-end border-l-4 border-black">
+            <div className="absolute top-0 right-0 p-4 font-mono font-bold text-accent text-sm flex items-center gap-2 z-10">
+              <span className="w-2 h-2 bg-accent inline-block pulse-dot" />
+              SYSTEM ACTIVE
+            </div>
+            
+            <div className="border-4 border-white p-6 reveal-scale delay-4 diagonal-accent">
+              <h3 className="font-display font-black text-3xl uppercase mb-4 text-neon">
+                ISO 9001:2015
+              </h3>
+              <p className="font-mono text-sm leading-relaxed border-l-2 border-white pl-4">
+                Quality assured services meeting strict international standards for corporate efficiency.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section className="py-12 md:py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-6">
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-3">
-              Our Business Services
-            </h2>
-            <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-              Tailored solutions for businesses of all sizes. From facility management to corporate gifting, we've got you covered.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {services.map((service) => {
-              const colors = getColorClasses(service.color);
-              return (
-                <Link
-                  key={service.id}
-                  href={service.link}
-                  className={`group modern-card bg-white dark:bg-gray-800 p-6 flex flex-col border-2 ${colors.border} ${colors.hover} transition-all`}
-                >
-                  <div className={`text-5xl mb-4 ${colors.bg} w-20 h-20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform`}>
+      {/* SERVICES GRID */}
+      <section className="bg-gray-100 border-b-4 border-black pb-16">
+        <h2 className="font-display font-black text-4xl md:text-6xl uppercase p-6 md:p-8 bg-neon border-b-4 border-black">
+          Our Capabilities
+        </h2>
+        
+        <div className="p-8 md:p-16">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {services.map((service, idx) => (
+              <Link 
+                key={service.id} 
+                href={service.link}
+                className={`bg-white border-4 border-black flex flex-col group hover-lift relative reveal-up delay-${Math.min((idx % 8) + 1, 8)}`}
+              >
+                <div className="p-6 border-b-4 border-black bg-black text-neon group-hover:bg-accent group-hover:text-white transition-colors flex items-center justify-between">
+                  <div className="scale-150 transform origin-left">
                     {service.icon}
                   </div>
-                  
-                  <h3 className={`text-xl font-bold mb-3 ${colors.text} group-hover:underline`}>
+                  <span className="font-mono font-bold text-xs uppercase tracking-widest border border-current px-2 py-1">
+                    0{idx + 1}
+                  </span>
+                </div>
+                
+                <div className="p-6 flex flex-col grow">
+                  <h3 className="font-display font-black text-2xl uppercase mb-4 leading-none group-hover:text-accent transition-colors">
                     {service.title}
                   </h3>
                   
-                  <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed grow">
+                  <p className="font-mono text-sm leading-relaxed grow mb-6 border-l-4 border-black pl-4 group-hover:border-accent transition-colors">
                     {service.description}
                   </p>
                   
-                  <div className="space-y-2 mb-4">
-                    {service.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-center gap-2 text-xs text-gray-600 dark:text-gray-400">
-                        <svg className={`w-4 h-4 ${colors.text} shrink-0`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                        <span>{feature}</span>
+                  <div className="space-y-3 mb-8 font-mono text-xs font-bold uppercase">
+                    {service.features.map((feature, fIdx) => (
+                      <div key={fIdx} className="flex items-center gap-2">
+                        <div className="w-2 h-2 bg-black shrink-0"></div>
+                        {feature}
                       </div>
                     ))}
                   </div>
                   
-                  <div className={`flex items-center ${colors.text} font-semibold text-sm group-hover:gap-2 transition-all`}>
-                    Learn More
-                    <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
+                  <div className="mt-auto brutal-btn w-full text-sm py-3 bg-white text-black group-hover:bg-black group-hover:text-white group-hover:!shadow-[4px_4px_0_0_#000] !shadow-none border-t-4 border-black">
+                    Execute Protocol &rarr;
                   </div>
-                </Link>
-              );
-            })}
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section className="py-12 md:py-16 bg-linear-to-br from-purple-50 to-blue-50 dark:from-gray-800 dark:to-gray-900">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-6">
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-3">
-              Why Choose Yuva Global Enterprises?
+      {/* WHY CHOOSE US */}
+      <section className="bg-white border-b-4 border-black relative grain-overlay">
+        <div className="grid lg:grid-cols-2 divide-y-4 lg:divide-y-0 lg:divide-x-4 divide-black">
+          <div className="p-8 md:p-16 flex flex-col justify-center">
+            <h2 className="font-display font-black text-5xl md:text-6xl uppercase mb-8 leading-[0.9]">
+              Operational <span className="text-neon block mt-2" style={{ WebkitTextStroke: '2px black' }}>Excellence</span>
             </h2>
-            <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-              Your trusted partner for comprehensive business solutions
+            <p className="font-mono text-lg mb-8 leading-relaxed max-w-md border-l-8 border-accent pl-4">
+              Your trusted partner for comprehensive business solutions. We engineer environments where your enterprise can thrive.
             </p>
           </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-600 text-white rounded-2xl mb-4">
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
+          
+          <div className="grid grid-cols-2 divide-x-4 divide-y-4 lg:divide-y-0 divide-black border-t-4 lg:border-t-0 border-black">
+            <div className="p-8 flex flex-col justify-between hover:bg-neon transition-colors group">
+              <div className="font-display font-black text-5xl mb-4 group-hover:text-white transition-colors" style={{ WebkitTextStroke: '2px black' }}>24/7</div>
+              <div>
+                <h3 className="font-display font-bold text-xl uppercase mb-2">Continuous Ops</h3>
+                <p className="font-mono text-sm">Round-the-clock assistance and monitoring for critical facilities.</p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">ISO Certified</h3>
-              <p className="text-gray-600 dark:text-gray-400">Quality assured services meeting international standards</p>
+            </div>
+            
+            <div className="p-8 flex flex-col justify-between hover:bg-black hover:text-white transition-colors group">
+              <div className="font-display font-black text-5xl mb-4 text-transparent group-hover:text-accent transition-colors" style={{ WebkitTextStroke: '2px currentColor' }}>EXP</div>
+              <div>
+                <h3 className="font-display font-bold text-xl uppercase mb-2">Expert Forces</h3>
+                <p className="font-mono text-sm text-gray-600 group-hover:text-gray-400">Highly trained professionals dedicated to rigorous standards.</p>
+              </div>
+            </div>
+            
+            <div className="p-8 flex flex-col justify-between hover:bg-accent hover:text-white transition-colors group border-t-4 border-black col-span-2 sm:col-span-1">
+              <div className="font-display font-black text-5xl mb-4 text-transparent group-hover:text-black transition-colors" style={{ WebkitTextStroke: '2px currentColor' }}>RSP</div>
+              <div>
+                <h3 className="font-display font-bold text-xl uppercase mb-2">Rapid Deploy</h3>
+                <p className="font-mono text-sm text-gray-600 group-hover:text-gray-200">Immediate turnaround protocols for emergent service requests.</p>
+              </div>
             </div>
 
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600 text-white rounded-2xl mb-4">
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
+            <div className="p-8 flex flex-col justify-between hover:bg-gray-100 transition-colors group border-t-4 border-black col-span-2 sm:col-span-1">
+              <div className="font-display font-black text-5xl mb-4" style={{ WebkitTextStroke: '1px black' }}>ISO</div>
+              <div>
+                <h3 className="font-display font-bold text-xl uppercase mb-2">Certified Quality</h3>
+                <p className="font-mono text-sm">Strict adherence to ISO 9001:2015 frameworks.</p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">24/7 Support</h3>
-              <p className="text-gray-600 dark:text-gray-400">Round-the-clock assistance for all your needs</p>
-            </div>
-
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-green-600 text-white rounded-2xl mb-4">
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Expert Team</h3>
-              <p className="text-gray-600 dark:text-gray-400">Trained professionals dedicated to excellence</p>
-            </div>
-
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-red-600 text-white rounded-2xl mb-4">
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Fast Response</h3>
-              <p className="text-gray-600 dark:text-gray-400">Quick turnaround time for all service requests</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-12 md:py-16 bg-linear-to-r from-purple-600 to-blue-600">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
-            Ready to Transform Your Business?
-          </h2>
-          <p className="text-xl text-purple-100 mb-8 max-w-2xl mx-auto">
-            Get in touch with us today and discover how we can help streamline your operations
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="btn-primary bg-white text-purple-600 hover:bg-gray-100 text-lg px-10 py-4">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-              </svg>
-              Request a Quote
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-            <Link href="/contact" className="btn-secondary bg-transparent border-2 border-white text-white hover:bg-white/10 text-lg px-10 py-4">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-              Contact Us
-            </Link>
-          </div>
+      {/* CTA */}
+      <section className="bg-black text-white p-8 md:p-16 text-center relative grain-overlay border-b-4 border-black">
+        <h2 className="font-display font-black text-5xl md:text-7xl uppercase mb-6 relative z-10 text-neon">
+          Initiate Contact
+        </h2>
+        <p className="font-mono text-xl mb-8 max-w-2xl mx-auto relative z-10">
+          Transform your operational framework today. Request a tailored proposal.
+        </p>
+        <div className="relative z-10">
+          <Link href="/contact" className="brutal-btn bg-accent text-white border-white hover:bg-white hover:text-black !shadow-[6px_6px_0px_0px_#fff] hover:!shadow-[8px_8px_0px_0px_#fff]">
+            Access Terminal
+          </Link>
         </div>
       </section>
-    </div>
+    </>
   );
 }

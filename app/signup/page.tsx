@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 
 export default function SignupPage() {
   const [formData, setFormData] = useState({
@@ -15,41 +14,36 @@ export default function SignupPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.fullName.trim() || !formData.email.trim() || !formData.password.trim() || !formData.confirmPassword.trim()) {
-      alert('Please fill in all required fields.');
+      alert('INCOMPLETE DATA: All fields required.');
       return;
     }
     if (formData.password !== formData.confirmPassword) {
-      alert('Passwords do not match. Please try again.');
+      alert('MISMATCH: Security keys do not align.');
       return;
     }
-    alert('Sign up blocked by admin.');
+    alert('REGISTRATION BLOCKED: System restricted by admin directives.');
   };
 
   return (
-    <main className="grow min-h-screen flex items-center justify-center bg-linear-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: 'radial-gradient(circle at 2px 2px, rgb(59, 130, 246) 1px, transparent 0)',
-          backgroundSize: '40px 40px',
-        }}></div>
-      </div>
+    <main className="grow min-h-screen flex items-center justify-center bg-gray-100 p-4 md:p-8 grid-bg relative">
+      <div className="absolute inset-0 pointer-events-none grain-overlay opacity-50"></div>
 
-      <div className="relative w-full max-w-md">
-        <div className="modern-card bg-white dark:bg-gray-800 p-8 sm:p-10 shadow-2xl border border-gray-200 dark:border-gray-700">
-          {/* Logo & Header */}
-          <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-linear-to-br from-primary-600 to-accent-600 rounded-2xl mb-4 shadow-lg">
-              <Image src="/images/ygeLogo.png" alt="YGE Logo" width={48} height={48} className="w-12 h-12" />
-            </div>
-            <h1 className="text-3xl font-black text-gray-900 dark:text-white mb-2">Create Account</h1>
-            <p className="text-gray-600 dark:text-gray-400">Join Yuva Global Enterprises</p>
+      <div className="w-full max-w-lg bg-white border-4 border-black brutal-shadow relative z-10 reveal-up diagonal-accent">
+        {/* Header */}
+        <div className="bg-black text-white p-8 border-b-4 border-black flex justify-between items-center">
+          <div>
+            <h1 className="font-display font-black text-4xl uppercase text-accent tracking-tighter">Register</h1>
+            <p className="font-mono text-xs uppercase tracking-widest text-gray-400 mt-2">Create New Entity</p>
           </div>
+          <div className="w-4 h-4 bg-neon pulse-dot border-2 border-white"></div>
+        </div>
 
-          {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-5">
+        {/* Form */}
+        <div className="p-8 md:p-10">
+          <form onSubmit={handleSubmit} className="space-y-6 font-mono">
             <div>
-              <label htmlFor="fullName" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                Full Name
+              <label htmlFor="fullName" className="block text-xs font-bold uppercase tracking-widest mb-2 text-black">
+                Designation (Full Name)
               </label>
               <input
                 id="fullName"
@@ -57,14 +51,14 @@ export default function SignupPage() {
                 required
                 value={formData.fullName}
                 onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                placeholder="John Doe"
-                className="input-field"
+                placeholder="[ ENTER DESIGNATION ]"
+                className="w-full border-4 border-black p-4 bg-gray-50 focus:bg-white focus:outline-none focus:border-neon transition-colors font-bold"
               />
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                Email Address
+              <label htmlFor="email" className="block text-xs font-bold uppercase tracking-widest mb-2 text-black">
+                Comm-Link (Email)
               </label>
               <input
                 id="email"
@@ -72,75 +66,59 @@ export default function SignupPage() {
                 required
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                placeholder="you@example.com"
-                className="input-field"
+                placeholder="[ ENTER EMAIL ]"
+                className="w-full border-4 border-black p-4 bg-gray-50 focus:bg-white focus:outline-none focus:border-neon transition-colors font-bold"
               />
             </div>
 
-            <div>
-              <label htmlFor="password" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                Password
-              </label>
-              <input
-                id="password"
-                type="password"
-                required
-                value={formData.password}
-                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                placeholder="••••••••"
-                className="input-field"
-              />
-            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="password" className="block text-xs font-bold uppercase tracking-widest mb-2 text-black">
+                  Security Key
+                </label>
+                <input
+                  id="password"
+                  type="password"
+                  required
+                  value={formData.password}
+                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                  placeholder="********"
+                  className="w-full border-4 border-black p-4 bg-gray-50 focus:bg-white focus:outline-none focus:border-neon transition-colors font-bold tracking-widest"
+                />
+              </div>
 
-            <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                Confirm Password
-              </label>
-              <input
-                id="confirmPassword"
-                type="password"
-                required
-                value={formData.confirmPassword}
-                onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
-                placeholder="••••••••"
-                className="input-field"
-              />
+              <div>
+                <label htmlFor="confirmPassword" className="block text-xs font-bold uppercase tracking-widest mb-2 text-black">
+                  Verify Key
+                </label>
+                <input
+                  id="confirmPassword"
+                  type="password"
+                  required
+                  value={formData.confirmPassword}
+                  onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
+                  placeholder="********"
+                  className="w-full border-4 border-black p-4 bg-gray-50 focus:bg-white focus:outline-none focus:border-neon transition-colors font-bold tracking-widest"
+                />
+              </div>
             </div>
 
             <button
               type="submit"
-              className="w-full btn-primary"
+              className="w-full brutal-btn bg-black text-white hover:bg-accent hover:text-white py-4 mt-8 !shadow-[6px_6px_0px_0px_var(--color-accent)]"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
-              </svg>
-              Create Account
+              REQUEST AUTHORIZATION
             </button>
           </form>
 
-          {/* Divider */}
-          <div className="relative my-8">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-300 dark:border-gray-600"></div>
-            </div>
-            <div className="relative flex justify-center text-sm">
-              <span className="px-4 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400">
-                Already have an account?
-              </span>
-            </div>
+          <div className="mt-8 border-t-4 border-black pt-8 flex flex-col items-center gap-4">
+            <p className="font-mono text-xs font-bold uppercase tracking-widest text-center">
+              Already possess clearance?
+            </p>
+            <Link href="/login" className="brutal-btn w-full bg-white text-black border-4 border-black hover:bg-black hover:text-white !shadow-none text-sm py-3">
+              Initialize Login
+            </Link>
           </div>
-
-          {/* Sign In Link */}
-          <Link href="/login" className="block w-full btn-secondary text-center">
-            Sign In
-          </Link>
-        </div>
-
-        {/* Back to Home */}
-        <div className="mt-6 text-center">
-          <Link href="/" className="text-sm font-semibold text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400">
-            ← Back to Home
-          </Link>
         </div>
       </div>
     </main>

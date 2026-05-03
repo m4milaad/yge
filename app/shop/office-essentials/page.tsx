@@ -2,56 +2,91 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
 import { useCart } from '@/context/CartContext';
 import { getProductsByCategory } from '@/data/products';
 
 export default function OfficeEssentialsPage() {
   const { addToCart } = useCart();
-  const [addedItems, setAddedItems] = useState<number[]>([]);
   const products = getProductsByCategory('office');
 
   const handleAddToCart = (product: typeof products[0]) => {
-    addToCart(product);
-    setAddedItems(prev => [...prev, product.id]);
-    setTimeout(() => {
-      setAddedItems(prev => prev.filter(id => id !== product.id));
-    }, 2000);
+    addToCart({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image
+    });
   };
 
   return (
-    <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
-      <div className="mb-12">
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-gray-100 mb-4">Office Essentials</h1>
-        <p className="text-lg text-gray-600 dark:text-gray-400">
-          Professional office supplies to keep your workplace organized and efficient.
-        </p>
-      </div>
-
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-        {products.map((product) => (
-          <div key={product.id} className="modern-card bg-white dark:bg-gray-800 flex flex-col shadow-lg dark:shadow-xl dark:shadow-gray-900/50">
-            <Image src={product.image} alt={product.name} width={400} height={300} className="w-full h-52 object-cover" />
-            <div className="p-6 flex flex-col flex-grow">
-              <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100">{product.name}</h3>
-              <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 flex-grow">{product.description}</p>
-              <p className="text-blue-600 dark:text-blue-400 font-bold text-lg mb-4">₹{product.price}</p>
-              <button
-                onClick={() => handleAddToCart(product)}
-                className="mt-auto inline-block text-base font-medium py-2.5 px-6 rounded-lg transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-75 bg-green-600 hover:bg-green-700 text-white focus:ring-green-400 hover:shadow-lg hover:transform hover:scale-105 hover:-translate-y-0.5 active:scale-95 active:shadow-md"
-              >
-                {addedItems.includes(product.id) ? 'Added!' : 'Add to Cart'}
-              </button>
+    <main className="grow bg-gray-100 flex flex-col">
+      <section className="bg-black text-white border-b-4 border-black py-12 px-8 md:px-16 relative grain-overlay">
+        <div className="relative z-10 flex flex-col md:flex-row justify-between items-end gap-8">
+          <div className="max-w-2xl">
+            <div className="inline-block px-3 py-1 bg-accent text-white font-mono font-bold text-xs uppercase tracking-widest border-2 border-white mb-6">
+              CATEGORY: OFFICE CORE
             </div>
+            <h1 className="font-display font-black text-5xl md:text-7xl uppercase mb-4 leading-none text-neon">
+              Office <br/>Essentials
+            </h1>
+            <p className="font-mono text-lg border-l-4 border-white pl-4 text-gray-300">
+              Professional office supplies engineered to keep your workplace organized and efficient.
+            </p>
           </div>
-        ))}
-      </div>
+          <div className="font-mono font-bold text-5xl tracking-tighter opacity-20">
+            {products.length.toString().padStart(3, '0')}
+          </div>
+        </div>
+      </section>
 
-      <div className="mt-12 text-center">
-        <Link href="/" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-colors duration-300">
-          ← Back to Home
-        </Link>
-      </div>
+      <section className="p-8 md:p-16 grid-bg grow border-b-4 border-black">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          {products.map((product, idx) => (
+            <div key={product.id} className={`bg-white border-4 border-black flex flex-col group hover-lift relative reveal-up delay-${Math.min((idx % 8) + 1, 8)}`}>
+              <div className="border-b-4 border-black overflow-hidden bg-gray-100 relative aspect-square p-4">
+                <div className="absolute top-0 left-0 bg-black text-neon font-mono font-bold text-[10px] px-2 py-1 uppercase border-r-4 border-b-4 border-black z-10">
+                  {product.category}
+                </div>
+                <Image 
+                  src={product.image} 
+                  alt={product.name} 
+                  fill
+                  className="object-contain p-8 mix-blend-multiply group-hover:scale-110 transition-transform duration-500 grayscale group-hover:grayscale-0" 
+                />
+              </div>
+              
+              <div className="p-6 flex flex-col grow">
+                <h3 className="font-display font-black text-2xl uppercase mb-2 leading-tight">
+                  {product.name}
+                </h3>
+                <p className="font-mono text-xs text-gray-600 mb-6 grow line-clamp-3">
+                  {product.description}
+                </p>
+                
+                <div className="flex items-end justify-between mb-6 border-t-2 border-black pt-4">
+                  <span className="font-display font-black text-4xl leading-none">₹{product.price}</span>
+                  <div className="w-8 h-8 rounded-full border-2 border-black flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-neon">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="square" strokeLinejoin="miter" strokeWidth="3" d="M12 4v16m8-8H4"/></svg>
+                  </div>
+                </div>
+                
+                <button 
+                  onClick={() => handleAddToCart(product)}
+                  className="brutal-btn w-full text-sm py-3 bg-white text-black hover:bg-black hover:text-white !shadow-none hover:shadow-none border-4 border-black"
+                >
+                  ADD TO CART
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-16 border-t-4 border-black pt-8">
+          <Link href="/shop/all" className="brutal-btn bg-black text-white hover:bg-neon hover:text-black">
+            &larr; ACCESS FULL DIRECTORY
+          </Link>
+        </div>
+      </section>
     </main>
   );
 }

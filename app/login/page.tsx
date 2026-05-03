@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -20,37 +19,32 @@ export default function LoginPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim() || !password.trim()) {
-      showCustomAlert('Missing Information', 'Please enter both email and password.');
+      showCustomAlert('Access Denied', 'Authentication parameters incomplete.');
       return;
     }
-    showCustomAlert('Not Registered', 'This account is not registered with YGE. Please create an account or contact support.');
+    showCustomAlert('Unrecognized Entity', 'Credentials not found in YGE secure database. Request clearance.');
   };
 
   return (
-    <main className="grow min-h-screen flex items-center justify-center bg-linear-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: 'radial-gradient(circle at 2px 2px, rgb(59, 130, 246) 1px, transparent 0)',
-          backgroundSize: '40px 40px',
-        }}></div>
-      </div>
+    <main className="grow min-h-screen flex items-center justify-center bg-gray-100 p-4 md:p-8 grid-bg relative">
+      <div className="absolute inset-0 pointer-events-none grain-overlay opacity-50"></div>
 
-      <div className="relative w-full max-w-md">
-        <div className="modern-card bg-white dark:bg-gray-800 p-8 sm:p-10 shadow-2xl border border-gray-200 dark:border-gray-700">
-          {/* Logo & Header */}
-          <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-linear-to-br from-primary-600 to-accent-600 rounded-2xl mb-4 shadow-lg">
-              <Image src="/images/ygeLogo.png" alt="YGE Logo" width={48} height={48} className="w-12 h-12" />
-            </div>
-            <h1 className="text-3xl font-black text-gray-900 dark:text-white mb-2">Welcome Back!</h1>
-            <p className="text-gray-600 dark:text-gray-400">Login to access your account</p>
+      <div className="w-full max-w-lg bg-white border-4 border-black brutal-shadow relative z-10 reveal-up diagonal-accent">
+        {/* Header */}
+        <div className="bg-black text-white p-8 border-b-4 border-black flex justify-between items-center">
+          <div>
+            <h1 className="font-display font-black text-4xl uppercase text-neon tracking-tighter">Login</h1>
+            <p className="font-mono text-xs uppercase tracking-widest text-gray-400 mt-2">Auth Module V1.0</p>
           </div>
+          <div className="w-4 h-4 bg-accent pulse-dot border-2 border-white"></div>
+        </div>
 
-          {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-6">
+        {/* Form */}
+        <div className="p-8 md:p-10">
+          <form onSubmit={handleSubmit} className="space-y-6 font-mono">
             <div>
-              <label htmlFor="email" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                Email Address
+              <label htmlFor="email" className="block text-xs font-bold uppercase tracking-widest mb-2 text-black">
+                Ident Code (Email)
               </label>
               <input
                 id="email"
@@ -60,14 +54,14 @@ export default function LoginPage() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="you@example.com"
-                className="input-field"
+                placeholder="[ ENTER EMAIL ]"
+                className="w-full border-4 border-black p-4 bg-gray-50 focus:bg-white focus:outline-none focus:border-neon transition-colors font-bold"
               />
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                Password
+              <label htmlFor="password" className="block text-xs font-bold uppercase tracking-widest mb-2 text-black">
+                Security Key (Password)
               </label>
               <input
                 id="password"
@@ -77,97 +71,70 @@ export default function LoginPage() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
-                className="input-field"
+                placeholder="********"
+                className="w-full border-4 border-black p-4 bg-gray-50 focus:bg-white focus:outline-none focus:border-neon transition-colors font-bold tracking-widest"
               />
             </div>
 
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <input
-                  id="remember-me"
-                  name="remember-me"
-                  type="checkbox"
-                  className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 dark:border-gray-600 rounded"
-                />
-                <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-700 dark:text-gray-300">
-                  Remember me
-                </label>
-              </div>
+            <div className="flex items-center justify-between text-xs font-bold uppercase">
+              <label className="flex items-center cursor-pointer group">
+                <div className="relative">
+                  <input type="checkbox" className="sr-only" />
+                  <div className="w-6 h-6 border-4 border-black bg-white group-hover:bg-neon transition-colors flex items-center justify-center">
+                    <svg className="w-4 h-4 text-black hidden group-focus-within:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </div>
+                </div>
+                <span className="ml-3 tracking-wider">Persist Session</span>
+              </label>
 
               <button
                 type="button"
-                onClick={() => showCustomAlert('Password Reset', 'Please contact YGE admin to reset your password. Email: YuvaGEntp@gmail.com or call: +91 8899108592')}
-                className="text-sm font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+                onClick={() => showCustomAlert('Override Request', 'Contact YGE Admin -> YuvaGEntp@gmail.com / TEL: +91 8899108592')}
+                className="text-accent hover:text-black hover:underline tracking-wider"
               >
-                Forgot password?
+                Reset Key
               </button>
             </div>
 
             <button
               type="submit"
-              className="w-full btn-primary"
+              className="w-full brutal-btn bg-black text-white hover:bg-neon hover:text-black py-4 mt-8"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
-              </svg>
-              Sign In
+              INITIALIZE CONNECTION
             </button>
           </form>
 
-          {/* Divider */}
-          <div className="relative my-8">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-300 dark:border-gray-600"></div>
-            </div>
-            <div className="relative flex justify-center text-sm">
-              <span className="px-4 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400">
-                New to Yuva Global?
-              </span>
-            </div>
+          <div className="mt-8 border-t-4 border-black pt-8 flex flex-col items-center gap-4">
+            <p className="font-mono text-xs font-bold uppercase tracking-widest text-center">
+              New to Yuva Global Enterprise?
+            </p>
+            <Link href="/signup" className="brutal-btn w-full bg-white text-black border-4 border-black hover:bg-black hover:text-white !shadow-none text-sm py-3">
+              Request Access
+            </Link>
           </div>
-
-          {/* Sign Up Link */}
-          <Link href="/signup" className="block w-full btn-secondary text-center">
-            Create Account
-          </Link>
-        </div>
-
-        {/* Back to Home */}
-        <div className="mt-6 text-center">
-          <Link href="/" className="text-sm font-semibold text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400">
-            ← Back to Home
-          </Link>
         </div>
       </div>
 
-      {/* Custom Modal */}
+      {/* Modal */}
       {showModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-          <div className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-6 border border-gray-200 dark:border-gray-700 animate-in fade-in zoom-in duration-200">
-            {/* Icon */}
-            <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4 bg-red-100 dark:bg-red-900/30 rounded-full">
-              <svg className="w-8 h-8 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+          <div className="bg-white border-4 border-black brutal-shadow max-w-sm w-full p-8 relative reveal-scale diagonal-accent">
+            <div className="w-16 h-16 bg-accent border-4 border-black flex items-center justify-center mb-6 mx-auto">
+              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth="3" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
               </svg>
             </div>
-
-            {/* Title */}
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white text-center mb-3">
+            <h3 className="font-display font-black text-2xl uppercase text-center mb-4">
               {modalTitle}
             </h3>
-
-            {/* Message */}
-            <p className="text-gray-600 dark:text-gray-400 text-center mb-6">
+            <p className="font-mono text-sm font-bold text-center mb-8 border-l-4 border-accent pl-4 text-left">
               {modalMessage}
             </p>
-
-            {/* Close Button */}
             <button
               onClick={() => setShowModal(false)}
-              className="w-full btn-primary"
+              className="brutal-btn w-full bg-black text-white hover:bg-neon hover:text-black text-sm"
             >
-              Got it
+              ACKNOWLEDGE
             </button>
           </div>
         </div>

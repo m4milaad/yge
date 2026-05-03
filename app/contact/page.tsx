@@ -32,8 +32,7 @@ export default function ContactPage() {
       const data = await response.json();
 
       if (data.success) {
-        setResult("Success! Thank you for your inquiry. We will get back to you within 24 hours.");
-        // Reset form
+        setResult("Success! Data transmitted. We will respond within T-24 hours.");
         setFormData({
           name: '',
           email: '',
@@ -43,10 +42,10 @@ export default function ContactPage() {
           message: ''
         });
       } else {
-        setResult("Error: Something went wrong. Please try again or contact us directly.");
+        setResult("Error: Transmission failed. Check connection or manual dial.");
       }
     } catch (error) {
-      setResult("Error: Unable to send message. Please try again later.");
+      setResult("Error: Sub-system failure. Try later.");
     } finally {
       setIsSubmitting(false);
     }
@@ -60,343 +59,221 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="bg-linear-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
-      {/* Hero Section */}
-      <section className="relative py-12 md:py-16 bg-linear-to-br from-purple-600 via-blue-600 to-purple-700 overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
-            backgroundSize: '40px 40px',
-          }}></div>
-        </div>
-
-        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full mb-6">
-              <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-              </svg>
-              <span className="text-sm font-bold text-white">24/7 SUPPORT AVAILABLE</span>
+    <>
+      {/* HERO SECTION */}
+      <section className="relative bg-black text-white border-b-4 border-black overflow-hidden grain-overlay">
+        <div className="grid lg:grid-cols-[1fr_300px] divide-x-4 divide-white items-stretch min-h-[40vh]">
+          <div className="flex flex-col justify-center p-8 md:p-16 relative z-10">
+            <div className="flex flex-wrap gap-4 mb-6 reveal-up delay-1">
+              <div className="px-4 py-1 bg-accent border-2 border-white font-mono font-bold uppercase text-xs tracking-widest text-white brutal-shadow !shadow-white">
+                24/7 SUPPORT ACTIVE
+              </div>
             </div>
-
-            <h1 className="text-4xl md:text-6xl font-black text-white mb-6">
-              Get in Touch
+            
+            <h1 className="font-display font-black text-5xl md:text-7xl leading-[0.9] tracking-tighter uppercase mb-6 reveal-up delay-2">
+              Secure <span className="text-neon block mt-2">Comm-Link</span>
             </h1>
-            <p className="text-xl md:text-2xl text-purple-100 mb-8 leading-relaxed">
-              Have questions? We're here to help. Fill out the form below and we'll respond within 24 hours.
+            
+            <p className="text-lg font-mono leading-relaxed max-w-xl border-l-4 border-white pl-4 reveal-up delay-3">
+              Establish a direct connection. Transmit your operational requirements below for immediate processing.
             </p>
+          </div>
+          <div className="hidden lg:flex items-center justify-center relative z-10 p-8">
+            <svg className="w-full h-full text-white/20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <circle cx="12" cy="12" r="10" strokeWidth="1" strokeDasharray="4 4"/>
+              <circle cx="12" cy="12" r="6" strokeWidth="1" />
+              <path d="M12 2v4m0 12v4M2 12h4m12 0h4" strokeWidth="2" />
+            </svg>
           </div>
         </div>
       </section>
 
-      {/* Contact Form & Info Section */}
-      <section className="py-12 md:py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {/* Contact Information */}
-            <div className="lg:col-span-1 space-y-8">
-              <div>
-                <h2 className="text-3xl font-black text-gray-900 dark:text-white mb-6">
-                  Contact Information
-                </h2>
-                <p className="text-gray-600 dark:text-gray-400 mb-8">
-                  Reach out to us through any of these channels
-                </p>
-              </div>
-
+      <section className="bg-gray-100 border-b-4 border-black">
+        <div className="grid lg:grid-cols-5 divide-y-4 lg:divide-y-0 lg:divide-x-4 divide-black items-stretch">
+          
+          {/* INFO SIDEBAR */}
+          <div className="lg:col-span-2 bg-white flex flex-col">
+            <div className="p-6 md:p-8 border-b-4 border-black bg-neon">
+              <h2 className="font-display font-black text-3xl uppercase">Data Centers</h2>
+            </div>
+            
+            <div className="flex flex-col divide-y-4 divide-black grow">
               {/* Main Office */}
-              <div className="modern-card bg-white dark:bg-gray-800 p-6 border border-gray-200 dark:border-gray-700">
-                <div className="flex items-start gap-4">
-                  <div className="shrink-0 w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center">
-                    <svg className="w-6 h-6 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+              <div className="p-8 hover:bg-gray-50 transition-colors">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 bg-black text-neon flex items-center justify-center border-2 border-black">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                     </svg>
                   </div>
-                  <div>
-                    <h3 className="font-bold text-gray-900 dark:text-white mb-2">Main Office</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
-                      Ocean Greens 20/A, Surateng, Rainawari, Near JLNM Hospital Srinagar, Jammu and Kashmir – 190013
-                    </p>
-                    <a href="tel:01943559824" className="text-sm text-purple-600 dark:text-purple-400 hover:underline">
-                      📞 0194-3559824
-                    </a>
-                  </div>
+                  <h3 className="font-display font-black text-2xl uppercase">HQ Node</h3>
+                </div>
+                <p className="font-mono text-sm mb-4 leading-relaxed bg-gray-100 p-4 border-l-4 border-black">
+                  Ocean Greens 20/A, Surateng, Rainawari, Near JLNM Hospital Srinagar, J&K – 190013
+                </p>
+                <div className="font-mono font-bold text-sm uppercase">
+                  COM: <a href="tel:01943559824" className="text-accent hover:underline">0194-3559824</a>
                 </div>
               </div>
 
-              {/* Branch Office */}
-              <div className="modern-card bg-white dark:bg-gray-800 p-6 border border-gray-200 dark:border-gray-700">
-                <div className="flex items-start gap-4">
-                  <div className="shrink-0 w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center">
-                    <svg className="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+              {/* Branch */}
+              <div className="p-8 hover:bg-gray-50 transition-colors">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 bg-black text-white flex items-center justify-center border-2 border-black">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                     </svg>
                   </div>
-                  <div>
-                    <h3 className="font-bold text-gray-900 dark:text-white mb-2">Branch Office</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
-                      Shop No 3, Shah Jeelan Complex, Nowgam, Srinagar, Jammu and Kashmir 190015
-                    </p>
-                    <a href="tel:+919796333322" className="text-sm text-blue-600 dark:text-blue-400 hover:underline block mb-1">
-                      📞 +91 9796 3333 22
-                    </a>
-                    <a href="mailto:YuvaGEntp@gmail.com" className="text-sm text-blue-600 dark:text-blue-400 hover:underline">
-                      ✉️ YuvaGEntp@gmail.com
-                    </a>
-                  </div>
+                  <h3 className="font-display font-black text-2xl uppercase">Branch Node</h3>
+                </div>
+                <p className="font-mono text-sm mb-4 leading-relaxed bg-gray-100 p-4 border-l-4 border-black">
+                  Shop No 3, Shah Jeelan Complex, Nowgam, Srinagar, J&K 190015
+                </p>
+                <div className="font-mono font-bold text-sm uppercase flex flex-col gap-2">
+                  <span>TEL: <a href="tel:+919796333322" className="text-accent hover:underline">+91 9796 3333 22</a></span>
+                  <span>NET: <a href="mailto:YuvaGEntp@gmail.com" className="text-neon bg-black px-2 py-1 inline-block hover:bg-accent hover:text-white transition-colors">YuvaGEntp@gmail.com</a></span>
                 </div>
               </div>
 
-              {/* Business Hours */}
-              <div className="modern-card bg-linear-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 p-6 border border-purple-200 dark:border-purple-700">
-                <div className="flex items-start gap-4">
-                  <div className="shrink-0 w-12 h-12 bg-purple-600 rounded-xl flex items-center justify-center">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-gray-900 dark:text-white mb-2">Business Hours</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                      Monday - Saturday: 9:00 AM - 6:00 PM<br />
-                      Sunday: Closed<br />
-                      <span className="text-purple-600 dark:text-purple-400 font-semibold">24/7 Emergency Support Available</span>
-                    </p>
-                  </div>
+              {/* Quick Links */}
+              <div className="p-8 bg-black text-white grain-overlay relative">
+                <h3 className="font-display font-black text-2xl uppercase mb-6 text-neon relative z-10">Direct Protocols</h3>
+                <div className="grid grid-cols-2 gap-4 relative z-10">
+                  <a href="tel:01943559824" className="border-2 border-white p-4 text-center hover:bg-white hover:text-black transition-colors font-mono text-xs font-bold uppercase">
+                    Voice Link
+                  </a>
+                  <a href="https://wa.me/919796333322" target="_blank" rel="noopener noreferrer" className="border-2 border-accent bg-accent text-white p-4 text-center hover:bg-white hover:text-black hover:border-white transition-colors font-mono text-xs font-bold uppercase">
+                    WhatsApp
+                  </a>
                 </div>
               </div>
             </div>
+          </div>
 
-            {/* Contact Form */}
-            <div className="lg:col-span-2">
-              <div className="modern-card bg-white dark:bg-gray-800 p-8 md:p-10 border border-gray-200 dark:border-gray-700 relative z-10">
-                <h2 className="text-3xl font-black text-gray-900 dark:text-white mb-6">
-                  Send Us a Message
-                </h2>
-                <p className="text-gray-600 dark:text-gray-400 mb-8">
-                  Fill out the form below and our team will get back to you within 24 hours.
-                </p>
-
-                <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
-                  <div className="grid md:grid-cols-2 gap-6 relative z-10">
-                    <div className="relative z-10">
-                      <label htmlFor="name" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
-                        Full Name *
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        required
-                        value={formData.name}
-                        onChange={handleChange}
-                        className="input-field relative z-10"
-                        placeholder="John Doe"
-                      />
-                    </div>
-
-                    <div className="relative z-10">
-                      <label htmlFor="email" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
-                        Email Address *
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        required
-                        value={formData.email}
-                        onChange={handleChange}
-                        className="input-field relative z-10"
-                        placeholder="john@company.com"
-                      />
-                    </div>
+          {/* FORM AREA */}
+          <div className="lg:col-span-3 bg-white p-8 md:p-16 grid-bg relative">
+            <div className="bg-white border-4 border-black brutal-shadow p-8 relative z-10 diagonal-accent">
+              <h2 className="font-display font-black text-4xl uppercase mb-8 border-b-4 border-black pb-4">
+                Transmission Form
+              </h2>
+              
+              <form onSubmit={handleSubmit} className="space-y-6 font-mono">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="name" className="block text-xs font-bold uppercase tracking-widest mb-2">Operator Name *</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      required
+                      value={formData.name}
+                      onChange={handleChange}
+                      className="w-full border-4 border-black p-3 bg-gray-50 focus:bg-white focus:outline-none focus:border-neon focus:ring-0 transition-colors"
+                      placeholder="[ ENTER NAME ]"
+                    />
                   </div>
-
-                  <div className="grid md:grid-cols-2 gap-6 relative z-10">
-                    <div className="relative z-10">
-                      <label htmlFor="phone" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
-                        Phone Number *
-                      </label>
-                      <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        required
-                        value={formData.phone}
-                        onChange={handleChange}
-                        className="input-field relative z-10"
-                        placeholder="+91 9876543210"
-                      />
-                    </div>
-
-                    <div className="relative z-10">
-                      <label htmlFor="company" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
-                        Company Name
-                      </label>
-                      <input
-                        type="text"
-                        id="company"
-                        name="company"
-                        value={formData.company}
-                        onChange={handleChange}
-                        className="input-field relative z-10"
-                        placeholder="Your Company"
-                      />
-                    </div>
+                  <div>
+                    <label htmlFor="email" className="block text-xs font-bold uppercase tracking-widest mb-2">Return Address (Email) *</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="w-full border-4 border-black p-3 bg-gray-50 focus:bg-white focus:outline-none focus:border-neon focus:ring-0 transition-colors"
+                      placeholder="[ ENTER EMAIL ]"
+                    />
                   </div>
+                </div>
 
-                  <div className="relative z-10">
-                    <label htmlFor="service" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
-                      Service Interested In *
-                    </label>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="phone" className="block text-xs font-bold uppercase tracking-widest mb-2">Comms Number *</label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      required
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className="w-full border-4 border-black p-3 bg-gray-50 focus:bg-white focus:outline-none focus:border-neon focus:ring-0 transition-colors"
+                      placeholder="[ ENTER PHONE ]"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="company" className="block text-xs font-bold uppercase tracking-widest mb-2">Enterprise / Unit</label>
+                    <input
+                      type="text"
+                      id="company"
+                      name="company"
+                      value={formData.company}
+                      onChange={handleChange}
+                      className="w-full border-4 border-black p-3 bg-gray-50 focus:bg-white focus:outline-none focus:border-neon focus:ring-0 transition-colors"
+                      placeholder="[ ENTER COMPANY ]"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="service" className="block text-xs font-bold uppercase tracking-widest mb-2">Target Protocol (Service) *</label>
+                  <div className="relative">
                     <select
                       id="service"
                       name="service"
                       required
                       value={formData.service}
                       onChange={handleChange}
-                      className="input-field relative z-10"
+                      className="w-full border-4 border-black p-3 bg-gray-50 focus:bg-white focus:outline-none focus:border-neon focus:ring-0 transition-colors appearance-none font-bold"
                     >
-                      <option value="">Select a service</option>
+                      <option value="">[ SELECT PARAMETER ]</option>
                       <option value="facility-management">Facility Management</option>
                       <option value="mechanized-cleaning">Mechanized Cleaning & Housekeeping</option>
                       <option value="security-services">Security Services</option>
-                      <option value="manpower-outsourcing">Skilled/Unskilled Manpower Outsourcing</option>
+                      <option value="manpower-outsourcing">Skilled/Unskilled Manpower</option>
                       <option value="hospitality-services">Hospitality Services</option>
-                      <option value="canteen-catering">Canteen & Catering Services</option>
-                      <option value="infrastructural-facility">Infrastructural Facility Management</option>
-                      <option value="pest-control">Beat Patrol & Pest Control</option>
-                      <option value="admin-services">Administrative Services</option>
                       <option value="general-order-supplies">General Order Supplies</option>
-                      <option value="corporate-gifting">Corporate Gifting</option>
-                      <option value="event-management">Event Management</option>
                       <option value="retail-products">Retail Products</option>
-                      <option value="other">Other</option>
+                      <option value="other">Other Directive</option>
                     </select>
-                  </div>
-
-                  <div className="relative z-10">
-                    <label htmlFor="message" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
-                      Your Message *
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows={6}
-                      required
-                      value={formData.message}
-                      onChange={handleChange}
-                      className="input-field resize-none relative z-10"
-                      placeholder="Tell us about your requirements, project scope, timeline, and any specific needs..."
-                    ></textarea>
-                  </div>
-
-                  {result && (
-                    <div className={`p-4 rounded-lg ${result.startsWith('Success') ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200' : 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200'}`}>
-                      <p className="font-semibold">{result}</p>
+                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-black">
+                      <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                     </div>
-                  )}
-
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="flex-1 btn-primary text-lg py-4 disabled:opacity-50 disabled:cursor-not-allowed"
-                    >
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                      </svg>
-                      {isSubmitting ? 'Sending...' : 'Send Message'}
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </button>
-                    <Link
-                      href="/"
-                      className="btn-secondary text-lg py-4"
-                    >
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                      </svg>
-                      Back to Home
-                    </Link>
                   </div>
-                </form>
-              </div>
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-xs font-bold uppercase tracking-widest mb-2">Encrypted Payload (Message) *</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={5}
+                    required
+                    value={formData.message}
+                    onChange={handleChange}
+                    className="w-full border-4 border-black p-3 bg-gray-50 focus:bg-white focus:outline-none focus:border-neon focus:ring-0 transition-colors resize-none"
+                    placeholder="[ ENTER DIRECTIVES HERE ]"
+                  ></textarea>
+                </div>
+
+                {result && (
+                  <div className={`p-4 border-4 border-black font-bold uppercase text-sm ${result.startsWith('Success') ? 'bg-neon text-black' : 'bg-accent text-white'}`}>
+                    {result}
+                  </div>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full brutal-btn bg-black text-white hover:bg-neon hover:text-black py-4 disabled:opacity-50"
+                >
+                  {isSubmitting ? 'UPLOADING...' : 'TRANSMIT DIRECTIVE'}
+                </button>
+              </form>
             </div>
           </div>
         </div>
       </section>
-
-      {/* Quick Contact Options */}
-      <section className="py-12 md:py-16 bg-linear-to-br from-purple-50 to-blue-50 dark:from-gray-800 dark:to-gray-900">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-6">
-            <h2 className="text-2xl md:text-3xl font-black text-gray-900 dark:text-white mb-3">
-              Prefer to Contact Us Directly?
-            </h2>
-            <p className="text-gray-600 dark:text-gray-400">
-              Choose your preferred method of communication
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-            <a
-              href="tel:01943559824"
-              className="modern-card bg-white dark:bg-gray-800 p-6 text-center border border-gray-200 dark:border-gray-700 hover:border-purple-500 dark:hover:border-purple-500 transition-all group"
-            >
-              <div className="w-14 h-14 bg-purple-100 dark:bg-purple-900/30 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                <svg className="w-7 h-7 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
-              </div>
-              <h3 className="font-bold text-gray-900 dark:text-white mb-2">Call Us</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400">0194-3559824</p>
-            </a>
-
-            <a
-              href="mailto:YuvaGEntp@gmail.com"
-              className="modern-card bg-white dark:bg-gray-800 p-6 text-center border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 transition-all group"
-            >
-              <div className="w-14 h-14 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                <svg className="w-7 h-7 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <h3 className="font-bold text-gray-900 dark:text-white mb-2">Email Us</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400">YuvaGEntp@gmail.com</p>
-            </a>
-
-            <a
-              href="https://wa.me/919796333322"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="modern-card bg-white dark:bg-gray-800 p-6 text-center border border-gray-200 dark:border-gray-700 hover:border-green-500 dark:hover:border-green-500 transition-all group"
-            >
-              <div className="w-14 h-14 bg-green-100 dark:bg-green-900/30 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                <svg className="w-7 h-7 text-green-600 dark:text-green-400" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.33 3.43 16.79L2.05 22L7.31 20.62C8.72 21.33 10.33 21.7 12.04 21.7C17.5 21.7 21.95 17.25 21.95 11.79C21.95 6.33 17.5 2 12.04 2Z" />
-                </svg>
-              </div>
-              <h3 className="font-bold text-gray-900 dark:text-white mb-2">WhatsApp</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400">+91 9796 3333 22</p>
-            </a>
-
-            <Link
-              href="/business-solutions"
-              className="modern-card bg-linear-to-br from-purple-100 to-blue-100 dark:from-purple-900/30 dark:to-blue-900/30 p-6 text-center border-2 border-purple-300 dark:border-purple-700 hover:border-purple-500 dark:hover:border-purple-500 transition-all group"
-            >
-              <div className="w-14 h-14 bg-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                </svg>
-              </div>
-              <h3 className="font-bold text-gray-900 dark:text-white mb-2">Our Services</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400">View All Solutions</p>
-            </Link>
-          </div>
-        </div>
-      </section>
-    </div>
+    </>
   );
 }

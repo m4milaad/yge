@@ -6,7 +6,6 @@ import Image from 'next/image';
 import { useCart } from '@/context/CartContext';
 import CartPanel from './CartPanel';
 import SearchModal from './SearchModal';
-import { companyInfo, navigationLinks } from '@/data/company';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -18,339 +17,197 @@ export default function Header() {
   const { cartCount } = useCart();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   return (
-    <header className={`sticky top-0 z-50 transition-all duration-300 ${
-      scrolled 
-        ? 'bg-white/98 dark:bg-gray-900/98 backdrop-blur-xl shadow-lg border-b border-gray-200/50 dark:border-gray-800/50' 
-        : 'bg-white dark:bg-gray-900 shadow-md'
-    }`}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-24">
-          <div className="shrink-0">
-            <Link href="/" className="group flex items-center space-x-2 sm:space-x-3 transition-all duration-300">
-              <div className="relative">
-                <Image 
-                  src="/images/ygeLogo.png" 
-                  alt="YGE Logo" 
-                  width={64} 
-                  height={64} 
-                  className="h-14 w-14 sm:h-16 sm:w-16 group-hover:scale-105 transition-transform duration-300" 
-                />
-              </div>
-              <div className="block">
-                <span className="text-lg sm:text-2xl font-black tracking-tight bg-linear-to-r from-yellow-400 to-yellow-600 dark:from-yellow-500 dark:to-yellow-600 bg-clip-text text-transparent">
-                  Yuva Global
-                </span>
-                <span className="block text-center text-sm sm:text-lg font-bold tracking-wider text-yellow-400 dark:text-yellow-500">
-                  Enterprises
-                </span>
-              </div>
-            </Link>
-          </div>
+    <header className={`sticky top-0 z-50 bg-white transition-shadow duration-300 ${scrolled ? 'shadow-[0_8px_0_0_#000]' : ''}`}>
+      <div className="flex h-20 items-stretch divide-x-4 divide-black border-b-4 border-black">
+        {/* LOGO */}
+        <div className="flex items-center px-4 shrink-0 bg-neon hover:bg-accent transition-colors duration-200">
+          <Link href="/" className="flex items-center gap-3 group">
+            <div className="relative border-2 border-black bg-white p-0.5">
+              <Image 
+                src="/images/ygeLogo.png" 
+                alt="YGE Logo" 
+                width={36} 
+                height={36} 
+                className="w-9 h-9 object-contain" 
+              />
+            </div>
+            <div className="hidden sm:block">
+              <span className="block font-display text-xl font-black uppercase leading-none tracking-tighter text-black group-hover:text-white transition-colors">
+                Yuva Global
+              </span>
+              <span className="block font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-black/70 group-hover:text-white/80 transition-colors">
+                Enterprises
+              </span>
+            </div>
+          </Link>
+        </div>
 
-          <nav className="hidden md:flex space-x-1 items-center">
-            <Link href="/" className="group relative px-4 py-2 rounded-lg text-sm font-semibold text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-800 transition-all duration-300">
-              Home
-            </Link>
-            
-            <div className="dropdown relative">
-              <button className="group relative px-4 py-2 rounded-lg text-sm font-semibold text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-800 transition-all duration-300 focus:outline-none flex items-center gap-1">
-                For Your Business
-                <svg className="w-4 h-4 text-gray-400 transition-transform duration-300 group-hover:rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-                </svg>
-              </button>
-              <div className="dropdown-menu py-2 w-72 bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200/50 dark:border-gray-700/50">
-                <Link href="/services/facility-management" className="block px-4 py-2.5 text-sm text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                  Facility Management Services
+        {/* NAVIGATION - DESKTOP */}
+        <nav className="hidden lg:flex items-stretch justify-center divide-x-4 divide-black flex-grow">
+          <Link href="/" className="flex items-center justify-center px-4 xl:px-6 font-display font-bold uppercase text-base hover:bg-neon hover:text-black transition-colors flex-1 relative group">
+            Home
+            <span className="absolute bottom-0 left-0 w-full h-1 bg-neon scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+          </Link>
+          
+          {/* Business Dropdown */}
+          <div className="relative flex items-stretch dropdown group flex-1">
+            <button className="flex items-center justify-center w-full px-4 xl:px-6 font-display font-bold uppercase text-base hover:bg-black hover:text-white transition-colors cursor-pointer outline-none relative">
+              For Your Business
+              <svg className="w-3 h-3 ml-2 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeWidth="3" strokeLinecap="square" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div className="dropdown-menu absolute top-full left-0 w-80 bg-white brutal-border ml-[-4px]" style={{boxShadow: '8px 8px 0px 0px #000'}}>
+              <div className="p-4 font-mono text-xs font-bold bg-black text-neon uppercase tracking-widest border-b-4 border-black flex items-center gap-2">
+                <span className="w-2 h-2 bg-neon inline-block pulse-dot" />
+                Facility Services Directory
+              </div>
+              <div className="flex flex-col divide-y-2 divide-black">
+                <Link href="/services/facility-management" className="px-4 py-3 font-mono text-sm font-bold hover:bg-neon hover:pl-6 transition-all uppercase">
+                  Facility Management
                 </Link>
-                <Link href="/services/mechanized-cleaning" className="block px-4 py-2.5 text-sm text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                  Mechanized Cleaning & Housekeeping
+                <Link href="/services/mechanized-cleaning" className="px-4 py-3 font-mono text-sm font-bold hover:bg-neon hover:pl-6 transition-all uppercase">
+                  Mechanized Cleaning
                 </Link>
-                <Link href="/services/security-services" className="block px-4 py-2.5 text-sm text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                <Link href="/services/security-services" className="px-4 py-3 font-mono text-sm font-bold hover:bg-neon hover:pl-6 transition-all uppercase">
                   Security Services
                 </Link>
-                <Link href="/services/manpower-outsourcing" className="block px-4 py-2.5 text-sm text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                  Skilled/Unskilled Manpower
-                </Link>
-                <Link href="/services/event-management" className="block px-4 py-2.5 text-sm text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                <Link href="/services/event-management" className="px-4 py-3 font-mono text-sm font-bold hover:bg-neon hover:pl-6 transition-all uppercase">
                   Event Management
                 </Link>
-                <Link href="/services/hospitality-services" className="block px-4 py-2.5 text-sm text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                  Hospitality Services
-                </Link>
-                <Link href="/services/infrastructural-facility" className="block px-4 py-2.5 text-sm text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                  Infrastructural Facility Management
-                </Link>
-                <Link href="/services/canteen-catering" className="block px-4 py-2.5 text-sm text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                  Canteen & Catering Services
-                </Link>
-                <Link href="/services/pest-control" className="block px-4 py-2.5 text-sm text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                  Beat Patrol & Pest Control
-                </Link>
-                <Link href="/services/admin-services" className="block px-4 py-2.5 text-sm text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                  Administrative Services
-                </Link>
-                <Link href="/services/general-order-supplies" className="block px-4 py-2.5 text-sm text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                  General Order Supplies
-                </Link>
-                <Link href="/services/corporate-gifting" className="block px-4 py-2.5 text-sm text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                  Corporate Gifting
+                <Link href="/services/general-order-supplies" className="px-4 py-3 font-mono text-sm font-bold hover:bg-neon hover:pl-6 transition-all uppercase text-accent">
+                  General Order Supplies &rarr;
                 </Link>
               </div>
             </div>
+          </div>
 
-            <div className="dropdown relative">
-              <button className="group relative px-4 py-2 rounded-lg text-sm font-semibold text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-800 transition-all duration-300 focus:outline-none flex items-center gap-1">
-                Shop Online
-                <svg className="w-4 h-4 text-gray-400 transition-transform duration-300 group-hover:rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-                </svg>
-              </button>
-              <div className="dropdown-menu py-2 w-60 bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200/50 dark:border-gray-700/50">
-                <Link href="/shop/stationery" className="block px-4 py-2.5 text-sm text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+          {/* Shop Dropdown */}
+          <div className="relative flex items-stretch dropdown group flex-1">
+            <button className="flex items-center justify-center w-full px-4 xl:px-6 font-display font-bold uppercase text-base hover:bg-accent hover:text-white transition-colors cursor-pointer outline-none">
+              Shop Online
+              <svg className="w-3 h-3 ml-2 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeWidth="3" strokeLinecap="square" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div className="dropdown-menu absolute top-full left-0 w-64 bg-white brutal-border ml-[-4px]" style={{boxShadow: '8px 8px 0px 0px #000'}}>
+              <div className="flex flex-col divide-y-2 divide-black">
+                <Link href="/shop/stationery" className="px-4 py-3 font-mono text-sm font-bold hover:bg-accent hover:text-white transition-all uppercase">
                   Stationery
                 </Link>
-                <Link href="/shop/office-essentials" className="block px-4 py-2.5 text-sm text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                <Link href="/shop/office-essentials" className="px-4 py-3 font-mono text-sm font-bold hover:bg-accent hover:text-white transition-all uppercase">
                   Office Essentials
                 </Link>
-                <Link href="/shop/school-supplies" className="block px-4 py-2.5 text-sm text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                <Link href="/shop/school-supplies" className="px-4 py-3 font-mono text-sm font-bold hover:bg-accent hover:text-white transition-all uppercase">
                   School Supplies
                 </Link>
-                <Link href="/shop/all" className="block px-4 py-2.5 text-sm text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                  Browse All Products
+                <Link href="/shop/all" className="px-4 py-3 font-mono text-sm font-bold bg-black text-white hover:bg-neon hover:text-black transition-all uppercase">
+                  Browse All Products [+]
                 </Link>
               </div>
             </div>
+          </div>
 
-            <Link href="/#about" className="group relative px-4 py-2 rounded-lg text-sm font-semibold text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-800 transition-all duration-300">
-              About Us
-            </Link>
-            <Link href="/#contact" className="group relative px-4 py-2 rounded-lg text-sm font-semibold text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-800 transition-all duration-300">
-              Contact
-            </Link>
-          </nav>
+          <Link href="/#about" className="flex items-center justify-center px-4 xl:px-6 font-display font-bold uppercase text-base hover:bg-neon transition-colors flex-1">
+            About Us
+          </Link>
+          <Link href="/contact" className="flex items-center justify-center px-4 xl:px-6 font-display font-bold uppercase text-base hover:bg-black hover:text-white transition-colors flex-1">
+            Contact Us
+          </Link>
+        </nav>
 
-          <div className="hidden md:flex items-center gap-2">
-            <button
-              onClick={() => setSearchOpen(true)}
-              className="group relative p-2.5 rounded-xl text-gray-600 dark:text-gray-400 hover:bg-blue-50 dark:hover:bg-gray-800 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300"
-              title="Search">
-              <svg className="h-5 w-5 group-hover:scale-110 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </button>
-            
-            <Link 
-              href="/login" 
-              title="Login/My Account"
-              className="group relative p-2.5 rounded-xl text-gray-600 dark:text-gray-400 hover:bg-blue-50 dark:hover:bg-gray-800 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300">
-              <svg className="h-5 w-5 group-hover:scale-110 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-              </svg>
-            </Link>
-            
-            <button
-              onClick={() => setCartOpen(true)}
-              className="group relative p-2.5 rounded-xl text-gray-600 dark:text-gray-400 hover:bg-blue-50 dark:hover:bg-gray-800 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300"
-              title="Shopping Cart">
-              <svg className="h-6 w-6 group-hover:scale-110 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-              </svg>
-              {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-blue-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center shadow-lg">
-                  {cartCount}
-                </span>
+        {/* UTILITIES */}
+        <div className="flex items-stretch shrink-0 divide-x-4 divide-black ml-auto">
+          <button onClick={() => setSearchOpen(true)} className="flex items-center justify-center w-12 hover:bg-neon transition-colors group">
+            <svg className="w-5 h-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth="3" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </button>
+          
+          <Link href="/login" className="hidden lg:flex items-center justify-center px-4 font-mono font-bold text-xs hover:bg-black hover:text-white transition-colors uppercase tracking-wider">
+            Auth
+          </Link>
+          
+          <button onClick={() => setCartOpen(true)} className="relative flex items-center justify-center w-14 hover:bg-accent hover:text-white transition-colors bg-white group">
+            <svg className="w-5 h-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth="3" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+            {cartCount > 0 && (
+              <span className="absolute top-3 right-2 bg-accent text-white text-[10px] font-mono font-bold h-5 w-5 flex items-center justify-center border-2 border-black">
+                {cartCount}
+              </span>
+            )}
+          </button>
+
+          {/* MOBILE TOGGLE */}
+          <button 
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
+            className="lg:hidden flex items-center justify-center w-14 hover:bg-black hover:text-white transition-colors">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {mobileMenuOpen ? (
+                <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth="3" d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth="3" d="M4 6h16M4 12h16M4 18h16" />
               )}
-            </button>
-          </div>
-
-          <div className="md:hidden flex items-center">
-            <button 
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
-              className="p-2 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-800 transition-all duration-300">
-              <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
-          </div>
+            </svg>
+          </button>
         </div>
       </div>
 
+      {/* MOBILE MENU */}
       {mobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 bg-gray-900/90 backdrop-blur-sm z-40 animate-fade-in">
-          <div className="fixed top-0 right-0 h-full w-full max-w-sm bg-linear-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-2xl overflow-y-auto animate-slide-in">
-            {/* Header */}
-            <div className="sticky top-0 bg-linear-to-r from-blue-600 to-purple-600 p-6 shadow-lg">
-              <div className="flex justify-between items-center">
-                <div>
-                  <h2 className="text-2xl font-black text-white">Menu</h2>
-                  <p className="text-sm text-blue-100">Explore our offerings</p>
+        <div className="lg:hidden fixed inset-0 top-[84px] bg-white z-40 brutal-border-t overflow-y-auto pb-24">
+          <div className="flex flex-col divide-y-4 divide-black">
+            <Link href="/" onClick={() => setMobileMenuOpen(false)} className="px-6 py-6 font-display font-black text-3xl uppercase hover:bg-neon hover:pl-10 transition-all reveal-up delay-1">
+              Home
+            </Link>
+            
+            <div className="flex flex-col">
+              <button 
+                onClick={() => setBusinessDropdownOpen(!businessDropdownOpen)}
+                className="flex items-center justify-between px-6 py-6 font-display font-black text-3xl uppercase hover:bg-black hover:text-white transition-colors reveal-up delay-2"
+              >
+                <span>For Your Business</span>
+                <span className={`font-mono text-xl transition-transform duration-200 ${businessDropdownOpen ? 'rotate-45' : ''}`}>+</span>
+              </button>
+              {businessDropdownOpen && (
+                <div className="flex flex-col divide-y-2 divide-black bg-gray-100 border-t-4 border-black">
+                  <Link href="/services/facility-management" onClick={() => setMobileMenuOpen(false)} className="px-8 py-4 font-mono font-bold text-lg uppercase hover:bg-neon">Facility Mgmt</Link>
+                  <Link href="/services/mechanized-cleaning" onClick={() => setMobileMenuOpen(false)} className="px-8 py-4 font-mono font-bold text-lg uppercase hover:bg-neon">Cleaning</Link>
+                  <Link href="/services/security-services" onClick={() => setMobileMenuOpen(false)} className="px-8 py-4 font-mono font-bold text-lg uppercase hover:bg-neon">Security</Link>
+                  <Link href="/services/event-management" onClick={() => setMobileMenuOpen(false)} className="px-8 py-4 font-mono font-bold text-lg uppercase hover:bg-neon">Events</Link>
                 </div>
-                <button 
-                  onClick={() => setMobileMenuOpen(false)} 
-                  className="p-2 bg-white/20 hover:bg-white/30 rounded-xl text-white transition-all duration-300"
-                >
-                  <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-              </div>
+              )}
             </div>
 
-            {/* Quick Actions */}
-            <div className="p-4 grid grid-cols-3 gap-3">
-              <button
-                onClick={() => {
-                  setSearchOpen(true);
-                  setMobileMenuOpen(false);
-                }}
-                className="flex flex-col items-center gap-2 p-3 bg-blue-100 dark:bg-blue-900/30 rounded-xl hover:scale-105 transition-transform"
+            <div className="flex flex-col">
+              <button 
+                onClick={() => setRetailDropdownOpen(!retailDropdownOpen)}
+                className="flex items-center justify-between px-6 py-6 font-display font-black text-3xl uppercase hover:bg-accent hover:text-white transition-colors reveal-up delay-3"
               >
-                <svg className="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-                <span className="text-xs font-semibold text-blue-600 dark:text-blue-400">Search</span>
+                <span>Shop Online</span>
+                <span className={`font-mono text-xl transition-transform duration-200 ${retailDropdownOpen ? 'rotate-45' : ''}`}>+</span>
               </button>
-              <button
-                onClick={() => {
-                  setCartOpen(true);
-                  setMobileMenuOpen(false);
-                }}
-                className="relative flex flex-col items-center gap-2 p-3 bg-purple-100 dark:bg-purple-900/30 rounded-xl hover:scale-105 transition-transform"
-              >
-                <svg className="w-6 h-6 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-                {cartCount > 0 && (
-                  <span className="absolute top-1 right-1 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
-                    {cartCount}
-                  </span>
-                )}
-                <span className="text-xs font-semibold text-purple-600 dark:text-purple-400">Cart</span>
-              </button>
-              <Link
-                href="/login"
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex flex-col items-center gap-2 p-3 bg-green-100 dark:bg-green-900/30 rounded-xl hover:scale-105 transition-transform"
-              >
-                <svg className="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-                <span className="text-xs font-semibold text-green-600 dark:text-green-400">Account</span>
-              </Link>
+              {retailDropdownOpen && (
+                <div className="flex flex-col divide-y-2 divide-black bg-gray-100 border-t-4 border-black">
+                  <Link href="/shop/all" onClick={() => setMobileMenuOpen(false)} className="px-8 py-4 font-mono font-bold text-lg uppercase bg-black text-white hover:bg-neon hover:text-black">Catalog [ALL]</Link>
+                  <Link href="/shop/stationery" onClick={() => setMobileMenuOpen(false)} className="px-8 py-4 font-mono font-bold text-lg uppercase hover:bg-accent hover:text-white">Stationery</Link>
+                  <Link href="/shop/office-essentials" onClick={() => setMobileMenuOpen(false)} className="px-8 py-4 font-mono font-bold text-lg uppercase hover:bg-accent hover:text-white">Office Essentials</Link>
+                </div>
+              )}
             </div>
 
-            {/* Navigation */}
-            <nav className="p-4 space-y-2">
-              <Link 
-                href="/" 
-                onClick={() => setMobileMenuOpen(false)} 
-                className="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 rounded-xl hover:bg-blue-50 dark:hover:bg-gray-700 transition-all group"
-              >
-                <svg className="w-5 h-5 text-gray-600 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                </svg>
-                <span className="font-semibold text-gray-900 dark:text-white">Home</span>
-              </Link>
-
-              {/* Shop Online Dropdown */}
-              <div className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden">
-                <button
-                  className="w-full flex items-center justify-between p-4 hover:bg-blue-50 dark:hover:bg-gray-700 transition-all group"
-                  onClick={() => setRetailDropdownOpen(!retailDropdownOpen)}
-                >
-                  <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-gray-600 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                    </svg>
-                    <span className="font-semibold text-gray-900 dark:text-white">Shop Online</span>
-                  </div>
-                  <svg className={`w-5 h-5 text-gray-400 transition-transform duration-300 ${retailDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-                {retailDropdownOpen && (
-                  <div className="bg-gray-50 dark:bg-gray-900 p-2 space-y-1">
-                    <Link href="/shop/stationery" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-2 p-3 rounded-lg hover:bg-white dark:hover:bg-gray-800 transition-all">
-                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">📝 Stationery</span>
-                    </Link>
-                    <Link href="/shop/office-essentials" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-2 p-3 rounded-lg hover:bg-white dark:hover:bg-gray-800 transition-all">
-                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">💼 Office Essentials</span>
-                    </Link>
-                    <Link href="/shop/school-supplies" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-2 p-3 rounded-lg hover:bg-white dark:hover:bg-gray-800 transition-all">
-                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">🎒 School Supplies</span>
-                    </Link>
-                    <Link href="/shop/all" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-2 p-3 rounded-lg hover:bg-white dark:hover:bg-gray-800 transition-all">
-                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">🛍️ Browse All</span>
-                    </Link>
-                  </div>
-                )}
-              </div>
-
-              {/* Business Services Dropdown */}
-              <div className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden">
-                <button
-                  className="w-full flex items-center justify-between p-4 hover:bg-purple-50 dark:hover:bg-gray-700 transition-all group"
-                  onClick={() => setBusinessDropdownOpen(!businessDropdownOpen)}
-                >
-                  <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-gray-600 dark:text-gray-400 group-hover:text-purple-600 dark:group-hover:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                    </svg>
-                    <span className="font-semibold text-gray-900 dark:text-white">Business Services</span>
-                  </div>
-                  <svg className={`w-5 h-5 text-gray-400 transition-transform duration-300 ${businessDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-                {businessDropdownOpen && (
-                  <div className="bg-gray-50 dark:bg-gray-900 p-2 space-y-1 max-h-64 overflow-y-auto">
-                    <Link href="/services/facility-management" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-2 p-3 rounded-lg hover:bg-white dark:hover:bg-gray-800 transition-all">
-                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">🏢 Facility Management</span>
-                    </Link>
-                    <Link href="/services/mechanized-cleaning" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-2 p-3 rounded-lg hover:bg-white dark:hover:bg-gray-800 transition-all">
-                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">✨ Cleaning Services</span>
-                    </Link>
-                    <Link href="/services/security-services" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-2 p-3 rounded-lg hover:bg-white dark:hover:bg-gray-800 transition-all">
-                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">🔒 Security Services</span>
-                    </Link>
-                    <Link href="/services/event-management" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-2 p-3 rounded-lg hover:bg-white dark:hover:bg-gray-800 transition-all">
-                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">🎉 Event Management</span>
-                    </Link>
-                  </div>
-                )}
-              </div>
-
-              <Link 
-                href="/#about" 
-                onClick={() => setMobileMenuOpen(false)} 
-                className="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 rounded-xl hover:bg-blue-50 dark:hover:bg-gray-700 transition-all group"
-              >
-                <svg className="w-5 h-5 text-gray-600 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <span className="font-semibold text-gray-900 dark:text-white">About Us</span>
-              </Link>
-
-              <Link 
-                href="/#contact" 
-                onClick={() => setMobileMenuOpen(false)} 
-                className="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 rounded-xl hover:bg-blue-50 dark:hover:bg-gray-700 transition-all group"
-              >
-                <svg className="w-5 h-5 text-gray-600 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-                <span className="font-semibold text-gray-900 dark:text-white">Contact Us</span>
-              </Link>
-            </nav>
+            <Link href="/#about" onClick={() => setMobileMenuOpen(false)} className="px-6 py-6 font-display font-black text-3xl uppercase hover:bg-neon hover:pl-10 transition-all reveal-up delay-4">
+              About Us
+            </Link>
+            <Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="px-6 py-6 font-display font-black text-3xl uppercase hover:bg-black hover:text-white hover:pl-10 transition-all reveal-up delay-5">
+              Contact Us
+            </Link>
+            <Link href="/login" onClick={() => setMobileMenuOpen(false)} className="px-6 py-6 font-display font-black text-3xl uppercase bg-neon text-black hover:bg-accent hover:text-white hover:pl-10 transition-all reveal-up delay-6">
+              Login
+            </Link>
           </div>
         </div>
       )}

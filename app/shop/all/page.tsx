@@ -23,110 +23,105 @@ export default function AllProductsPage() {
   };
 
   return (
-    <main className="grow bg-gray-50 dark:bg-gray-900">
-      {/* Hero Section */}
-      <section className="bg-linear-to-br from-blue-600 to-purple-600 text-white py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-black mb-4">Shop All Products</h1>
-            <p className="text-xl text-blue-100">
-              Explore our complete collection of quality stationery, office essentials, and school supplies.
+    <main className="grow bg-gray-100 flex flex-col">
+      {/* HEADER BAR */}
+      <section className="bg-black text-white border-b-4 border-black py-12 px-8 md:px-16 relative grain-overlay">
+        <div className="relative z-10 flex flex-col md:flex-row justify-between items-end gap-8">
+          <div className="max-w-2xl">
+            <div className="inline-block px-3 py-1 bg-accent text-white font-mono font-bold text-xs uppercase tracking-widest border-2 border-white mb-6">
+              RETAIL MODULE ACTIVE
+            </div>
+            <h1 className="font-display font-black text-5xl md:text-7xl uppercase mb-4 leading-none text-neon">
+              Supply <br/>Directory
+            </h1>
+            <p className="font-mono text-lg border-l-4 border-white pl-4 text-gray-300">
+              Access premium stationery, office loadouts, and scholastic hardware.
             </p>
+          </div>
+          <div className="font-mono font-bold text-5xl tracking-tighter opacity-20">
+            {filteredProducts.length.toString().padStart(3, '0')}
           </div>
         </div>
       </section>
 
-      {/* Filters */}
-      <section className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 sticky top-20 z-40">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-wrap gap-3">
+      {/* FILTER PANEL */}
+      <section className="bg-white border-b-4 border-black sticky top-20 z-40">
+        <div className="flex flex-col sm:flex-row divide-y-4 sm:divide-y-0 sm:divide-x-4 divide-black border-black">
+          <div className="p-4 bg-neon font-display font-black text-xl uppercase flex items-center justify-center sm:w-48 shrink-0">
+            FILTERS
+          </div>
+          <div className="flex flex-wrap grow overflow-x-auto custom-scrollbar bg-gray-50">
             {[
-              { value: 'all', label: 'All Products', icon: '🛍️' },
-              { value: 'stationery', label: 'Stationery', icon: '✏️' },
-              { value: 'office', label: 'Office', icon: '💼' },
-              { value: 'school', label: 'School', icon: '🎒' }
+              { value: 'all', label: 'All Items' },
+              { value: 'stationery', label: 'Stationery' },
+              { value: 'office', label: 'Office Core' },
+              { value: 'school', label: 'Scholastic' }
             ].map((item) => (
               <button
                 key={item.value}
                 onClick={() => setFilter(item.value)}
-                className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
+                className={`flex-1 min-w-[140px] p-4 font-mono font-bold text-sm uppercase transition-colors outline-none border-r-4 border-transparent focus:border-black ${
                   filter === item.value
-                    ? 'bg-blue-600 text-white shadow-lg scale-105'
-                    : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 hover:scale-105'
+                    ? 'bg-black text-white brutal-border-b'
+                    : 'text-black hover:bg-gray-200 border-b-4 border-transparent'
                 }`}
               >
-                <span>{item.icon}</span>
-                {item.label}
+                [{item.label}]
               </button>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Products Grid */}
-      <section className="section-padding">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-8">
-            <p className="text-gray-600 dark:text-gray-400">
-              Showing <span className="font-bold text-gray-900 dark:text-white">{filteredProducts.length}</span> products
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {filteredProducts.map((product) => (
-              <div key={product.id} className="modern-card bg-white dark:bg-gray-800 flex flex-col group border border-gray-200 dark:border-gray-700">
-                <div className="relative overflow-hidden">
-                  <Image 
-                    src={product.image} 
-                    alt={product.name} 
-                    width={400} 
-                    height={300} 
-                    className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500" 
-                  />
-                  <div className="absolute top-3 right-3">
-                    <span className="inline-block px-3 py-1 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm text-xs font-bold text-blue-600 dark:text-blue-400 rounded-full">
-                      {product.category}
-                    </span>
-                  </div>
+      {/* GRID */}
+      <section className="p-8 md:p-16 grid-bg grow border-b-4 border-black">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          {filteredProducts.map((product, idx) => (
+            <div key={product.id} className={`bg-white border-4 border-black flex flex-col group hover-lift relative reveal-up delay-${Math.min((idx % 8) + 1, 8)}`}>
+              <div className="border-b-4 border-black overflow-hidden bg-gray-100 relative aspect-square p-4">
+                <div className="absolute top-0 left-0 bg-black text-neon font-mono font-bold text-[10px] px-2 py-1 uppercase border-r-4 border-b-4 border-black z-10">
+                  {product.category}
                 </div>
-                <div className="p-6 flex flex-col grow">
-                  <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                    {product.name}
-                  </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-                    {product.description}
-                  </p>
-                  <div className="mt-auto">
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="text-2xl font-black text-blue-600 dark:text-blue-400">
-                        ₹{product.price}
-                      </span>
-                    </div>
-                    <button 
-                      onClick={() => handleAddToCart(product)}
-                      className="w-full btn-primary"
-                    >
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                      </svg>
-                      Add to Cart
-                    </button>
-                  </div>
-                </div>
+                <Image 
+                  src={product.image} 
+                  alt={product.name} 
+                  fill
+                  className="object-contain p-8 mix-blend-multiply group-hover:scale-110 transition-transform duration-500 grayscale group-hover:grayscale-0" 
+                />
               </div>
-            ))}
-          </div>
-
-          {/* Back Button */}
-          <div className="mt-16 text-center">
-            <Link href="/" className="btn-secondary">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-              </svg>
-              Back to Home
-            </Link>
-          </div>
+              
+              <div className="p-6 flex flex-col grow">
+                <h3 className="font-display font-black text-2xl uppercase mb-2 leading-tight">
+                  {product.name}
+                </h3>
+                <p className="font-mono text-xs text-gray-600 mb-6 grow line-clamp-3">
+                  {product.description}
+                </p>
+                
+                <div className="flex items-end justify-between mb-6 border-t-2 border-black pt-4">
+                  <span className="font-display font-black text-4xl leading-none">₹{product.price}</span>
+                  <div className="w-8 h-8 rounded-full border-2 border-black flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-neon">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="square" strokeLinejoin="miter" strokeWidth="3" d="M12 4v16m8-8H4"/></svg>
+                  </div>
+                </div>
+                
+                <button 
+                  onClick={() => handleAddToCart(product)}
+                  className="brutal-btn w-full text-sm py-3 bg-white text-black hover:bg-black hover:text-white !shadow-none hover:shadow-none border-4 border-black"
+                >
+                  ADD TO CART
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
+
+        {filteredProducts.length === 0 && (
+          <div className="py-24 text-center font-mono font-bold text-xl uppercase bg-white border-4 border-black p-8 brutal-shadow diagonal-accent">
+            <span className="text-accent mb-4 block text-4xl">!</span>
+            No inventory found for parameter: {filter}
+          </div>
+        )}
       </section>
     </main>
   );
