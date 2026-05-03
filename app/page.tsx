@@ -36,6 +36,18 @@ export default function Home() {
               <div className="px-4 py-1 bg-accent border-4 border-black text-white font-mono font-bold uppercase text-xs tracking-widest brutal-shadow">
                 MSME Registered
               </div>
+              <div className="px-4 py-1 bg-white border-4 border-black text-black font-mono font-bold uppercase text-xs tracking-widest brutal-shadow">
+                GST Registered
+              </div>
+              <div className="px-4 py-1 bg-black border-4 border-black text-neon font-mono font-bold uppercase text-xs tracking-widest brutal-shadow">
+                GEM Registered
+              </div>
+              <div className="px-4 py-1 bg-neon border-4 border-black text-black font-mono font-bold uppercase text-xs tracking-widest brutal-shadow">
+                Labour Registered
+              </div>
+              <div className="px-4 py-1 bg-accent border-4 border-black text-white font-mono font-bold uppercase text-xs tracking-widest brutal-shadow">
+                Make in India
+              </div>
             </div>
             
             <h1 className="font-display font-black text-5xl sm:text-6xl md:text-7xl lg:text-[7rem] leading-[0.9] tracking-tighter uppercase mb-6 reveal-up delay-2">

@@ -10,13 +10,16 @@ const jetbrains = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrai
 
 export const metadata: Metadata = {
   title: {
-    default: "Yuva Global Enterprises — Facility Management & Business Solutions | Srinagar, J&K",
-    template: "%s | Yuva Global Enterprises",
+    default: "YGE — Yuva Global Enterprises | Facility Management & Business Solutions | Srinagar, J&K",
+    template: "%s | YGE — Yuva Global Enterprises",
   },
   description:
-    "Yuva Global Enterprises is an ISO 9001:2015 certified company providing facility management, security services, mechanized cleaning, event management, manpower outsourcing, and premium stationery & office supplies in Srinagar, Jammu & Kashmir.",
+    "YGE (Yuva Global Enterprises) is an ISO 9001:2015 certified company providing facility management, security services, mechanized cleaning, event management, manpower outsourcing, and premium stationery & office supplies in Srinagar, Jammu & Kashmir.",
   keywords: [
+    "YGE",
     "Yuva Global Enterprises",
+    "YGE Srinagar",
+    "YGE Kashmir",
     "facility management Srinagar",
     "security services J&K",
     "mechanized cleaning Kashmir",
@@ -49,9 +52,9 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: "https://yuvaglobalenterprises.com",
     siteName: "Yuva Global Enterprises",
-    title: "Yuva Global Enterprises — Facility Management & Business Solutions",
+    title: "YGE — Yuva Global Enterprises | Facility Management & Business Solutions",
     description:
-      "ISO 9001:2015 certified provider of facility management, security, cleaning, event management, and premium office & stationery supplies in Srinagar, J&K.",
+      "YGE (Yuva Global Enterprises) — ISO 9001:2015 certified provider of facility management, security, cleaning, event management, and premium office & stationery supplies in Srinagar, J&K.",
     images: [
       {
         url: "/images/ygeLogo.png",
@@ -63,9 +66,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Yuva Global Enterprises — Facility Management & Business Solutions",
+    title: "YGE — Yuva Global Enterprises | Facility Management & Business Solutions",
     description:
-      "ISO 9001:2015 certified provider of facility management, security, cleaning, and premium stationery supplies in Srinagar, J&K.",
+      "YGE (Yuva Global Enterprises) — ISO 9001:2015 certified provider of facility management, security, cleaning, and premium stationery supplies in Srinagar, J&K.",
     images: ["/images/ygeLogo.png"],
   },
   icons: {
@@ -102,10 +105,11 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Yuva Global Enterprises",
+    alternateName: ["YGE", "YGE Srinagar"],
     url: "https://yuvaglobalenterprises.com",
     logo: "https://yuvaglobalenterprises.com/images/ygeLogo.png",
     description:
-      "ISO 9001:2015 certified facility management, business solutions, and premium stationery supplier in Srinagar, Jammu & Kashmir.",
+      "YGE (Yuva Global Enterprises) — ISO 9001:2015 certified facility management, business solutions, and premium stationery supplier in Srinagar, Jammu & Kashmir.",
     address: {
       "@type": "PostalAddress",
       streetAddress: "Ocean Greens 20/A, Surateng, Rainawari, Near JLNM Hospital",

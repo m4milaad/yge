@@ -22,19 +22,29 @@ export default function Header() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [mobileMenuOpen]);
+
   return (
     <header className={`sticky top-0 z-50 bg-white transition-shadow duration-300 ${scrolled ? 'shadow-[0_8px_0_0_#000]' : ''}`}>
       <div className="flex h-20 items-stretch divide-x-4 divide-black border-b-4 border-black">
         {/* LOGO */}
-        <div className="flex items-center px-4 shrink-0 bg-neon hover:bg-accent transition-colors duration-200">
+        <div className="flex items-center px-0 sm:px-4 shrink-0 bg-white sm:bg-neon hover:bg-accent transition-colors duration-200">
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative border-2 border-black bg-white p-0.5">
+            <div className="relative border-0 sm:border-2 sm:border-black sm:bg-white sm:p-0.5">
               <Image 
                 src="/images/ygeLogo.png" 
                 alt="YGE Logo" 
                 width={36} 
                 height={36} 
-                className="w-9 h-9 object-contain" 
+                className="w-14 h-14 sm:w-12 sm:h-12 object-contain" 
               />
             </div>
             <div className="hidden sm:block">
@@ -158,7 +168,7 @@ export default function Header() {
 
       {/* MOBILE MENU */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 top-[84px] bg-white z-40 brutal-border-t overflow-y-auto pb-24">
+        <div className="lg:hidden fixed inset-0 top-[84px] bg-white z-40 brutal-border-t overflow-y-auto pb-24" style={{ overscrollBehavior: 'contain' }}>
           <div className="flex flex-col divide-y-4 divide-black">
             <Link href="/" onClick={() => setMobileMenuOpen(false)} className="px-6 py-6 font-display font-black text-3xl uppercase hover:bg-neon hover:pl-10 transition-all reveal-up delay-1">
               Home
