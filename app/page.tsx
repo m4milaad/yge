@@ -1,15 +1,49 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import NewsTicker from '@/components/NewsTicker';
 import { useCart } from '@/context/CartContext';
 import { featuredServices, featuredProducts } from '@/data';
 
+interface NewsItem {
+  title: string;
+  url: string;
+  published: string;
+  category: string;
+}
+
+function timeAgo(dateString: string): string {
+  const now = new Date();
+  const then = new Date(dateString);
+  const diffMs = now.getTime() - then.getTime();
+  const mins = Math.floor(diffMs / 60000);
+  if (mins < 1) return 'JUST NOW';
+  if (mins < 60) return `T-${mins}M`;
+  const hrs = Math.floor(mins / 60);
+  if (hrs < 24) return `T-${hrs}H`;
+  const days = Math.floor(hrs / 24);
+  return `T-${days}D`;
+}
+
 export default function Home() {
   const [activeTab, setActiveTab] = useState('business');
   const { addToCart } = useCart();
+  const [newsItems, setNewsItems] = useState<NewsItem[]>([]);
+  const [newsLoading, setNewsLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('/api/news')
+      .then(res => res.json())
+      .then(data => {
+        if (data.news && data.news.length > 0) {
+          setNewsItems(data.news);
+        }
+      })
+      .catch(() => { /* silently fall back to static */ })
+      .finally(() => setNewsLoading(false));
+  }, []);
 
   const handleAddToCart = (product: { id: number; name: string; price: number; image: string }) => {
     addToCart({
@@ -83,42 +117,85 @@ export default function Home() {
           <div className="hidden lg:flex flex-col bg-black text-white p-8 relative grain-overlay">
             <div className="absolute top-0 right-0 p-4 font-mono font-bold text-accent text-sm flex items-center gap-2 z-10">
               <span className="w-2 h-2 bg-accent inline-block pulse-dot" />
-              SYS.OP: ONLINE
+              {newsItems.length > 0 ? 'LIVE FEED' : 'SYS.OP: ONLINE'}
             </div>
             
             <h3 className="font-display font-black text-4xl uppercase mb-8 text-neon mt-12 border-b-4 border-white/30 pb-4 relative z-10 reveal-up delay-3">
-              Latest Updates
+              {newsItems.length > 0 ? 'Live News' : 'Latest Updates'}
             </h3>
             
             <div className="flex flex-col gap-6 overflow-y-auto pr-4 custom-scrollbar relative z-10">
-              <div className="border-2 border-white/30 p-4 hover:border-neon transition-all duration-300 group cursor-pointer bg-white text-black hover:bg-neon hover:text-black reveal-scale delay-4 diagonal-accent">
-                <div className="flex justify-between items-center mb-2 border-b-2 border-black pb-2">
-                  <span className="font-mono font-bold text-xs uppercase tracking-widest">Directive: Offer</span>
-                  <span className="font-mono text-xs font-bold bg-black text-white px-2 py-1">T-2M</span>
+              {newsLoading && (
+                <div className="flex flex-col gap-6">
+                  {[1, 2, 3].map(i => (
+                    <div key={i} className="border-2 border-white/20 p-4 animate-pulse">
+                      <div className="h-3 bg-white/20 mb-3 w-1/2" />
+                      <div className="h-5 bg-white/10 mb-1 w-full" />
+                      <div className="h-5 bg-white/10 w-3/4" />
+                    </div>
+                  ))}
                 </div>
-                <p className="font-display font-bold text-xl leading-tight uppercase">20% Off Protocol active on all stationery.</p>
-              </div>
+              )}
 
-              <div className="border-2 border-white/30 p-4 hover:border-accent transition-all duration-300 group cursor-pointer hover:bg-accent hover:text-white reveal-scale delay-5">
-                <div className="flex justify-between items-center mb-2 border-b-2 border-current pb-2">
-                  <span className="font-mono font-bold text-xs uppercase tracking-widest">Update: Inventory</span>
-                  <span className="font-mono text-xs font-bold bg-white text-black px-2 py-1">T-1H</span>
-                </div>
-                <p className="font-display font-bold text-xl leading-tight uppercase">Premium supplies docked &amp; available.</p>
-              </div>
+              {!newsLoading && newsItems.length > 0 && newsItems.map((item, idx) => {
+                const hoverStyles = [
+                  'bg-white text-black hover:bg-neon hover:text-black hover:border-neon diagonal-accent',
+                  'hover:bg-accent hover:text-white hover:border-accent',
+                  'hover:bg-white hover:text-black hover:border-neon',
+                ];
+                return (
+                  <a
+                    key={idx}
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`border-2 border-white/30 p-4 transition-all duration-300 group cursor-pointer reveal-scale delay-${Math.min(idx + 4, 8)} ${hoverStyles[idx % hoverStyles.length]}`}
+                  >
+                    <div className="flex justify-between items-center mb-2 border-b-2 border-current pb-2">
+                      <span className="font-mono font-bold text-xs uppercase tracking-widest truncate mr-2">
+                        {item.category || 'News'}
+                      </span>
+                      <span className="font-mono text-xs font-bold bg-black text-white px-2 py-1 shrink-0">
+                        {timeAgo(item.published)}
+                      </span>
+                    </div>
+                    <p className="font-display font-bold text-lg leading-tight uppercase line-clamp-2">
+                      {item.title}
+                    </p>
+                  </a>
+                );
+              })}
 
-              <div className="border-2 border-white/30 p-4 hover:border-neon transition-all duration-300 group cursor-pointer hover:bg-white hover:text-black reveal-scale delay-6">
-                <div className="flex justify-between items-center mb-2 border-b-2 border-current pb-2">
-                  <span className="font-mono font-bold text-xs uppercase tracking-widest">Status: Verify</span>
-                  <span className="font-mono text-xs font-bold bg-white text-black px-2 py-1">T-3H</span>
-                </div>
-                <p className="font-display font-bold text-xl leading-tight uppercase">ISO 9001:2015 Standards Maintained.</p>
-              </div>
+              {!newsLoading && newsItems.length === 0 && (
+                <>
+                  <div className="border-2 border-white/30 p-4 hover:border-neon transition-all duration-300 group cursor-pointer bg-white text-black hover:bg-neon hover:text-black reveal-scale delay-4 diagonal-accent">
+                    <div className="flex justify-between items-center mb-2 border-b-2 border-black pb-2">
+                      <span className="font-mono font-bold text-xs uppercase tracking-widest">Directive: Offer</span>
+                      <span className="font-mono text-xs font-bold bg-black text-white px-2 py-1">T-2M</span>
+                    </div>
+                    <p className="font-display font-bold text-xl leading-tight uppercase">20% Off Protocol active on all stationery.</p>
+                  </div>
+                  <div className="border-2 border-white/30 p-4 hover:border-accent transition-all duration-300 group cursor-pointer hover:bg-accent hover:text-white reveal-scale delay-5">
+                    <div className="flex justify-between items-center mb-2 border-b-2 border-current pb-2">
+                      <span className="font-mono font-bold text-xs uppercase tracking-widest">Update: Inventory</span>
+                      <span className="font-mono text-xs font-bold bg-white text-black px-2 py-1">T-1H</span>
+                    </div>
+                    <p className="font-display font-bold text-xl leading-tight uppercase">Premium supplies docked &amp; available.</p>
+                  </div>
+                  <div className="border-2 border-white/30 p-4 hover:border-neon transition-all duration-300 group cursor-pointer hover:bg-white hover:text-black reveal-scale delay-6">
+                    <div className="flex justify-between items-center mb-2 border-b-2 border-current pb-2">
+                      <span className="font-mono font-bold text-xs uppercase tracking-widest">Status: Verify</span>
+                      <span className="font-mono text-xs font-bold bg-white text-black px-2 py-1">T-3H</span>
+                    </div>
+                    <p className="font-display font-bold text-xl leading-tight uppercase">ISO 9001:2015 Standards Maintained.</p>
+                  </div>
+                </>
+              )}
             </div>
             
             <div className="mt-auto pt-8 border-t-4 border-white/20 font-mono text-sm font-bold flex justify-between relative z-10">
-              <span className="tracking-widest">DATA FLOW</span>
-              <span className="text-neon flex items-center gap-2"><span className="w-2 h-2 bg-neon inline-block pulse-dot" /> RECORDING</span>
+              <span className="tracking-widest">{newsItems.length > 0 ? 'CURRENTS API' : 'DATA FLOW'}</span>
+              <span className="text-neon flex items-center gap-2"><span className="w-2 h-2 bg-neon inline-block pulse-dot" /> {newsItems.length > 0 ? 'LIVE' : 'RECORDING'}</span>
             </div>
           </div>
         </div>
