@@ -114,15 +114,16 @@ export default function Home() {
           </div>
           
           {/* Right Status / News */}
-          <div className="hidden lg:flex flex-col bg-black text-white p-8 relative grain-overlay">
-            <div className="absolute top-0 right-0 p-4 font-mono font-bold text-accent text-sm flex items-center gap-2 z-10">
-              <span className="w-2 h-2 bg-accent inline-block pulse-dot" />
-              {newsItems.length > 0 ? 'LIVE FEED' : 'SYS.OP: ONLINE'}
+          <div className="hidden lg:flex flex-col bg-black text-white pt-4 pb-8 px-8 relative grain-overlay">
+            <div className="flex items-center justify-between mb-8 border-b-4 border-white/30 pb-4 relative z-10 reveal-up delay-3">
+              <h3 className="font-display font-black text-4xl uppercase text-neon leading-none">
+                {newsItems.length > 0 ? 'Live News' : 'Latest Updates'}
+              </h3>
+              <div className="font-mono font-bold text-accent text-sm flex items-center gap-2 shrink-0">
+                <span className="w-2 h-2 bg-accent inline-block pulse-dot" />
+                {newsItems.length > 0 ? 'LIVE FEED' : 'ONLINE'}
+              </div>
             </div>
-            
-            <h3 className="font-display font-black text-4xl uppercase mb-8 text-neon mt-12 border-b-4 border-white/30 pb-4 relative z-10 reveal-up delay-3">
-              {newsItems.length > 0 ? 'Live News' : 'Latest Updates'}
-            </h3>
             
             <div className="flex flex-col gap-6 overflow-y-auto pr-4 custom-scrollbar relative z-10">
               {newsLoading && (
