@@ -96,7 +96,8 @@ export const navigationLinks = {
     { label: 'Beat Patrol & Pest Control', href: '/services/pest-control' },
     { label: 'Administrative Services', href: '/services/admin-services' },
     { label: 'General Order Supplies', href: '/services/general-order-supplies' },
-    { label: 'Corporate Gifting', href: '/services/corporate-gifting' }
+    { label: 'Corporate Gifting', href: '/services/corporate-gifting' },
+    { label: 'Website Design & Development', href: '/services/website-development' }
   ],
   shop: [
     { label: 'Stationery', href: '/shop/stationery' },

@@ -18,7 +18,8 @@ export const getColorClasses = (color: string) => {
     pink: { bg: 'bg-pink-100 dark:bg-pink-900/30', text: 'text-pink-600 dark:text-pink-400', hover: 'hover:border-pink-500', border: 'border-pink-200 dark:border-pink-800' },
     cyan: { bg: 'bg-cyan-100 dark:bg-cyan-900/30', text: 'text-cyan-600 dark:text-cyan-400', hover: 'hover:border-cyan-500', border: 'border-cyan-200 dark:border-cyan-800' },
     amber: { bg: 'bg-amber-100 dark:bg-amber-900/30', text: 'text-amber-600 dark:text-amber-400', hover: 'hover:border-amber-500', border: 'border-amber-200 dark:border-amber-800' },
-    rose: { bg: 'bg-rose-100 dark:bg-rose-900/30', text: 'text-rose-600 dark:text-rose-400', hover: 'hover:border-rose-500', border: 'border-rose-200 dark:border-rose-800' }
+    rose: { bg: 'bg-rose-100 dark:bg-rose-900/30', text: 'text-rose-600 dark:text-rose-400', hover: 'hover:border-rose-500', border: 'border-rose-200 dark:border-rose-800' },
+    violet: { bg: 'bg-violet-100 dark:bg-violet-900/30', text: 'text-violet-600 dark:text-violet-400', hover: 'hover:border-violet-500', border: 'border-violet-200 dark:border-violet-800' }
   };
   return colors[color] || colors.purple;
 };
